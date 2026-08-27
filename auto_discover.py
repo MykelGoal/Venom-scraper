@@ -213,8 +213,8 @@ async def main():
     parser.add_argument("--query", "-q", type=str, required=True, help="Search keyword (e.g. 'sportybet', 'crypto', 'forex')")
     parser.add_argument("--category", "-c", type=str, default="betting", help="Category slug (betting, crypto, tech, gaming, finance)")
     parser.add_argument("--category-name", type=str, default=None, help="Display name for category")
-    parser.add_argument("--max-groups", type=int, default=5, help="Max open groups to crawl (default: 5)")
-    parser.add_argument("--limit", type=int, default=500, help="Max members to extract per group (default: 500)")
+    parser.add_argument("--max-groups", type=int, default=15, help="Max open groups to crawl (default: 15)")
+    parser.add_argument("--limit", type=int, default=1000, help="Max members to extract per group (e.g., 1000-5000)")
     parser.add_argument("--no-export", action="store_true", help="Disable CSV/TXT file export")
 
     args = parser.parse_args()

@@ -133,22 +133,28 @@ class TelegramIndexer:
         batch_size = 100
 
         try:
-            # Deep or standard participant extraction
-            # Standard crawl gets initial participants; deep crawl searches letter by letter (a-z, 0-9)
+            # Participant extraction logic:
+            # 1. Basic crawl (< 200)
+            # 2. 1-character search (200 - 2,000)
+            # 3. 2-character combinatorial search (> 2,000) for massive 10k-50k member extractions
             search_filters = [""]
-            if max_members > 200:
-                # Alphanumeric deep scraping to bypass Telegram's 200-member basic limit
-                search_filters += [chr(c) for c in range(ord('a'), ord('z') + 1)] + [str(d) for d in range(10)] + ["_"]
+            if max_members > 2000:
+                # 2-character combinatorial expansion (aa..zz, a0..z9, etc.)
+                chars = [chr(c) for c in range(ord('a'), ord('z') + 1)] + [str(d) for d in range(10)]
+                search_filters = [f"{c1}{c2}" for c1 in chars for c2 in chars]
+            elif max_members > 200:
+                # 1-character alphanumeric search (a-z, 0-9, _)
+                search_filters = [chr(c) for c in range(ord('a'), ord('z') + 1)] + [str(d) for d in range(10)] + ["_"]
 
             seen_user_ids = set()
 
             for s_filter in search_filters:
-                if scanned_count >= max_members:
+                if scanned_count >= max_members or indexed_count >= max_members:
                     break
 
                 try:
-                    async for user in self.client.iter_participants(entity, search=s_filter if s_filter else None, limit=100):
-                        if scanned_count >= max_members:
+                    async for user in self.client.iter_participants(entity, search=s_filter if s_filter else None, limit=200):
+                        if scanned_count >= max_members or indexed_count >= max_members:
                             break
 
                         if user.id in seen_user_ids:
@@ -176,12 +182,13 @@ class TelegramIndexer:
                         }
                         batch.append(member_record)
 
-                        # Batch save to database
+                        # Batch save to database in chunks of 100
                         if len(batch) >= batch_size:
                             async with AsyncSessionLocal() as session:
                                 new_saved, _ = await bulk_save_members(session, group_db_id, batch)
                                 indexed_count += len(batch)
-                                logger.info(f"[@{clean_target}] Deep indexed {indexed_count} valid members (+{new_saved} new)...")
+                                if indexed_count % 500 == 0 or indexed_count <= 200:
+                                    logger.info(f"[@{clean_target}] Deep indexed {indexed_count:,} valid members (+{new_saved} new)...")
                             batch.clear()
                             await self._safe_delay()
 
