@@ -228,16 +228,22 @@ async def cmd_search(message: Message, state: FSMContext):
 
 @dp.callback_query(F.data.startswith("cat:"))
 async def cb_category_members(callback: CallbackQuery):
+    try:
+        await callback.answer()
+    except Exception:
+        pass
     parts = callback.data.split(":")
     category_slug = parts[1]
     page = int(parts[2]) if len(parts) > 2 else 1
     await execute_and_render_search(callback.message, query=None, category_slug=category_slug, page=page, is_edit=True)
-    await callback.answer()
 
 
 @dp.callback_query(F.data.startswith("page:"))
 async def cb_pagination(callback: CallbackQuery):
-    # format: page:cat=<slug>:q=<query>:<page_number>
+    try:
+        await callback.answer()
+    except Exception:
+        pass
     raw_parts = callback.data.split(":")
     cat_param = raw_parts[1].replace("cat=", "") or None
     q_param = raw_parts[2].replace("q=", "") or None
@@ -250,7 +256,6 @@ async def cb_pagination(callback: CallbackQuery):
         page=target_page,
         is_edit=True,
     )
-    await callback.answer()
 
 
 @dp.callback_query(F.data == "noop")
