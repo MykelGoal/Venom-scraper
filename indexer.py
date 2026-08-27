@@ -142,18 +142,14 @@ class TelegramIndexer:
         batch_size = 100
 
         try:
-            # Participant extraction logic:
-            # 1. Basic crawl (< 200)
-            # 2. 1-character search (200 - 2,000)
-            # 3. 2-character combinatorial search (> 2,000) for massive 10k-50k member extractions
-            search_filters = [""]
+            # Always use alphanumeric expansion so all supergroup participants are reachable
+            chars = [chr(c) for c in range(ord('a'), ord('z') + 1)] + [str(d) for d in range(10)] + ["_"]
             if max_members > 2000:
-                # 2-character combinatorial expansion (aa..zz, a0..z9, etc.)
-                chars = [chr(c) for c in range(ord('a'), ord('z') + 1)] + [str(d) for d in range(10)]
-                search_filters = [f"{c1}{c2}" for c1 in chars for c2 in chars]
-            elif max_members > 200:
+                # 2-character combinatorial expansion (aa..zz) for massive extractions
+                search_filters = [f"{c1}{c2}" for c1 in chars[:26] for c2 in chars[:26]]
+            else:
                 # 1-character alphanumeric search (a-z, 0-9, _)
-                search_filters = [chr(c) for c in range(ord('a'), ord('z') + 1)] + [str(d) for d in range(10)] + ["_"]
+                search_filters = [""] + chars
 
             seen_user_ids = set()
 
