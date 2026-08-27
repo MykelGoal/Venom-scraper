@@ -1,11 +1,12 @@
 services:
-  - type: worker
+  - type: web
     name: venom-scraper-bot
     env: python
     region: oregon
     plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: python3 bot.py
+    healthCheckPath: /health
     envVars:
       - key: API_ID
         sync: false
@@ -27,3 +28,7 @@ services:
         value: "5000"
       - key: SEARCH_PAGE_SIZE
         value: "8"
+      - key: ENABLE_WEB_SERVER
+        value: "true"
+      - key: PING_URL
+        sync: false

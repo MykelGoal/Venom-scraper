@@ -459,6 +459,14 @@ async def main():
     await init_db()
     await seed_default_categories()
 
+    # Start Uptime HTTP Server & Self-Ping loop to prevent sleep on Render
+    if settings.ENABLE_WEB_SERVER:
+        try:
+            from uptime_server import start_uptime_web_server
+            await start_uptime_web_server(port=settings.PORT)
+        except Exception as e:
+            logger.warning(f"Could not start uptime web server: {e}")
+
     bot = Bot(token=settings.BOT_TOKEN)
     logger.info("Bot started and polling for search queries...")
     await dp.start_polling(bot)
