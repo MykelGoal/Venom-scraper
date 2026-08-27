@@ -15,6 +15,7 @@ auth_state.json
 !requirements.txt
 *.json
 !groups.example.json
+!initial_seed.json
 !package.json
 
 # Python cache & virtual environments

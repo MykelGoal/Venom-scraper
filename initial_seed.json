@@ -1,0 +1,776 @@
+[
+  {
+    "group_title": "Ethereum Developers",
+    "group_username": "eth_devs",
+    "group_telegram_id": 987654321,
+    "category_name": "Crypto & Web3",
+    "category_slug": "crypto",
+    "members": [
+      {
+        "telegram_id": 1001,
+        "username": "satoshi_nakamoto",
+        "raw_username": "satoshi_nakamoto",
+        "first_name": "Satoshi",
+        "last_name": "Nakamoto",
+        "last_seen_status": "recently"
+      },
+      {
+        "telegram_id": 1002,
+        "username": "vitalik_fan",
+        "raw_username": "Vitalik_Fan",
+        "first_name": "Vitalik",
+        "last_name": "Fan",
+        "last_seen_status": "online"
+      },
+      {
+        "telegram_id": 1003,
+        "username": "crypto_trader_99",
+        "raw_username": "crypto_trader_99",
+        "first_name": "Crypto",
+        "last_name": "Trader",
+        "last_seen_status": "within_week"
+      }
+    ]
+  },
+  {
+    "group_title": "Telethon Offtopic (MOVED)",
+    "group_username": "telethonofftopic",
+    "group_telegram_id": 1281029376,
+    "category_name": "Tech & Programming",
+    "category_slug": "tech",
+    "members": []
+  },
+  {
+    "group_title": "Binance API (English Only)",
+    "group_username": "binance_api_english",
+    "group_telegram_id": 1134190352,
+    "category_name": "Crypto & Web3",
+    "category_slug": "crypto",
+    "members": [
+      {
+        "telegram_id": 611740329,
+        "username": "ribka7",
+        "raw_username": "Ribka7",
+        "first_name": "Ribka (BINANCE)♠️🌍 NO PM Always talk in The GROUP",
+        "last_name": null,
+        "last_seen_status": "recently"
+      },
+      {
+        "telegram_id": 505872389,
+        "username": "binance_customer",
+        "raw_username": "binance_customer",
+        "first_name": "Shift leader（客服值班长）",
+        "last_name": null,
+        "last_seen_status": "offline"
+      }
+    ]
+  },
+  {
+    "group_title": "Django_Invest_Chat",
+    "group_username": "django_chat",
+    "group_telegram_id": 1459548969,
+    "category_name": "Tech & Programming",
+    "category_slug": "tech",
+    "members": [
+      {
+        "telegram_id": 8302098899,
+        "username": "aresonen",
+        "raw_username": "aresonen",
+        "first_name": "Ares",
+        "last_name": "Onen",
+        "last_seen_status": "within_week"
+      },
+      {
+        "telegram_id": 6252581947,
+        "username": "developrubot",
+        "raw_username": "developrubot",
+        "first_name": "Дмитрий",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 977014585,
+        "username": "piter_83spb",
+        "raw_username": "Piter_83Spb",
+        "first_name": "Евгенийн",
+        "last_name": "Шляхто",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 577963970,
+        "username": "kha_timur",
+        "raw_username": "kha_timur",
+        "first_name": "Kha",
+        "last_name": "Timur",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 617790395,
+        "username": "cdstgfswa",
+        "raw_username": "Cdstgfswa",
+        "first_name": "Драная лошадь",
+        "last_name": null,
+        "last_seen_status": "unknown"
+      },
+      {
+        "telegram_id": 616404447,
+        "username": "jjhhf_eg",
+        "raw_username": "jjhhf_eg",
+        "first_name": "Xxx",
+        "last_name": null,
+        "last_seen_status": "within_month"
+      }
+    ]
+  },
+  {
+    "group_title": "Sports Betting Chat",
+    "group_username": "SportsBettingChat",
+    "group_telegram_id": 1315147746,
+    "category_name": "Betting & Sports",
+    "category_slug": "betting",
+    "members": [
+      {
+        "telegram_id": 7900775960,
+        "username": "fnrtrades",
+        "raw_username": "FNRTrades",
+        "first_name": "Coin0x",
+        "last_name": null,
+        "last_seen_status": "recently"
+      }
+    ]
+  },
+  {
+    "group_title": "Sportybet group chat",
+    "group_username": "sportybetgroupchat",
+    "group_telegram_id": 2808720379,
+    "category_name": "Betting & Sports",
+    "category_slug": "betting",
+    "members": [
+      {
+        "telegram_id": 6082505831,
+        "username": "margaretbrooks288",
+        "raw_username": "margaretbrooks288",
+        "first_name": "M",
+        "last_name": "B",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8957427078,
+        "username": "mar_john1",
+        "raw_username": "mar_john1",
+        "first_name": "Mar",
+        "last_name": "John",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8989492054,
+        "username": "marfelix5",
+        "raw_username": "Marfelix5",
+        "first_name": "Mar",
+        "last_name": "John Fixed Game",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 7194631582,
+        "username": "ameliajelm",
+        "raw_username": "Ameliajelm",
+        "first_name": "Amelia",
+        "last_name": "Key",
+        "last_seen_status": "recently"
+      },
+      {
+        "telegram_id": 7283707391,
+        "username": "samdeallll",
+        "raw_username": "Samdeallll",
+        "first_name": "Samuel",
+        "last_name": "Oke",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 7401248121,
+        "username": "gabulisa",
+        "raw_username": "Gabulisa",
+        "first_name": "Gabriel",
+        "last_name": "Ehinon 🦴🍅💎🐰🐈🥠",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 6697874317,
+        "username": "emiliadanm16",
+        "raw_username": "EmiliaDanm16",
+        "first_name": "blackrhich",
+        "last_name": "🫂",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 6537301301,
+        "username": "daniel_albert97",
+        "raw_username": "daniel_albert97",
+        "first_name": "daniel",
+        "last_name": "albert",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8227645637,
+        "username": "mrbenson024",
+        "raw_username": "Mrbenson024",
+        "first_name": "Benson",
+        "last_name": "Marcus",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8255632152,
+        "username": "jeremy_fixed_b",
+        "raw_username": "Jeremy_fixed_b",
+        "first_name": "Jeremy_",
+        "last_name": "Fixed",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8839796714,
+        "username": "mrstanley00",
+        "raw_username": "Mrstanley00",
+        "first_name": "Rette",
+        "last_name": "Danke",
+        "last_seen_status": "online"
+      },
+      {
+        "telegram_id": 8894662587,
+        "username": "surewinning1o",
+        "raw_username": "surewinning1o",
+        "first_name": "BET WITH JUJU WITH CHARM",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8614426468,
+        "username": "orion_ellis1",
+        "raw_username": "Orion_ellis1",
+        "first_name": "Orion",
+        "last_name": "Ellis",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 7830060776,
+        "username": "mr_presid_00",
+        "raw_username": "Mr_presid_00",
+        "first_name": "Mr",
+        "last_name": "Micheal",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 7345302850,
+        "username": "didichocolate",
+        "raw_username": "DidiChocolate",
+        "first_name": "Didi 🐾",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 7605387263,
+        "username": "kiaralord01",
+        "raw_username": "kiaralord01",
+        "first_name": "Lord won",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8507264482,
+        "username": "jamesfixed1005",
+        "raw_username": "Jamesfixed1005",
+        "first_name": "James",
+        "last_name": "Clifford",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8990556012,
+        "username": "jamesjohn1005",
+        "raw_username": "Jamesjohn1005",
+        "first_name": "James",
+        "last_name": "John",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8914509773,
+        "username": "suretips954",
+        "raw_username": "Suretips954",
+        "first_name": "American",
+        "last_name": "Tips",
+        "last_seen_status": "online"
+      },
+      {
+        "telegram_id": 8188249750,
+        "username": "sure_712",
+        "raw_username": "Sure_712",
+        "first_name": "SURE FIXED",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 7938632217,
+        "username": "bettor_tips321",
+        "raw_username": "Bettor_tips321",
+        "first_name": "King",
+        "last_name": "Bet",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8866840106,
+        "username": "good_bet123",
+        "raw_username": "GOOD_BET123",
+        "first_name": "BIG",
+        "last_name": "MASTER",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8437710355,
+        "username": "kenny_btc_0",
+        "raw_username": "Kenny_btc_0",
+        "first_name": "BTC LORD",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8723125826,
+        "username": "richardmille2324",
+        "raw_username": "Richardmille2324",
+        "first_name": "Richard",
+        "last_name": "🪙mille",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8805404068,
+        "username": "devile22_0",
+        "raw_username": "devile22_0",
+        "first_name": "Wild blog sure and legitimate",
+        "last_name": "Odd",
+        "last_seen_status": "online"
+      },
+      {
+        "telegram_id": 8687689537,
+        "username": "httpstmejessicaemmauel22",
+        "raw_username": "httpstmejessicaemmauel22",
+        "first_name": "Jessica",
+        "last_name": "Emmanuel",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8964075086,
+        "username": "realzea12",
+        "raw_username": "realzea12",
+        "first_name": "Correct Score Lord",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8075646876,
+        "username": "ncolh",
+        "raw_username": "Ncolh",
+        "first_name": "Mr",
+        "last_name": "Godwin Fixed",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 6386981930,
+        "username": "samuel_7888",
+        "raw_username": "Samuel_7888",
+        "first_name": "Alex",
+        "last_name": "Sandra",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8593954067,
+        "username": "geovanni_arena123",
+        "raw_username": "Geovanni_arena123",
+        "first_name": "Ayomide",
+        "last_name": "Elutidoye",
+        "last_seen_status": "online"
+      },
+      {
+        "telegram_id": 8182540640,
+        "username": "samflash1",
+        "raw_username": "Samflash1",
+        "first_name": "Samkin",
+        "last_name": "Flash",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8993869573,
+        "username": "sportybetchannel001",
+        "raw_username": "Sportybetchannel001",
+        "first_name": "Sporty",
+        "last_name": "Platform",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8841808177,
+        "username": "mrfred112",
+        "raw_username": "mrfred112",
+        "first_name": "Mr",
+        "last_name": "Fred",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8882146851,
+        "username": "dhrjdirbidjfjv",
+        "raw_username": "Dhrjdirbidjfjv",
+        "first_name": "Bet Lord Of Africa",
+        "last_name": "Youth",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8604676011,
+        "username": "az09gqhjk00",
+        "raw_username": "AZ09gqhjk00",
+        "first_name": "TRUST",
+        "last_name": "WOLD",
+        "last_seen_status": "recently"
+      },
+      {
+        "telegram_id": 8688272186,
+        "username": "fixed_671",
+        "raw_username": "Fixed_671",
+        "first_name": "Game 🎮",
+        "last_name": "Marks",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8694779982,
+        "username": "fixedodd782",
+        "raw_username": "fixedodd782",
+        "first_name": "Fixing",
+        "last_name": "Odd",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8848052558,
+        "username": "ball_185",
+        "raw_username": "Ball_185",
+        "first_name": "Bet Winning",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8703511662,
+        "username": "rolandbet_2",
+        "raw_username": "Rolandbet_2",
+        "first_name": "KOSORO B T C",
+        "last_name": "Follow this link to join my WhatsApp group: https://chat.whatsap",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8885891446,
+        "username": "emmyozqw",
+        "raw_username": "emmyozQw",
+        "first_name": "Frakile Sure Betting",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 6632711154,
+        "username": "kingbadaru",
+        "raw_username": "Kingbadaru",
+        "first_name": "Badaru",
+        "last_name": "Abdulkadir",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8710618294,
+        "username": "mincho_bul_bet",
+        "raw_username": "Mincho_bul_bet",
+        "first_name": "mincho_",
+        "last_name": "Bul",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8357013109,
+        "username": "alextips02",
+        "raw_username": "ALEXTIPS02",
+        "first_name": "Aʟᴇxᴀɴᴅᴇʀ🔞🇬🇧",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 7814004525,
+        "username": "ggchhvn",
+        "raw_username": "Ggchhvn",
+        "first_name": "MR CHILALA",
+        "last_name": null,
+        "last_seen_status": "recently"
+      },
+      {
+        "telegram_id": 8886245523,
+        "username": "brtmaster",
+        "raw_username": "Brtmaster",
+        "first_name": "Promise",
+        "last_name": "Bet",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8103920378,
+        "username": "ironjakoo",
+        "raw_username": "Ironjakoo",
+        "first_name": "Iron jakoo",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8035806890,
+        "username": "dayo10sporty",
+        "raw_username": "Dayo10sporty",
+        "first_name": "Dayo",
+        "last_name": "Sporty",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8535795315,
+        "username": "malybtc",
+        "raw_username": "malybtc",
+        "first_name": "MALY",
+        "last_name": "BTC",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8980879103,
+        "username": "surefixed8",
+        "raw_username": "surefixed8",
+        "first_name": "TRUE",
+        "last_name": "CORRECT SCORE",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8522365578,
+        "username": "barrone233567",
+        "raw_username": "Barrone233567",
+        "first_name": "Barrone",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8694399597,
+        "username": "prince_royce_1",
+        "raw_username": "prince_royce_1",
+        "first_name": "Private Prince Royce",
+        "last_name": null,
+        "last_seen_status": "within_week"
+      },
+      {
+        "telegram_id": 7660052793,
+        "username": "joun30",
+        "raw_username": "Joun30",
+        "first_name": "Joun",
+        "last_name": "Bright",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 6268140907,
+        "username": "letloveleads306",
+        "raw_username": "letloveleads306",
+        "first_name": "LET LOVE",
+        "last_name": "LEAD",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8758644471,
+        "username": "gabriel_bertol_leonidas",
+        "raw_username": "Gabriel_bertol_leonidas",
+        "first_name": "James _Bertol _Leonidas",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 6373381698,
+        "username": "paulmorgan1234",
+        "raw_username": "PaulMorgan1234",
+        "first_name": "Paul",
+        "last_name": "Morgan",
+        "last_seen_status": "recently"
+      }
+    ]
+  },
+  {
+    "group_title": "SPORTY BET GROUP",
+    "group_username": "Sportybetgroup",
+    "group_telegram_id": 1280709112,
+    "category_name": "Betting & Sports",
+    "category_slug": "betting",
+    "members": [
+      {
+        "telegram_id": 7671144565,
+        "username": "qjdmvuzyklyxjqea",
+        "raw_username": "QjDmVuzYkLYXjqEA",
+        "first_name": "Dior",
+        "last_name": null,
+        "last_seen_status": "recently"
+      },
+      {
+        "telegram_id": 8973823475,
+        "username": "henrypicks1xd",
+        "raw_username": "henrypicks1xd",
+        "first_name": "Henry's Winning Picks",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8298171500,
+        "username": "abdohai99",
+        "raw_username": "Abdohai99",
+        "first_name": "wga",
+        "last_name": "Hai",
+        "last_seen_status": "recently"
+      },
+      {
+        "telegram_id": 7637893650,
+        "username": "winston_smith_9457h",
+        "raw_username": "Winston_Smith_9457h",
+        "first_name": "Widyatmoko",
+        "last_name": null,
+        "last_seen_status": "online"
+      },
+      {
+        "telegram_id": 5828147899,
+        "username": "o_plug1",
+        "raw_username": "O_PLUG1",
+        "first_name": "🏆",
+        "last_name": null,
+        "last_seen_status": "recently"
+      },
+      {
+        "telegram_id": 8053137971,
+        "username": "world1fixed",
+        "raw_username": "World1fixed",
+        "first_name": "Bernardo Fixed",
+        "last_name": "Betting",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 6697561878,
+        "username": "the_fixed_boss",
+        "raw_username": "The_fixed_boss",
+        "first_name": "Fixed",
+        "last_name": "Boss🌐",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 6434041709,
+        "username": "ikramodds",
+        "raw_username": "ikramodds",
+        "first_name": "✞ ꧂ HANDS DOWN ✞ ꧂",
+        "last_name": null,
+        "last_seen_status": "recently"
+      },
+      {
+        "telegram_id": 8481806702,
+        "username": "roland_bet365",
+        "raw_username": "ROLAND_BET365",
+        "first_name": "🇬🇧Roland_Fixed 🎯 💷",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8387825403,
+        "username": "best_fixed67",
+        "raw_username": "BEST_FIXED67",
+        "first_name": "🇺🇸MAZZER XLIM NKOUR🇺🇸",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8856375186,
+        "username": "alexjerry1xd",
+        "raw_username": "AlexJerry1xd",
+        "first_name": "Ales",
+        "last_name": "Jerry",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8077595225,
+        "username": "chaarlestips",
+        "raw_username": "ChaarlesTips",
+        "first_name": "Cooper",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8931569806,
+        "username": "charlespremium1",
+        "raw_username": "charlespremium1",
+        "first_name": "𝐂𝐡𝐚𝐫𝐥𝐞𝐬 🇬🇧",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 6075072230,
+        "username": "tunesodds",
+        "raw_username": "tunesodds",
+        "first_name": "Fixed~Tunes-odds",
+        "last_name": "Real games here",
+        "last_seen_status": "recently"
+      },
+      {
+        "telegram_id": 7967758375,
+        "username": "elijah_003",
+        "raw_username": "Elijah_003",
+        "first_name": "DON",
+        "last_name": "PABLO",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8039222089,
+        "username": "davide_248",
+        "raw_username": "davide_248",
+        "first_name": "David John",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8450345798,
+        "username": "karl_xaver011",
+        "raw_username": "KARL_XAVER011",
+        "first_name": "Karl 🏴‍☠️",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 5423906734,
+        "username": "elvisillz",
+        "raw_username": "Elvisillz",
+        "first_name": "SPORTYBET BOSS.🔞️️",
+        "last_name": "SPORTYBET BOSS🏆🎖️🎉🥇🔞",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8630283689,
+        "username": "naheemfixed100",
+        "raw_username": "Naheemfixed100",
+        "first_name": "EL",
+        "last_name": "NAHEEM",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 8622168970,
+        "username": "d_winningzone",
+        "raw_username": "D_winningzone",
+        "first_name": "Mary",
+        "last_name": "Beautiful",
+        "last_seen_status": "recently"
+      },
+      {
+        "telegram_id": 7764916760,
+        "username": "mrjohn016",
+        "raw_username": "mrjohn016",
+        "first_name": "MR",
+        "last_name": "JAMES",
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 6082505831,
+        "username": "margaretbrooks288",
+        "raw_username": "margaretbrooks288",
+        "first_name": "M",
+        "last_name": "B",
+        "last_seen_status": "offline"
+      }
+    ]
+  }
+]

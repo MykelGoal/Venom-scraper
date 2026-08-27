@@ -459,6 +459,13 @@ async def main():
     await init_db()
     await seed_default_categories()
 
+    # Automatically load bundled seed dataset if new database is empty
+    try:
+        from seed_manager import seed_from_file_if_empty
+        await seed_from_file_if_empty()
+    except Exception as e:
+        logger.warning(f"Could not load seed data: {e}")
+
     # Start Uptime HTTP Server & Self-Ping loop to prevent sleep on Render
     if settings.ENABLE_WEB_SERVER:
         try:
