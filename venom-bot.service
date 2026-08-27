@@ -1,0 +1,15 @@
+[Unit]
+Description=Venom Scraper Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/Venom-scraper
+ExecStart=/home/ubuntu/Venom-scraper/venv/bin/python3 bot.py
+Restart=always
+RestartSec=10
+EnvironmentFile=/home/ubuntu/Venom-scraper/.env
+
+[Install]
+WantedBy=multi-user.target

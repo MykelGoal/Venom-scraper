@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  bot:
+    build: .
+    container_name: venom_scraper_bot
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./tg_indexer_session.session:/app/tg_indexer_session.session
+    command: python3 bot.py
+
+  # Optional auto-discover worker service
+  # discoverer:
+  #   build: .
+  #   container_name: venom_discoverer
+  #   restart: unless-stopped
+  #   env_file:
+  #     - .env
+  #   volumes:
+  #     - ./data:/app/data
+  #     - ./tg_indexer_session.session:/app/tg_indexer_session.session
+  #   command: python3 auto_discover.py --query "crypto, betting, tech" --category crypto --max-groups 10 --limit 1000
