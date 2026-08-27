@@ -17,6 +17,7 @@ auth_state.json
 !package.json
 
 # Python cache & virtual environments
+.cache/
 __pycache__/
 *.py[cod]
 *$py.class
