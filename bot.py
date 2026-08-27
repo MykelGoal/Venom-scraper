@@ -138,6 +138,47 @@ async def cmd_start(message: Message, state: FSMContext):
     await message.answer(welcome_text, reply_markup=get_main_menu_keyboard(), parse_mode="HTML")
 
 
+@dp.message(Command("categories"))
+async def cmd_categories(message: Message):
+    kb = await get_categories_keyboard()
+    await message.answer(
+        "📂 <b>Select a Niche / Category:</b>\n\nBrowse members discovered in verified public communities:",
+        reply_markup=kb,
+        parse_mode="HTML",
+    )
+
+
+@dp.message(Command("stats"))
+async def cmd_stats(message: Message):
+    stats = await get_directory_stats()
+    text = (
+        f"📊 <b>Directory Statistics</b>\n\n"
+        f"👥 <b>Indexed Public Members:</b> {stats['total_members']:,}\n"
+        f"📢 <b>Scanned Public Groups:</b> {stats['total_groups']:,}\n"
+        f"🏷️ <b>Active Categories:</b> {stats['total_categories']:,}\n\n"
+        f"<i>Updated dynamically with every scan.</i>"
+    )
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[[InlineKeyboardButton(text="« Main Menu", callback_data="menu:home")]]
+    )
+    await message.answer(text, reply_markup=kb, parse_mode="HTML")
+
+
+@dp.message(Command("about"))
+async def cmd_about(message: Message):
+    text = (
+        f"ℹ️ <b>About & Privacy Policy</b>\n\n"
+        f"• <b>Source:</b> Information is indexed exclusively from public Telegram groups with open participant visibility.\n"
+        f"• <b>Data:</b> Only public <code>@username</code> handles and profile names are stored. No private chats, phone numbers, or hidden accounts are accessed.\n"
+        f"• <b>Compliance:</b> Deleted accounts and bot accounts are automatically pruned.\n"
+        f"• <b>Usage:</b> Intended for community discovery, networking, and public directory indexing."
+    )
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[[InlineKeyboardButton(text="« Main Menu", callback_data="menu:home")]]
+    )
+    await message.answer(text, reply_markup=kb, parse_mode="HTML")
+
+
 @dp.callback_query(F.data == "menu:home")
 async def cb_home(callback: CallbackQuery, state: FSMContext):
     await state.clear()
