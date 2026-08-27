@@ -12,6 +12,7 @@ auth_state.json
 # Exports & Output files
 *.csv
 *.txt
+!requirements.txt
 *.json
 !groups.example.json
 !package.json
