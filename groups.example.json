@@ -1,0 +1,26 @@
+[
+  {
+    "username": "ethereum",
+    "category": "crypto",
+    "category_name": "Crypto & Web3",
+    "limit": 500
+  },
+  {
+    "username": "defi_pulse",
+    "category": "crypto",
+    "category_name": "Crypto & Web3",
+    "limit": 500
+  },
+  {
+    "username": "esports_global",
+    "category": "gaming",
+    "category_name": "Gaming & Esports",
+    "limit": 500
+  },
+  {
+    "username": "python_developers",
+    "category": "tech",
+    "category_name": "Tech & Programming",
+    "limit": 500
+  }
+]

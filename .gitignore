@@ -1,0 +1,48 @@
+# Environment variables & secrets
+.env
+auth_state.json
+*.session
+*.session-journal
+
+# Database & Storage
+*.db
+*.sqlite
+*.sqlite3
+
+# Exports & Output files
+*.csv
+*.txt
+*.json
+!groups.example.json
+!package.json
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE / Editor configs
+.vscode/
+.idea/
+*.swp
+*.swo
