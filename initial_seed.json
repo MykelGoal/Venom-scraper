@@ -2844,7 +2844,72 @@
     "group_telegram_id": 1395189809,
     "category_name": "Crypto & Web3",
     "category_slug": "crypto",
-    "members": []
+    "members": [
+      {
+        "telegram_id": 1993428530,
+        "username": "ericzz_hold",
+        "raw_username": "ericzz_HOLD",
+        "first_name": "Eric_星澜🎁币安红包福利官🎁",
+        "last_name": null,
+        "last_seen_status": "recently"
+      },
+      {
+        "telegram_id": 8042927965,
+        "username": "frogbnb",
+        "raw_username": "frogbnb",
+        "first_name": "青小蛙",
+        "last_name": null,
+        "last_seen_status": "recently"
+      },
+      {
+        "telegram_id": 625037832,
+        "username": "lisaaaaa_0",
+        "raw_username": "Lisaaaaa_0",
+        "first_name": "Liser",
+        "last_name": null,
+        "last_seen_status": "online"
+      },
+      {
+        "telegram_id": 1642970478,
+        "username": "otos66",
+        "raw_username": "otos66",
+        "first_name": "Ottos",
+        "last_name": null,
+        "last_seen_status": "recently"
+      },
+      {
+        "telegram_id": 1826422710,
+        "username": "oxdatang",
+        "raw_username": "OxDaTang",
+        "first_name": "0xDaTang",
+        "last_name": null,
+        "last_seen_status": "recently"
+      },
+      {
+        "telegram_id": 887536140,
+        "username": "vicchong1983",
+        "raw_username": "vicchong1983",
+        "first_name": "Victor(不主動私訊）",
+        "last_name": null,
+        "last_seen_status": "offline"
+      },
+      {
+        "telegram_id": 1318095588,
+        "username": "xeift",
+        "raw_username": "Xeift",
+        "first_name": "Xeift",
+        "last_name": null,
+        "last_seen_status": "recently"
+      },
+      {
+        "telegram_id": 6350390689,
+        "username": "lulujess16",
+        "raw_username": "lulujess16",
+        "first_name": "MNLL",
+        "last_name": null,
+        "last_seen_status": "recently"
+      }
+    ]
   },
   {
     "group_title": "Flutter English Community",
@@ -2868,6 +2933,22 @@
     "group_telegram_id": 1217891064,
     "category_name": "Tech & Programming",
     "category_slug": "tech",
+    "members": []
+  },
+  {
+    "group_title": "🇨🇳币安 WBNB 官方预售群",
+    "group_username": "BinanceChinese_api",
+    "group_telegram_id": 2480757467,
+    "category_name": "Crypto & Web3",
+    "category_slug": "crypto",
+    "members": []
+  },
+  {
+    "group_title": "Trading Quotex Forex Signals",
+    "group_username": "trading_quotex_forex_signals",
+    "group_telegram_id": 3985551207,
+    "category_name": "Finance & Trading",
+    "category_slug": "finance",
     "members": []
   }
 ]
