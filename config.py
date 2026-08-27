@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     API_HASH: str = ""
     PHONE_NUMBER: Optional[str] = None
     SESSION_NAME: str = "tg_indexer_session"
+    TELEGRAM_STRING_SESSION: Optional[str] = None
 
     # Telegram Bot Token for Search Interface (from @BotFather)
     BOT_TOKEN: str = ""

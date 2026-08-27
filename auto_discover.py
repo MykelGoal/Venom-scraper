@@ -53,11 +53,20 @@ def generate_search_permutations(base_query: str) -> List[str]:
 class DeepTelegramDiscoverer:
     def __init__(self, session_name: str = settings.SESSION_NAME):
         self.session_name = session_name
-        self.client = TelegramClient(self.session_name, settings.API_ID, settings.API_HASH)
+        from telethon.sessions import StringSession
+        if settings.TELEGRAM_STRING_SESSION:
+            sess = StringSession(settings.TELEGRAM_STRING_SESSION)
+        else:
+            sess = self.session_name
+
+        self.client = TelegramClient(sess, settings.API_ID, settings.API_HASH)
         self.indexer = TelegramIndexer(session_name=session_name)
 
     async def start(self):
-        await self.client.start(phone=settings.PHONE_NUMBER)
+        if settings.TELEGRAM_STRING_SESSION:
+            await self.client.start()
+        else:
+            await self.client.start(phone=settings.PHONE_NUMBER)
         self.indexer.client = self.client
 
     async def stop(self):

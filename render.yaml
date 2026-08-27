@@ -1,0 +1,29 @@
+services:
+  - type: worker
+    name: venom-scraper-bot
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python3 bot.py
+    envVars:
+      - key: API_ID
+        sync: false
+      - key: API_HASH
+        sync: false
+      - key: BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_STRING_SESSION
+        sync: false
+      - key: DATABASE_URL
+        value: sqlite+aiosqlite:///./telegram_directory.db
+      - key: REQUEST_DELAY_MIN
+        value: "3.0"
+      - key: REQUEST_DELAY_MAX
+        value: "6.0"
+      - key: BATCH_PAUSE_SECONDS
+        value: "30.0"
+      - key: MAX_MEMBERS_PER_GROUP
+        value: "5000"
+      - key: SEARCH_PAGE_SIZE
+        value: "8"

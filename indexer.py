@@ -50,15 +50,24 @@ def parse_user_status(status) -> str:
 class TelegramIndexer:
     def __init__(self, session_name: str = settings.SESSION_NAME):
         self.session_name = session_name
+        from telethon.sessions import StringSession
+        if settings.TELEGRAM_STRING_SESSION:
+            sess = StringSession(settings.TELEGRAM_STRING_SESSION)
+        else:
+            sess = self.session_name
+
         self.client = TelegramClient(
-            self.session_name,
+            sess,
             settings.API_ID,
             settings.API_HASH,
         )
 
     async def start(self):
-        logger.info(f"Connecting Telethon client with session '{self.session_name}'...")
-        await self.client.start(phone=settings.PHONE_NUMBER)
+        logger.info("Connecting Telethon client...")
+        if settings.TELEGRAM_STRING_SESSION:
+            await self.client.start()
+        else:
+            await self.client.start(phone=settings.PHONE_NUMBER)
         me = await self.client.get_me()
         logger.info(f"Authenticated as @{me.username or me.id} ({me.first_name})")
 
