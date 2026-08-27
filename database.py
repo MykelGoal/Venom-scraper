@@ -19,7 +19,33 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 from config import settings
 
-engine = create_async_engine(settings.DATABASE_URL, echo=False)
+def get_sanitized_db_url(raw_url: str) -> str:
+    """
+    Normalizes database URLs for async SQLAlchemy compatibility across Render, Heroku, etc.
+    """
+    if not raw_url:
+        return "sqlite+aiosqlite:///./telegram_directory.db"
+
+    url = raw_url.strip().strip('"').strip("'")
+
+    # Fix typo where 's' was omitted (e.g. 'qlite+aiosqlite' -> 'sqlite+aiosqlite')
+    if url.startswith("qlite"):
+        url = "s" + url
+
+    # Auto-convert standard SQLite to async SQLite
+    if url.startswith("sqlite:///") and not url.startswith("sqlite+aiosqlite:///"):
+        url = url.replace("sqlite:///", "sqlite+aiosqlite:///", 1)
+
+    # Auto-convert Postgres URLs (Render/Heroku standard) to asyncpg
+    if url.startswith("postgres://"):
+        url = url.replace("postgres://", "postgresql+asyncpg://", 1)
+    elif url.startswith("postgresql://") and not url.startswith("postgresql+asyncpg://"):
+        url = url.replace("postgresql://", "postgresql+asyncpg://", 1)
+
+    return url
+
+db_url = get_sanitized_db_url(settings.DATABASE_URL)
+engine = create_async_engine(db_url, echo=False)
 AsyncSessionLocal = async_sessionmaker(bind=engine, class_=AsyncSession, expire_on_commit=False)
 
 
