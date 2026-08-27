@@ -133,38 +133,63 @@ class TelegramIndexer:
         batch_size = 100
 
         try:
-            # Iterating participants safely
-            async for user in self.client.iter_participants(entity, limit=max_members):
-                scanned_count += 1
+            # Deep or standard participant extraction
+            # Standard crawl gets initial participants; deep crawl searches letter by letter (a-z, 0-9)
+            search_filters = [""]
+            if max_members > 200:
+                # Alphanumeric deep scraping to bypass Telegram's 200-member basic limit
+                search_filters += [chr(c) for c in range(ord('a'), ord('z') + 1)] + [str(d) for d in range(10)] + ["_"]
 
-                # Filter 1: Ignore non-users, bots, deleted accounts
-                if not isinstance(user, User) or user.bot or user.deleted:
-                    filtered_out_bots += 1
-                    continue
+            seen_user_ids = set()
 
-                # Filter 2: Only users with a publicly set username
-                if not user.username:
-                    filtered_out_no_user += 1
-                    continue
+            for s_filter in search_filters:
+                if scanned_count >= max_members:
+                    break
 
-                member_record = {
-                    "telegram_id": user.id,
-                    "username": user.username,
-                    "raw_username": user.username,
-                    "first_name": user.first_name,
-                    "last_name": user.last_name,
-                    "last_seen_status": parse_user_status(user.status),
-                }
-                batch.append(member_record)
+                try:
+                    async for user in self.client.iter_participants(entity, search=s_filter if s_filter else None, limit=100):
+                        if scanned_count >= max_members:
+                            break
 
-                # Batch save to database
-                if len(batch) >= batch_size:
-                    async with AsyncSessionLocal() as session:
-                        new_saved, _ = await bulk_save_members(session, group_db_id, batch)
-                        indexed_count += len(batch)
-                        logger.info(f"[@{clean_target}] Indexed {indexed_count} valid members so far (+{new_saved} new to DB)...")
-                    batch.clear()
-                    await self._safe_delay()
+                        if user.id in seen_user_ids:
+                            continue
+                        seen_user_ids.add(user.id)
+                        scanned_count += 1
+
+                        # Filter 1: Ignore non-users, bots, deleted accounts
+                        if not isinstance(user, User) or user.bot or user.deleted:
+                            filtered_out_bots += 1
+                            continue
+
+                        # Filter 2: Only users with a publicly set username
+                        if not user.username:
+                            filtered_out_no_user += 1
+                            continue
+
+                        member_record = {
+                            "telegram_id": user.id,
+                            "username": user.username,
+                            "raw_username": user.username,
+                            "first_name": user.first_name,
+                            "last_name": user.last_name,
+                            "last_seen_status": parse_user_status(user.status),
+                        }
+                        batch.append(member_record)
+
+                        # Batch save to database
+                        if len(batch) >= batch_size:
+                            async with AsyncSessionLocal() as session:
+                                new_saved, _ = await bulk_save_members(session, group_db_id, batch)
+                                indexed_count += len(batch)
+                                logger.info(f"[@{clean_target}] Deep indexed {indexed_count} valid members (+{new_saved} new)...")
+                            batch.clear()
+                            await self._safe_delay()
+
+                except errors.FloodWaitError as e:
+                    logger.warning(f"FloodWait on search filter '{s_filter}': sleeping for {e.seconds}s")
+                    await asyncio.sleep(e.seconds + 2)
+                except Exception as e:
+                    logger.debug(f"Filter '{s_filter}' error on @{clean_target}: {e}")
 
             # Process remaining batch items
             if batch:
