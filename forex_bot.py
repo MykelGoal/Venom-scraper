@@ -15,8 +15,10 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 logger = logging.getLogger("VenomForexBot")
 
+from database import get_sanitized_db_url
+
 BOT_TOKEN = os.getenv("FOREX_BOT_TOKEN", "8967863227:AAFVno4s0e3WkD5XGGNBJakGNU3O4kLOBEI")
-DB_URL = os.getenv("FOREX_DB_URL", "sqlite+aiosqlite:///./forex_bot.db")
+DB_URL = get_sanitized_db_url(os.getenv("DATABASE_URL") or os.getenv("FOREX_DB_URL", "sqlite+aiosqlite:///./forex_bot.db"))
 
 engine = create_async_engine(DB_URL, echo=False)
 AsyncSessionLocal = async_sessionmaker(bind=engine, class_=AsyncSession, expire_on_commit=False)

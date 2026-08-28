@@ -15,8 +15,10 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 logger = logging.getLogger("VenomPredictionBot")
 
+from database import get_sanitized_db_url
+
 BOT_TOKEN = os.getenv("PREDICTION_BOT_TOKEN", "8712477067:AAEKbiPxgzYwsOVUx5wM6F5gboB9s32e5l8")
-DB_URL = os.getenv("PREDICTION_DB_URL", "sqlite+aiosqlite:///./prediction_bot.db")
+DB_URL = get_sanitized_db_url(os.getenv("DATABASE_URL") or os.getenv("PREDICTION_DB_URL", "sqlite+aiosqlite:///./prediction_bot.db"))
 
 engine = create_async_engine(DB_URL, echo=False)
 AsyncSessionLocal = async_sessionmaker(bind=engine, class_=AsyncSession, expire_on_commit=False)
