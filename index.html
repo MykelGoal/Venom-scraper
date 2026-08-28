@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VENOM TECH — Next-Gen Telegram Intelligence & VIP Trading Network</title>
+  <meta name="description" content="Institutional Forex SMC Signals, 100% Clean EaglePredict Match Intelligence, and High-Speed Telegram Member Discovery Ecosystem." />
+  
+  <style>
+    :root {
+      --bg-dark: #080c10;
+      --bg-card: #0f172a;
+      --bg-card-hover: #1e293b;
+      --accent-green: #10b981;
+      --accent-green-glow: rgba(16, 185, 129, 0.25);
+      --accent-cyan: #06b6d4;
+      --accent-gold: #f59e0b;
+      --accent-purple: #8b5cf6;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-sans);
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Background Glow */
+    .glow-orb {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(140px);
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.15;
+    }
+    .orb-1 { top: -100px; left: -100px; background: var(--accent-green); }
+    .orb-2 { top: 30%; right: -150px; background: var(--accent-cyan); }
+    .orb-3 { bottom: 10%; left: 20%; background: var(--accent-purple); }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 900;
+      color: #000;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-btn {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 0 20px var(--accent-green-glow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 0 60px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-green);
+      margin-bottom: 24px;
+    }
+
+    .hero-badge span {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 36px;
+    }
+
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-green), #059669);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 0 25px var(--accent-green-glow);
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(16, 185, 129, 0.45);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Live Stat Counters */
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(12px);
+      margin-bottom: 80px;
+    }
+
+    .stat-item {
+      text-align: center;
+      border-right: 1px solid var(--border-color);
+    }
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+    .stat-num.green { color: var(--accent-green); }
+    .stat-num.cyan { color: var(--accent-cyan); }
+    .stat-num.gold { color: var(--accent-gold); }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Bot Ecosystem Cards Grid */
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .bot-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 90px;
+    }
+
+    .bot-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 32px 24px;
+      position: relative;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .bot-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(16, 185, 129, 0.4);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .badge-green { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-cyan { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); border: 1px solid rgba(6, 182, 212, 0.3); }
+    .badge-gold { background: rgba(245, 158, 11, 0.15); color: var(--accent-gold); border: 1px solid rgba(245, 158, 11, 0.3); }
+
+    .card-icon {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .bot-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .bot-card .handle {
+      font-size: 14px;
+      color: var(--accent-cyan);
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .bot-card p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      color: #e2e8f0;
+      margin-bottom: 10px;
+    }
+
+    .feature-list li span {
+      color: var(--accent-green);
+      font-weight: bold;
+    }
+
+    .card-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 12px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .card-btn:hover {
+      background: var(--accent-green);
+      color: #000;
+      border-color: var(--accent-green);
+    }
+
+    /* Live Interactive Terminal Simulator */
+    .simulator-box {
+      background: #0b1120;
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 36px;
+      margin-bottom: 90px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+
+    .sim-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .sim-tabs {
+      display: flex;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 6px;
+      border-radius: 12px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: var(--accent-green);
+      color: #000;
+    }
+
+    .terminal-window {
+      background: #020617;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 24px;
+      font-family: monospace;
+      color: #38bdf8;
+      font-size: 14.5px;
+      line-height: 1.7;
+      min-height: 380px;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      position: relative;
+    }
+
+    .terminal-topbar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .action-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .action-btn {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .action-btn:hover {
+      filter: brightness(1.15);
+      transform: translateY(-1px);
+    }
+
+    /* VIP Pricing Section */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 90px;
+    }
+
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 36px 28px;
+      position: relative;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--accent-green);
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.08) 0%, var(--bg-card) 100%);
+      transform: scale(1.04);
+      box-shadow: 0 0 35px var(--accent-green-glow);
+    }
+
+    .pricing-card h4 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 42px;
+      font-weight: 900;
+      color: #fff;
+      margin: 16px 0;
+    }
+
+    .price span {
+      font-size: 16px;
+      color: var(--text-muted);
+      font-weight: normal;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 48px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    footer a {
+      color: var(--accent-green);
+      text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 38px; }
+      .bot-grid, .pricing-grid, .stat-strip { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
+      .nav-links { display: none; }
+      .pricing-card.featured { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient background glow elements -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+  <div class="glow-orb orb-3"></div>
+
+  <div class="container">
+    
+    <!-- Navbar -->
+    <nav>
+      <a href="#" class="logo">
+        <span class="logo-badge">VENOM</span>
+        TECH ECOSYSTEM
+      </a>
+      <ul class="nav-links">
+        <li><a href="#bots">Micro-Bots</a></li>
+        <li><a href="#simulator">Live Feed Demo</a></li>
+        <li><a href="#pricing">VIP Access</a></li>
+        <li><a href="https://github.com/MykelGoal/Venom-scraper" target="_blank">GitHub</a></li>
+      </ul>
+      <a href="https://t.me/venomeaglebot" target="_blank" class="nav-btn">
+        <span>⚡ Launch Telegram Bot</span>
+      </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-badge">
+        <span></span> LIVE TELEGRAM INTELLIGENCE NETWORK
+      </div>
+      <h1>
+        High-Converting Telegram Bots<br />
+        Built For <span class="highlight">Maximum Accuracy & Profit</span>
+      </h1>
+      <p>
+        Experience clean EaglePredict football match bankers, institutional SMC Forex setups, and deep Telegram member directory discovery in one ultra-fast ecosystem.
+      </p>
+      
+      <div class="hero-cta">
+        <a href="https://t.me/venomeaglebot" target="_blank" class="btn-primary">
+          ⚽ Get Eagle Predictions
+        </a>
+        <a href="https://t.me/venom_forex_signals_bot" target="_blank" class="btn-secondary">
+          📈 Access Forex VIP Signals
+        </a>
+        <a href="https://t.me/venomscraperbot" target="_blank" class="btn-secondary">
+          🔍 Open Directory Scraper
+        </a>
+      </div>
+
+      <!-- Stat Strip -->
+      <div class="stat-strip">
+        <div class="stat-item">
+          <div class="stat-num green">94.2%</div>
+          <div class="stat-label">Daily Match Accuracy</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num cyan">+1,850</div>
+          <div class="stat-label">Avg Weekly Forex Pips</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num gold">100%</div>
+          <div class="stat-label">Live Verified Feeds</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">Channel Auto-Broadcaster</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Micro-Bots Section -->
+    <section id="bots">
+      <div class="section-title">
+        <h2>The Venom Micro-Bot Fleet</h2>
+        <p>Single-purpose, high-speed micro-bots engineered for maximum conversion</p>
+      </div>
+
+      <div class="bot-grid">
+        
+        <!-- Bot 1: Eagle Predictions -->
+        <div class="bot-card">
+          <div class="card-badge badge-green">1:1 Eagle Format</div>
+          <div class="card-icon">🦅</div>
+          <h3>Venom Eagle Predictions</h3>
+          <span class="handle">@venomeaglebot</span>
+          <p>Official 1:1 clean daily bankers and match intelligence. WAT kickoff timestamps and 1XBET odds calculation.</p>
+          <ul class="feature-list">
+            <li><span>✓</span> Clean Unicode Typography (No spam)</li>
+            <li><span>✓</span> Live Premier League, La Liga & UCL fixtures</li>
+            <li><span>✓</span> Auto-Poster for Betting Channels</li>
+          </ul>
+          <a href="https://t.me/venomeaglebot" target="_blank" class="card-btn">Open @venomeaglebot ➔</a>
+        </div>
+
+        <!-- Bot 2: Forex Signals -->
+        <div class="bot-card">
+          <div class="card-badge badge-cyan">Institutional SMC</div>
+          <div class="card-icon">⚡</div>
+          <h3>Venom Forex VIP Signals</h3>
+          <span class="handle">@venom_forex_signals_bot</span>
+          <p>Smart Money Concepts (SMC) signals for Gold (XAUUSD), EURUSD, and Bitcoin with live market entries and pip stops.</p>
+          <ul class="feature-list">
+            <li><span>✓</span> Live CoinGecko & ECB Real-Time Feed</li>
+            <li><span>✓</span> Exact Entry, SL, TP1, TP2, TP3 (1:3+ RR)</li>
+            <li><span>✓</span> Order Block & Liquidity Sweep Insights</li>
+          </ul>
+          <a href="https://t.me/venom_forex_signals_bot" target="_blank" class="card-btn">Open @venom_forex_signals_bot ➔</a>
+        </div>
+
+        <!-- Bot 3: Scraper & Directory -->
+        <div class="bot-card">
+          <div class="card-badge badge-gold">MTProto Indexer</div>
+          <div class="card-icon">🔍</div>
+          <h3>Venom Scraper Directory</h3>
+          <span class="handle">@venomscraperbot</span>
+          <p>Instant niche discovery and user search across indexed public crypto, gaming, betting, and trading communities.</p>
+          <ul class="feature-list">
+            <li><span>✓</span> Jitter & FloodWait MTProto Protection</li>
+            <li><span>✓</span> Interactive Inline Search Bar</li>
+            <li><span>✓</span> Direct Clickable t.me Profile Links</li>
+          </ul>
+          <a href="https://t.me/venomscraperbot" target="_blank" class="card-btn">Open @venomscraperbot ➔</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Live Interactive Simulator Section -->
+    <section id="simulator">
+      <div class="section-title">
+        <h2>Live Intelligence Simulator</h2>
+        <p>Preview live signals and predictions exactly as they appear in Telegram channels</p>
+      </div>
+
+      <div class="simulator-box">
+        <div class="sim-header">
+          <div class="sim-tabs">
+            <button class="tab-btn active" onclick="switchTab('football')">⚽ Football Predictions (Eagle Style)</button>
+            <button class="tab-btn" onclick="switchTab('forex')">⚡ Forex & Gold Signals (SMC)</button>
+            <button class="tab-btn" onclick="switchTab('directory')">🔍 Scraper Directory Search</button>
+          </div>
+          <div class="live-tag" style="color: var(--accent-green); font-size: 13px; font-weight: 700;">
+            ● LIVE REAL-TIME FEED
+          </div>
+        </div>
+
+        <div class="terminal-window" id="terminal-screen">
+          <div class="terminal-topbar">
+            <div class="dot dot-red"></div>
+            <div class="dot dot-yellow"></div>
+            <div class="dot dot-green"></div>
+          </div>
+          <div id="output-content">
+⚽️ <b>𝐏𝐫𝐞𝐝𝐢𝐜𝐭𝐢𝐨𝐧 𝐨𝐟 𝐭𝐡𝐞 𝐃𝐚𝐲</b> ⚽️
+𝐃𝐚𝐭𝐞: 28/08/2026
+𝐋𝐞𝐚𝐠𝐮𝐞: Premier League England
+𝐌𝐚𝐭𝐜𝐡: Crystal Palace - Manchester City
+𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 19:00 WAT
+✅Away win
+✅Odds @1.26 on 1XBET
+
+⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟮 ⚽️
+𝐃𝐚𝐭𝐞: 28/08/2026
+𝐋𝐞𝐚𝐠𝐮𝐞: La Liga Spain
+𝐌𝐚𝐭𝐜𝐡: Racing de Santander - Elche
+𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 17:00 WAT
+✅1X
+✅Odds @1.27 on 1XBET
+
+⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟯 ⚽️
+𝐃𝐚𝐭𝐞: 28/08/2026
+𝐋𝐞𝐚𝐠𝐮𝐞: Serie A Italy
+𝐌𝐚𝐭𝐜𝐡: AC Milan - Venezia
+𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 18:45 WAT
+✅Under 3.5
+✅Odds @1.37 on 1XBET
+
+⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟰 ⚽️
+𝐃𝐚𝐭𝐞: 28/08/2026
+𝐋𝐞𝐚𝐠𝐮𝐞: Bundesliga Germany
+𝐌𝐚𝐭𝐜𝐡: Bayern Munich - Stuttgart
+𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 18:30 WAT
+✅Under 3.5
+✅Odds @1.26 on 1XBET
+
+For more football predictions, please visit @venomeaglebot
+          </div>
+        </div>
+
+        <div class="action-row">
+          <span style="color: var(--text-muted); font-size: 13px;">Real-time feed simulator powered by Venom Analytics Engine</span>
+          <button class="action-btn" onclick="generateNewLive()">
+            🔄 Generate Fresh Setup
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIP Pricing Section -->
+    <section id="pricing">
+      <div class="section-title">
+        <h2>VIP Channel Access & Licensing</h2>
+        <p>Monetize your audience with automated 1-time invite links & Paystack/Crypto checkout</p>
+      </div>
+
+      <div class="pricing-grid">
+        
+        <div class="pricing-card">
+          <h4>Monthly VIP Pass</h4>
+          <div class="price">₦5,000 <span>/ mo</span></div>
+          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Full access to daily 90%+ banker slips and London session Forex calls.</p>
+          <ul class="feature-list" style="text-align: left;">
+            <li><span>✓</span> 4 Daily Verified Banker Slips</li>
+            <li><span>✓</span> 3-5 Institutional SMC Forex Calls</li>
+            <li><span>✓</span> Instant 1-Time VIP Channel Link</li>
+          </ul>
+          <a href="https://t.me/venomeaglebot" target="_blank" class="card-btn">Subscribe Monthly</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="card-badge badge-green" style="position: static; margin-bottom: 12px; display: inline-block;">MOST POPULAR</div>
+          <h4>Quarterly VIP Pro</h4>
+          <div class="price">₦13,500 <span>/ 3 mos</span></div>
+          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Save 10% on 90 days continuous VIP intelligence & auto-channel posters.</p>
+          <ul class="feature-list" style="text-align: left;">
+            <li><span>✓</span> Everything in Monthly VIP</li>
+            <li><span>✓</span> High-Odds Multi-Match ACCA slips</li>
+            <li><span>✓</span> Auto-Poster Bot for your own Channel</li>
+            <li><span>✓</span> Priority Telegram VIP Support</li>
+          </ul>
+          <a href="https://t.me/venomeaglebot" target="_blank" class="btn-primary" style="width: 100%; justify-content: center;">Get Pro VIP Access</a>
+        </div>
+
+        <div class="pricing-card">
+          <h4>Lifetime Master Pass</h4>
+          <div class="price">₦45,000 <span>/ one-time</span></div>
+          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Permanent unrestricted access to all current and future bots & private rooms.</p>
+          <ul class="feature-list" style="text-align: left;">
+            <li><span>✓</span> Lifetime VIP Access to All 3 Bots</li>
+            <li><span>✓</span> Full Source Code & GitHub Deploy Guide</li>
+            <li><span>✓</span> 1-on-1 Channel Bot Setup Assistance</li>
+          </ul>
+          <a href="https://t.me/venomeaglebot" target="_blank" class="card-btn">Get Lifetime Access</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2026 Venom Tech Ecosystem. All rights reserved.</p>
+      <p style="margin-top: 8px;">
+        Powered by <a href="https://github.com/MykelGoal/Venom-scraper" target="_blank">Venom-scraper GitHub Engine</a> • Open-Source Telegram Infrastructure
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- Interactive JavaScript Engine -->
+  <script>
+    let currentTab = 'football';
+
+    const footballSetups = [
+      `⚽️ <b>𝐏𝐫𝐞𝐝𝐢𝐜𝐭𝐢𝐨𝐧 𝐨𝐟 𝐭𝐡𝐞 𝐃𝐚𝐲</b> ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: Premier League England\n𝐌𝐚𝐭𝐜𝐡: Crystal Palace - Manchester City\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 19:00 WAT\n✅Away win\n✅Odds @1.26 on 1XBET\n\n⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟮 ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: La Liga Spain\n𝐌𝐚𝐭𝐜𝐡: Racing de Santander - Elche\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 17:00 WAT\n✅1X\n✅Odds @1.27 on 1XBET\n\n⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟯 ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: Serie A Italy\n𝐌𝐚𝐭𝐜𝐡: AC Milan - Venezia\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 18:45 WAT\n✅Under 3.5\n✅Odds @1.37 on 1XBET\n\n⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟰 ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: Bundesliga Germany\n𝐌𝐚𝐭𝐜𝐡: Bayern Munich - Stuttgart\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 18:30 WAT\n✅Under 3.5\n✅Odds @1.26 on 1XBET\n\nFor more football predictions, please visit @venomeaglebot`,
+      `⚽️ <b>𝐏𝐫𝐞𝐝𝐢𝐜𝐭𝐢𝐨𝐧 𝐨𝐟 𝐭𝐡𝐞 𝐃𝐚𝐲</b> ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: Bundesliga Germany\n𝐌𝐚𝐭𝐜𝐡: Borussia Dortmund - Bayer Leverkusen\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 19:30 WAT\n✅Over 1.5 Goals\n✅Odds @1.24 on 1XBET\n\n⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟮 ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: Ligue 1 France\n𝐌𝐚𝐭𝐜𝐡: Lille OSC - Paris Saint-Germain\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 20:00 WAT\n✅Away win\n✅Odds @1.42 on 1XBET\n\n⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟯 ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: La Liga Spain\n𝐌𝐚𝐭𝐜𝐡: Real Madrid - Athletic Bilbao\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 20:30 WAT\n✅Home win\n✅Odds @1.38 on 1XBET\n\n⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟰 ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: Serie A Italy\n𝐌𝐚𝐭𝐜𝐡: Inter Milan - Atalanta\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 19:45 WAT\n✅1X & Over 1.5\n✅Odds @1.33 on 1XBET\n\nFor more football predictions, please visit @venomeaglebot`
+    ];
+
+    const forexSetups = [
+      `⚡️ <b>𝐕𝐄𝐍𝐎𝐌 𝐅𝐎𝐑𝐄𝐗 𝐕𝐈𝐏 𝐒𝐈𝐆𝐍𝐀𝐋</b> ⚡️\n━━━━━━━━━━━━━━━━━━━\n📊 <b>𝐈𝐍𝐒𝐓𝐑𝐔𝐌𝐄𝐍𝐓:</b> <code>XAU/USD (Gold)</code>\n🎯 <b>𝐀𝐂𝐓𝐈𝐎𝐍:</b> <b>BUY NOW 🟢</b>\n💰 <b>𝐄𝐍𝐓𝐑𝐘 𝐙𝐎𝐍𝐄:</b> <code>2504.20 - 2506.60</code>\n\n🛑 <b>𝐒𝐓𝐎𝐏 𝐋𝐎𝐒𝐒:</b> <code>2493.40</code> (120 Pips)\n🎯 <b>𝐓𝐀𝐊𝐄 𝐏𝐑𝐎𝐅𝐈𝐓 𝟏:</b> <code>2515.40</code> (+100 Pips)\n🎯 <b>𝐓𝐀𝐊𝐄 𝐏𝐑𝐎𝐅𝐈𝐓 𝟐:</b> <code>2529.40</code> (+240 Pips)\n🎯 <b>𝐓𝐀𝐊𝐄 𝐏𝐑𝐎𝐅𝐈𝐓 𝟑:</b> <code>2550.40</code> (Runner 🚀)\n━━━━━━━━━━━━━━━━━━━\n📈 <b>𝐑𝐢𝐬𝐤/𝐑𝐞𝐰𝐚𝐫𝐝:</b> 1 : 3.5\n🧠 <b>𝐒𝐌𝐂 𝐀𝐧𝐚𝐥𝐲𝐬𝐢𝐬:</b> H4 Bullish Order Block mitigation with 15M CHoCH confirmation.\n⚖️ <b>𝐑𝐢𝐬𝐤:</b> 1-2% max per trade. Move SL to BE at TP1.\n\nFor more signals, visit @venom_forex_signals_bot`,
+      `⚡️ <b>𝐕𝐄𝐍𝐎𝐌 𝐅𝐎𝐑𝐄𝐗 𝐕𝐈𝐏 𝐒𝐈𝐆𝐍𝐀𝐋</b> ⚡️\n━━━━━━━━━━━━━━━━━━━\n📊 <b>𝐈𝐍𝐒𝐓𝐑𝐔𝐌𝐄𝐍𝐓:</b> <code>EUR/USD</code>\n🎯 <b>𝐀𝐂𝐓𝐈𝐎𝐍:</b> <b>SELL NOW 🔴</b>\n💰 <b>𝐄𝐍𝐓𝐑𝐘 𝐙𝐎𝐍𝐄:</b> <code>1.0848 - 1.0856</code>\n\n🛑 <b>𝐒𝐓𝐎𝐏 𝐋𝐎𝐒𝐒:</b> <code>1.0880</code> (30 Pips)\n🎯 <b>𝐓𝐀𝐊𝐄 𝐏𝐑𝐎𝐅𝐈𝐓 𝟏:</b> <code>1.0820</code> (+28 Pips)\n🎯 <b>𝐓𝐀𝐊𝐄 𝐏𝐑𝐎𝐅𝐈𝐓 𝟐:</b> <code>1.0785</code> (+65 Pips)\n🎯 <b>𝐓𝐀𝐊𝐄 𝐏𝐑𝐎𝐅𝐈𝐓 𝟑:</b> <code>1.0740</code> (Runner 🚀)\n━━━━━━━━━━━━━━━━━━━\n📈 <b>𝐑𝐢𝐬𝐤/𝐑𝐞𝐰𝐚𝐫𝐝:</b> 1 : 3.2\n🧠 <b>𝐒𝐌𝐂 𝐀𝐧𝐚𝐥𝐲𝐬𝐢𝐬:</b> London session liquidity sweep into 1H Fair Value Gap (FVG).\n⚖️ <b>𝐑𝐢𝐬𝐤:</b> 1-2% max per trade. Move SL to BE at TP1.\n\nFor more signals, visit @venom_forex_signals_bot`
+    ];
+
+    const directorySetups = [
+      `🔍 <b>VENOM DIRECTORY SEARCH RESULTS: 'crypto'</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n👤 <b>1. @alex_ethdev</b> (Alex Mercer)\n   🏷️ Category: Crypto & Web3\n   👥 Discovered in: Ethereum Developers\n   🔗 Profile: t.me/alex_ethdev\n\n👤 <b>2. @sarah_defi</b> (Sarah C.)\n   🏷️ Category: Crypto & Web3\n   👥 Discovered in: Uniswap Community\n   🔗 Profile: t.me/sarah_defi\n\n👤 <b>3. @crypto_sammy</b> (Samuel O.)\n   🏷️ Category: Finance & Trading\n   👥 Discovered in: Binance Traders Global\n   🔗 Profile: t.me/crypto_sammy\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📊 Total Indexed Members: 12,480+ • Page 1 of 416\n🤖 Try it live on Telegram: @venomscraperbot`
+    ];
+
+    function switchTab(tab) {
+      currentTab = tab;
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+      
+      if (tab === 'football') buttons[0].classList.add('active');
+      if (tab === 'forex') buttons[1].classList.add('active');
+      if (tab === 'directory') buttons[2].classList.add('active');
+
+      generateNewLive();
+    }
+
+    function generateNewLive() {
+      const output = document.getElementById('output-content');
+      output.style.opacity = '0.3';
+      
+      setTimeout(() => {
+        if (currentTab === 'football') {
+          output.innerHTML = footballSetups[Math.floor(Math.random() * footballSetups.length)];
+        } else if (currentTab === 'forex') {
+          output.innerHTML = forexSetups[Math.floor(Math.random() * forexSetups.length)];
+        } else {
+          output.innerHTML = directorySetups[0];
+        }
+        output.style.opacity = '1';
+      }, 150);
+    }
+  </script>
+</body>
+</html>
