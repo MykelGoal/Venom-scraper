@@ -105,8 +105,8 @@ class LiveMarketEngine:
 
 class LiveFootballEngine:
     """
-    Exact official EaglePredict clean channel post format:
-    Prediction of the Day, Football Tip 2, 3, 4 with clean bold typography and booking codes.
+    Exact 1:1 replica of official EaglePredict post format:
+    Clean bold unicode headers, 4 structured tips, WAT kickoff, 1XBET odds, and clean footer link.
     """
 
     LEAGUES = {
@@ -146,20 +146,20 @@ class LiveFootballEngine:
     @classmethod
     async def generate_eagle_clean_prediction(cls) -> str:
         """
-        Builds the exact 4-Tip clean daily slip matching @eaglepredict Telegram channel.
+        Builds the exact 1:1 4-Tip clean daily post matching @eaglepredict.
         """
         fixtures = await cls.fetch_real_live_fixtures()
         today_date = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=1)).strftime("%d/%m/%Y")
 
         default_set = [
-            {"league": "Bundesliga Germany", "match": "Bayern Munchen - VfB Stuttgart", "kickoff": "19:30 WAT", "tip": "Home win", "odds": 1.35},
-            {"league": "Ligue 1 France", "match": "Lille OSC - PSG", "kickoff": "19:45 WAT", "tip": "Over 1.5", "odds": 1.25},
+            {"league": "Bundesliga Germany", "match": "Bayern Munchen - VfB Stuttgart", "kickoff": "19:30 WAT", "tip": "Home win", "odds": 1.33},
+            {"league": "Ligue 1 France", "match": "Lille OSC - PSG", "kickoff": "19:45 WAT", "tip": "Over 1.5", "odds": 1.24},
             {"league": "Serie A Italy", "match": "AC Milan - Venezia", "kickoff": "19:45 WAT", "tip": "Home win", "odds": 1.40},
-            {"league": "Premier League England", "match": "Crystal Palace - Manchester City", "kickoff": "20:00 WAT", "tip": "Away win", "odds": 1.62},
+            {"league": "La Liga Spain", "match": "Alaves - Villarreal", "kickoff": "20:30 WAT", "tip": "Under 3.5", "odds": 1.41},
         ]
 
         if len(fixtures) >= 4:
-            tips_pool = ["Home win", "Over 1.5", "Over 2.5", "1X", "Away win", "Under 3.5"]
+            tips_pool = ["Home win", "Over 1.5", "Over 2.5", "1X", "Away win", "Under 3.5", "Double chance 1X"]
             selected_matches = fixtures[:4]
             cards_data = []
             for m in selected_matches:
@@ -168,62 +168,46 @@ class LiveFootballEngine:
                     "match": m["match"],
                     "kickoff": f"{m['time']} WAT",
                     "tip": random.choice(tips_pool),
-                    "odds": round(random.uniform(1.24, 1.55), 2),
+                    "odds": round(random.uniform(1.24, 1.45), 2),
                 })
         else:
             cards_data = default_set
 
-        # Format exact EaglePredict post
-        header = f"⚽️ <b>𝐏𝐫𝐞𝐝𝐢𝐜𝐭𝐢𝐨𝐧 𝐨𝐟 𝐭𝐡𝐞 𝐃𝐚𝐲</b> ⚽️\n"
-        tip1 = cards_data[0]
-        part1 = (
-            f"{header}"
+        # Exact EaglePredict clean formatting (no booking codes, exact unicode bold styling)
+        output = (
+            f"⚽️ 𝐏𝐫𝐞𝐝𝐢𝐜𝐭𝐢𝐨𝐧 𝐨𝐟 𝐭𝐡𝐞 𝐃𝐚𝐲 ⚽️\n"
             f"𝐃𝐚𝐭𝐞: {today_date}\n"
-            f"𝐋𝐞𝐚𝐠𝐮𝐞: {tip1['league']}\n"
-            f"𝐌𝐚𝐭𝐜𝐡: {tip1['match']}\n"
-            f"𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: {tip1['kickoff']}\n"
-            f"✅{tip1['tip']}\n"
-            f"✅Odds @{tip1['odds']:.2f} on 1XBET\n\n"
-        )
+            f"𝐋𝐞𝐚𝐠𝐮𝐞: {cards_data[0]['league']}\n"
+            f"𝐌𝐚𝐭𝐜𝐡: {cards_data[0]['match']}\n"
+            f"𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: {cards_data[0]['kickoff']}\n"
+            f"✅{cards_data[0]['tip']}\n"
+            f"✅Odds @{cards_data[0]['odds']:.2f} on 1XBET\n\n"
 
-        part2 = (
-            f"⚽️ <b>𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟮</b> ⚽️\n"
+            f"⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟮 ⚽️\n"
             f"𝐃𝐚𝐭𝐞: {today_date}\n"
             f"𝐋𝐞𝐚𝐠𝐮𝐞: {cards_data[1]['league']}\n"
             f"𝐌𝐚𝐭𝐜𝐡: {cards_data[1]['match']}\n"
             f"𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: {cards_data[1]['kickoff']}\n"
             f"✅{cards_data[1]['tip']}\n"
             f"✅Odds @{cards_data[1]['odds']:.2f} on 1XBET\n\n"
-        )
 
-        part3 = (
-            f"⚽️ <b>𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟯</b> ⚽️\n"
+            f"⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟯 ⚽️\n"
             f"𝐃𝐚𝐭𝐞: {today_date}\n"
             f"𝐋𝐞𝐚𝐠𝐮𝐞: {cards_data[2]['league']}\n"
             f"𝐌𝐚𝐭𝐜𝐡: {cards_data[2]['match']}\n"
             f"𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: {cards_data[2]['kickoff']}\n"
             f"✅{cards_data[2]['tip']}\n"
             f"✅Odds @{cards_data[2]['odds']:.2f} on 1XBET\n\n"
-        )
 
-        part4 = (
-            f"⚽️ <b>𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟰</b> ⚽️\n"
+            f"⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟰 ⚽️\n"
             f"𝐃𝐚𝐭𝐞: {today_date}\n"
             f"𝐋𝐞𝐚𝐠𝐮𝐞: {cards_data[3]['league']}\n"
             f"𝐌𝐚𝐭𝐜𝐡: {cards_data[3]['match']}\n"
             f"𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: {cards_data[3]['kickoff']}\n"
             f"✅{cards_data[3]['tip']}\n"
             f"✅Odds @{cards_data[3]['odds']:.2f} on 1XBET\n\n"
+
+            f"For more football predictions, please visit @venomeaglebot"
         )
 
-        sporty_code = f"BC{random.randint(10000, 99999)}"
-        bet9ja_code = f"{random.randint(10, 99)}X{random.choice('ABCDEF')}{random.randint(100, 999)}"
-
-        footer = (
-            f"🎟️ <b>𝐁𝐨𝐨𝐤𝐢𝐧𝐠 𝐂𝐨𝐝𝐞𝐬:</b>\n"
-            f"• <b>SportyBet:</b> <code>{sporty_code}</code>\n"
-            f"• <b>Bet9ja:</b> <code>{bet9ja_code}</code>\n\n"
-            f"For more football predictions, join @venomeaglebot 🦅"
-        )
-
-        return part1 + part2 + part3 + part4 + footer
+        return output
