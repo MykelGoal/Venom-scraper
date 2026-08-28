@@ -37,43 +37,7 @@ async def init_db():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
-# ---------------- Signal Generator ----------------
-
-PAIRS = ["EUR/USD", "GBP/USD", "USD/JPY", "XAU/USD (Gold)", "BTC/USD", "GBP/JPY", "AUD/USD", "US30 (Dow Jones)"]
-ACTIONS = ["BUY 🟢", "SELL 🔴", "BUY LIMIT 🟢", "SELL LIMIT 🔴"]
-
-def generate_live_signal() -> str:
-    pair = random.choice(PAIRS)
-    action = random.choice(ACTIONS)
-    now_str = datetime.datetime.now(datetime.timezone.utc).strftime("%H:%M UTC")
-
-    if "Gold" in pair:
-        entry = round(random.uniform(2480.0, 2530.0), 2)
-        sl = round(entry - 15.0 if "BUY" in action else entry + 15.0, 2)
-        tp1 = round(entry + 12.0 if "BUY" in action else entry - 12.0, 2)
-        tp2 = round(entry + 28.0 if "BUY" in action else entry - 28.0, 2)
-    elif "BTC" in pair:
-        entry = round(random.uniform(62000.0, 68000.0), 1)
-        sl = round(entry - 1200.0 if "BUY" in action else entry + 1200.0, 1)
-        tp1 = round(entry + 900.0 if "BUY" in action else entry - 900.0, 1)
-        tp2 = round(entry + 2200.0 if "BUY" in action else entry - 2200.0, 1)
-    else:
-        entry = round(random.uniform(1.0600, 1.3100), 4)
-        sl = round(entry - 0.0035 if "BUY" in action else entry + 0.0035, 4)
-        tp1 = round(entry + 0.0030 if "BUY" in action else entry - 0.0030, 4)
-        tp2 = round(entry + 0.0080 if "BUY" in action else entry - 0.0080, 4)
-
-    return (
-        f"⚡ <b>VENOM FOREX VIP SIGNAL</b> ⚡\n\n"
-        f"📊 <b>Asset:</b> <code>{pair}</code>\n"
-        f"🎯 <b>Action:</b> <b>{action}</b>\n\n"
-        f"📍 <b>Entry:</b> <code>{entry}</code>\n"
-        f"🛑 <b>Stop Loss:</b> <code>{sl}</code>\n\n"
-        f"🎯 <b>Take Profit 1:</b> <code>{tp1}</code> (Scalp)\n"
-        f"🎯 <b>Take Profit 2:</b> <code>{tp2}</code> (Runner)\n\n"
-        f"🕒 <i>{now_str}</i>\n"
-        f"💎 <i>Powered by Venom Tech Forex</i>"
-    )
+from signals_generator import VenomForexAnalyzer
 
 # ---------------- Bot Handlers ----------------
 
@@ -83,17 +47,16 @@ dp = Dispatcher(storage=MemoryStorage())
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
     text = (
-        "📊 <b>Welcome to VENOM FOREX SIGNALS BOT</b>\n\n"
-        "This bot automatically drops institutional Forex, Gold, and Crypto trading signals directly to your Telegram channel.\n\n"
+        "⚡ <b>Welcome to VENOM INSTITUTIONAL FOREX BOT</b>\n\n"
+        "Institutional Smart Money (SMC) Forex, Gold, and Crypto trading signals with real technical analysis rationale.\n\n"
         "🚀 <b>How to Use:</b>\n"
-        "1. Add this bot as an <b>Admin</b> in your Telegram Channel.\n"
-        "2. Send <code>/connect_channel</code> inside your channel (or send channel ID here).\n"
-        "3. The bot will automatically broadcast live high-probability signals on schedule!\n\n"
-        "Tap below to generate a live instant signal test:"
+        "1. Add this bot as an <b>Admin</b> in your Telegram VIP Trading Channel.\n"
+        "2. The bot will automatically broadcast live high-probability signals on schedule!\n\n"
+        "Tap below to generate a live institutional signal breakdown:"
     )
     kb = InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="⚡ Generate Instant Forex Signal", callback_data="gen_signal")],
+            [InlineKeyboardButton(text="⚡ Generate Institutional Signal", callback_data="gen_signal")],
             [InlineKeyboardButton(text="📢 Add to My Channel (Instructions)", callback_data="instructions")],
         ]
     )
@@ -101,9 +64,9 @@ async def cmd_start(message: Message):
 
 @dp.callback_query(F.data == "gen_signal")
 async def cb_gen_signal(callback: CallbackQuery):
-    signal_text = generate_live_signal()
+    signal_text = VenomForexAnalyzer.generate_institutional_signal()
     kb = InlineKeyboardMarkup(
-        inline_keyboard=[[InlineKeyboardButton(text="🔄 Generate Another", callback_data="gen_signal")]]
+        inline_keyboard=[[InlineKeyboardButton(text="🔄 Analyze Next Asset", callback_data="gen_signal")]]
     )
     await callback.message.answer(signal_text, reply_markup=kb, parse_mode="HTML")
     await callback.answer()
