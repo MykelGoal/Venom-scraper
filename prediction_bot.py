@@ -46,31 +46,41 @@ dp = Dispatcher(storage=MemoryStorage())
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
     text = (
-        "🦅 <b>Welcome to VENOM EAGLE PREDICTIONS BOT</b>\n\n"
-        "100% Real Live Football Fixtures, EaglePredict-style match intelligence, and verified booking codes.\n\n"
-        "⚡ <b>Features:</b>\n"
-        "• Real Live Matches from Premier League, La Liga, Serie A, Bundesliga & Champions League\n"
-        "• EaglePredict-style match intelligence & tactical breakdown\n"
-        "• Multi-Odds Banker Slips (Over 2.5, BTTS, Home Win, Correct Scores)\n"
-        "• Instant SportyBet, Bet9ja & 1xBet Booking Codes\n"
-        "• Auto-Poster Bot for Telegram Betting Channels\n\n"
-        "Tap below to generate a detailed live match intelligence report:"
+        "🦅 <b>Welcome to VENOM EAGLE PREDICTIONS</b>\n\n"
+        "Clean, verified EaglePredict-style match intelligence, daily bankers, and direct booking codes.\n\n"
+        "⚡ <b>Select an option below:</b>"
     )
     kb = InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="🦅 Generate Live Match Intelligence", callback_data="gen_banker")],
-            [InlineKeyboardButton(text="📢 Add to Betting Channel (Auto-Post)", callback_data="add_channel")],
+            [InlineKeyboardButton(text="🎯 Banker of the Day (Single Pick)", callback_data="gen_banker")],
+            [InlineKeyboardButton(text="🎫 Daily 3-Match ACCA (Multi-Bet)", callback_data="gen_acca")],
+            [InlineKeyboardButton(text="📢 Auto-Post to My Betting Channel", callback_data="add_channel")],
         ]
     )
     await message.answer(text, reply_markup=kb, parse_mode="HTML")
 
 @dp.callback_query(F.data == "gen_banker")
 async def cb_gen_banker(callback: CallbackQuery):
-    slip = await LiveFootballEngine.generate_real_eagle_prediction()
+    slip = await LiveFootballEngine.generate_eagle_clean_prediction()
     kb = InlineKeyboardMarkup(
-        inline_keyboard=[[InlineKeyboardButton(text="🔄 Analyze Next Real Fixture", callback_data="gen_banker")]]
+        inline_keyboard=[
+            [InlineKeyboardButton(text="🔄 Next Banker Match", callback_data="gen_banker")],
+            [InlineKeyboardButton(text="🎫 View 3-Match ACCA", callback_data="gen_acca")],
+        ]
     )
     await callback.message.answer(slip, reply_markup=kb, parse_mode="HTML")
+    await callback.answer()
+
+@dp.callback_query(F.data == "gen_acca")
+async def cb_gen_acca(callback: CallbackQuery):
+    acca_slip = await LiveFootballEngine.generate_eagle_accumulator()
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="🔄 Generate New ACCA", callback_data="gen_acca")],
+            [InlineKeyboardButton(text="🎯 View Single Banker", callback_data="gen_banker")],
+        ]
+    )
+    await callback.message.answer(acca_slip, reply_markup=kb, parse_mode="HTML")
     await callback.answer()
 
 @dp.callback_query(F.data == "add_channel")

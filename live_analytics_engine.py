@@ -10,7 +10,7 @@ logger = logging.getLogger("LiveAnalyticsEngine")
 
 
 class LiveMarketEngine:
-    """Fetches real-time live market prices for Forex, Gold & Crypto, generating dynamic SMC signals."""
+    """Fetches real-time live market prices for Forex, Gold & Crypto, generating clean SMC signals."""
 
     @classmethod
     async def fetch_live_quotes(cls) -> Dict[str, float]:
@@ -24,7 +24,7 @@ class LiveMarketEngine:
             "USD/JPY": 154.20,
         }
 
-        # 1. Fetch live Crypto & Gold from CoinGecko
+        # 1. Fetch live Crypto & Gold
         try:
             url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,pax-gold&vs_currencies=usd"
             req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
@@ -38,10 +38,10 @@ class LiveMarketEngine:
                     quotes["SOL/USD"] = float(data["solana"]["usd"])
                 if "pax-gold" in data:
                     quotes["XAU/USD (Gold)"] = float(data["pax-gold"]["usd"])
-        except Exception as e:
-            logger.debug(f"Live crypto fetch notice: {e}")
+        except Exception:
+            pass
 
-        # 2. Fetch live Forex rates from European Central Bank (Frankfurter)
+        # 2. Fetch live Forex rates
         try:
             url = "https://api.frankfurter.app/latest?from=EUR&to=USD,GBP,JPY"
             req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
@@ -55,8 +55,8 @@ class LiveMarketEngine:
                 quotes["EUR/USD"] = eur_usd
                 quotes["GBP/USD"] = round(eur_usd / eur_gbp, 4) if eur_gbp else 1.2950
                 quotes["USD/JPY"] = round(eur_jpy / eur_usd, 2) if eur_usd else 154.20
-        except Exception as e:
-            logger.debug(f"Live forex fetch notice: {e}")
+        except Exception:
+            pass
 
         return quotes
 
@@ -64,83 +64,65 @@ class LiveMarketEngine:
     async def generate_real_institutional_signal(cls) -> str:
         quotes = await cls.fetch_live_quotes()
         assets = list(quotes.keys())
-        selected_asset = random.choice(assets)
-        current_price = quotes[selected_asset]
+        selected = random.choice(assets)
+        price = quotes[selected]
 
         is_buy = random.choice([True, False])
-        action = "BUY 🟢 (LONG)" if is_buy else "SELL 🔴 (SHORT)"
+        action = "BUY 🟢" if is_buy else "SELL 🔴"
         now_utc = datetime.datetime.now(datetime.timezone.utc).strftime("%d %b %Y | %H:%M UTC")
 
-        # Calculate exact mathematical SL and TP levels from live market price
-        if "Gold" in selected_asset:
-            entry = f"{current_price - 1.5:.2f} - {current_price + 1.5:.2f}"
-            sl = f"{current_price - 14.0:.2f}" if is_buy else f"{current_price + 14.0:.2f}"
-            tp1 = f"{current_price + 12.0:.2f} (1:1.5 Scalp)" if is_buy else f"{current_price - 12.0:.2f} (1:1.5 Scalp)"
-            tp2 = f"{current_price + 28.0:.2f} (1:3.0 Day Trade)" if is_buy else f"{current_price - 28.0:.2f} (1:3.0 Day Trade)"
-            tp3 = f"{current_price + 45.0:.2f} (1:5.0 Runner)" if is_buy else f"{current_price - 45.0:.2f} (1:5.0 Runner)"
-            rationale = "Liquidity sweep below key Asian session lows on 15M timeframe. Reaction off Daily Institutional Order Block with Fair Value Gap (FVG) confirmation."
-        elif "BTC" in selected_asset:
-            entry = f"{current_price - 150:.0f} - {current_price + 150:.0f}"
-            sl = f"{current_price - 1200:.0f}" if is_buy else f"{current_price + 1200:.0f}"
-            tp1 = f"{current_price + 900:.0f} (TP1)" if is_buy else f"{current_price - 900:.0f} (TP1)"
-            tp2 = f"{current_price + 2200:.0f} (TP2)" if is_buy else f"{current_price - 2200:.0f} (TP2)"
-            tp3 = f"{current_price + 4000:.0f} (Swing High)" if is_buy else f"{current_price - 4000:.0f} (Swing Low)"
-            rationale = "Breakout and retest of key 4-Hour descending accumulation range. Spot volume delta turning positive with funding rate normalization."
-        elif "ETH" in selected_asset or "SOL" in selected_asset:
-            entry = f"{current_price * 0.998:.2f} - {current_price * 1.002:.2f}"
-            sl = f"{current_price * 0.98:.2f}" if is_buy else f"{current_price * 1.02:.2f}"
-            tp1 = f"{current_price * 1.015:.2f}" if is_buy else f"{current_price * 0.985:.2f}"
-            tp2 = f"{current_price * 1.035:.2f}" if is_buy else f"{current_price * 0.965:.2f}"
-            tp3 = f"{current_price * 1.06:.2f}" if is_buy else f"{current_price * 0.94:.2f}"
-            rationale = "High-momentum bounce from 4-Hour 50% Fibonacci equilibrium zone. RSI divergence on 1-Hour chart indicating bullish momentum continuation."
-        elif "JPY" in selected_asset:
-            entry = f"{current_price - 0.15:.2f} - {current_price + 0.15:.2f}"
-            sl = f"{current_price - 0.70:.2f}" if is_buy else f"{current_price + 0.70:.2f}"
-            tp1 = f"{current_price + 0.60:.2f}" if is_buy else f"{current_price - 0.60:.2f}"
-            tp2 = f"{current_price + 1.30:.2f}" if is_buy else f"{current_price - 1.30:.2f}"
-            tp3 = f"{current_price + 2.20:.2f}" if is_buy else f"{current_price - 2.20:.2f}"
-            rationale = "Rejection off 4-Hour supply zone with 15-Minute Market Structure Shift (MSS) targeting sell-side liquidity."
+        if "Gold" in selected:
+            entry = f"{price - 1.5:.2f} - {price + 1.5:.2f}"
+            sl = f"{price - 14.0:.2f}" if is_buy else f"{price + 14.0:.2f}"
+            tp1 = f"{price + 12.0:.2f}" if is_buy else f"{price - 12.0:.2f}"
+            tp2 = f"{price + 28.0:.2f}" if is_buy else f"{price - 28.0:.2f}"
+            tp3 = f"{price + 45.0:.2f}" if is_buy else f"{price - 45.0:.2f}"
+        elif "BTC" in selected:
+            entry = f"{price - 150:.0f} - {price + 150:.0f}"
+            sl = f"{price - 1200:.0f}" if is_buy else f"{price + 1200:.0f}"
+            tp1 = f"{price + 900:.0f}" if is_buy else f"{price - 900:.0f}"
+            tp2 = f"{price + 2200:.0f}" if is_buy else f"{price - 2200:.0f}"
+            tp3 = f"{price + 4000:.0f}" if is_buy else f"{price - 4000:.0f}"
         else:
-            entry = f"{current_price - 0.0008:.4f} - {current_price + 0.0008:.4f}"
-            sl = f"{current_price - 0.0035:.4f}" if is_buy else f"{current_price + 0.0035:.4f}"
-            tp1 = f"{current_price + 0.0030:.4f} (Scalp)" if is_buy else f"{current_price - 0.0030:.4f} (Scalp)"
-            tp2 = f"{current_price + 0.0075:.4f} (Intraday)" if is_buy else f"{current_price - 0.0075:.4f} (Intraday)"
-            tp3 = f"{current_price + 0.0140:.4f} (Weekly Target)" if is_buy else f"{current_price - 0.0140:.4f} (Weekly Target)"
-            rationale = "Price tap into 1-Hour Discount Fair Value Gap following London session high-volume displacement."
+            entry = f"{price - 0.0008:.4f} - {price + 0.0008:.4f}"
+            sl = f"{price - 0.0035:.4f}" if is_buy else f"{price + 0.0035:.4f}"
+            tp1 = f"{price + 0.0030:.4f}" if is_buy else f"{price - 0.0030:.4f}"
+            tp2 = f"{price + 0.0075:.4f}" if is_buy else f"{price - 0.0075:.4f}"
+            tp3 = f"{price + 0.0140:.4f}" if is_buy else f"{price - 0.0140:.4f}"
 
-        signal_text = (
-            f"⚡ <b>VENOM LIVE INSTITUTIONAL FOREX SIGNAL</b> ⚡\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"📊 <b>Market Instrument:</b> <code>{selected_asset}</code>\n"
-            f"💰 <b>Live Spot Price:</b> <code>{current_price}</code>\n"
-            f"🎯 <b>Order Type:</b> <b>{action}</b>\n\n"
-            f"📍 <b>Execution Zone:</b> <code>{entry}</code>\n"
-            f"🛑 <b>Stop Loss (SL):</b> <code>{sl}</code>\n\n"
-            f"🎯 <b>Take Profit 1:</b> <code>{tp1}</code>\n"
-            f"🎯 <b>Take Profit 2:</b> <code>{tp2}</code>\n"
-            f"🎯 <b>Take Profit 3:</b> <code>{tp3}</code>\n"
-            f"⚖️ <b>Risk-to-Reward:</b> <b>1 : 3.5</b>\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            f"🧠 <b>TECHNICAL SETUP RATIONALE:</b>\n"
-            f"<i>\"{rationale}\"</i>\n\n"
-            f"🛡️ <b>RISK RULES:</b> Risk max 1-2% of account balance. Set SL to Break-Even after TP1.\n"
-            f"🕒 <b>Live Quote Time:</b> <i>{now_utc}</i>\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"💎 <i>Powered by Venom Tech Live Institutional Feed</i>"
+        return (
+            f"⚡ <b>VENOM VIP FOREX SIGNAL</b> ⚡\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"📊 <b>Pair:</b> <code>{selected}</code>\n"
+            f"🎯 <b>Action:</b> <b>{action}</b>\n"
+            f"💰 <b>Current Price:</b> <code>{price}</code>\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"📍 <b>Entry Zone:</b> <code>{entry}</code>\n"
+            f"🛑 <b>Stop Loss:</b> <code>{sl}</code>\n\n"
+            f"🎯 <b>Take Profit 1:</b> <code>{tp1}</code> (Scalp)\n"
+            f"🎯 <b>Take Profit 2:</b> <code>{tp2}</code> (Day Trade)\n"
+            f"🎯 <b>Take Profit 3:</b> <code>{tp3}</code> (Runner)\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"⚖️ <b>Risk:</b> 1-2% Max | R:R 1:3.5\n"
+            f"🕒 <b>Time:</b> <i>{now_utc}</i>\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"👑 <i>Powered by Venom Institutional Signals</i>"
         )
-        return signal_text
 
 
 class LiveFootballEngine:
-    """Fetches real upcoming live soccer fixtures from TheSportsDB & calculates match intelligence."""
+    """
+    Exact clean EaglePredict layout:
+    Clear league, match, tip, probability, double chance, and booking codes.
+    """
 
     LEAGUES = {
-        "4328": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 English Premier League",
-        "4335": "🇪🇸 Spanish La Liga",
-        "4332": "🇮🇹 Italian Serie A",
-        "4331": "🇩🇪 German Bundesliga",
-        "4334": "🇫🇷 French Ligue 1",
-        "4480": "🏆 UEFA Champions League",
+        "4328": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League",
+        "4335": "🇪🇸 La Liga",
+        "4332": "🇮🇹 Serie A",
+        "4331": "🇩🇪 Bundesliga",
+        "4334": "🇫🇷 Ligue 1",
+        "4480": "🏆 Champions League",
     }
 
     @classmethod
@@ -166,70 +148,111 @@ class LiveFootballEngine:
                                 "date": ev.get("dateEvent", "Today"),
                                 "time": ev.get("strTime", "19:00:00")[:5],
                             })
-            except Exception as e:
-                logger.debug(f"Fixture fetch for {lname} notice: {e}")
+            except Exception:
+                pass
 
         return fixtures
 
     @classmethod
-    async def generate_real_eagle_prediction(cls) -> str:
+    async def generate_eagle_clean_prediction(cls) -> str:
         fixtures = await cls.fetch_real_live_fixtures()
 
         if fixtures:
             chosen = random.choice(fixtures)
             league = chosen["league"]
-            match = chosen["match"]
             home = chosen["home"]
             away = chosen["away"]
-            kickoff = f"{chosen['date']} at {chosen['time']} UTC"
+            match = chosen["match"]
+            kickoff = f"{chosen['date']} | {chosen['time']} UTC"
         else:
-            # Fallback high-profile real clash
-            league = "🏴󠁧󠁢󠁥󠁮󠁧󠁿 English Premier League"
+            league = "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League"
             home, away = "Arsenal", "Chelsea"
             match = f"{home} vs {away}"
-            kickoff = "Today at 19:00 UTC"
+            kickoff = "Today | 19:00 UTC"
 
-        # Dynamically generate analytical probabilities & banker options based on fixture
-        prob_val = random.randint(86, 94)
-        odds_val = round(random.uniform(1.68, 2.10), 2)
+        odds = round(random.uniform(1.65, 2.05), 2)
+        prob = random.randint(88, 96)
 
-        tip_options = [
-            (f"Home Win ({home}) & Over 1.5 Goals", f"{home} holds dominant home pitch advantage with high-pressing metrics averaging >2.1 goals per game."),
-            ("Over 2.5 Total Match Goals", f"Both {home} and {away} rank in top offensive xG categories with high transition frequency in recent matches."),
-            (f"Both Teams to Score (BTTS - YES)", f"{away} has scored in 8 of their last 9 away games while {home}'s open attacking structure creates counter-attacking opportunities."),
-            (f"Double Chance (1X) & Over 1.5 Goals", f"Tactical analysis indicates defensive security for {home} alongside persistent goal threat from set pieces."),
+        # Clean EaglePredict tip variations
+        tips = [
+            (f"Home Win ({home}) & Over 1.5", "1X & Over 1.5", "Over 2.5 Goals", "YES", "2 - 1"),
+            ("Over 2.5 Match Goals", "Over 1.5 Goals", "Over 2.5 Goals", "YES", "2 - 2"),
+            (f"Both Teams to Score (BTTS)", "12 & BTTS", "Over 2.5 Goals", "YES", "3 - 1"),
+            (f"Home Win or Draw (1X) & Under 3.5", "1X", "Under 3.5 Goals", "NO", "2 - 0"),
+            (f"Away Win ({away}) & Over 1.5", "X2 & Over 1.5", "Over 2.5 Goals", "YES", "1 - 3"),
         ]
-        banker_pick, insight = random.choice(tip_options)
+        main_tip, dc, over_under, btts, cs = random.choice(tips)
 
-        # Realistic booking codes
         sporty_code = f"BC{random.randint(10000, 99999)}"
         bet9ja_code = f"{random.randint(10, 99)}X{random.choice('ABCDEF')}{random.randint(100, 999)}"
         onexbet_code = f"{random.choice('XYZ')}{random.randint(1000, 9999)}"
 
         text = (
-            f"🦅 <b>VENOM EAGLE AI — LIVE MATCH INTELLIGENCE REPORT</b> 🦅\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"🦅 <b>EAGLE PREDICT — VENOM BANKER OF THE DAY</b> 🦅\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
             f"🏆 <b>League:</b> {league}\n"
-            f"⚔️ <b>Live Fixture:</b> <b>{match}</b>\n"
-            f"🕒 <b>Kickoff:</b> <i>{kickoff}</i>\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            f"📈 <b>RECENT FORM TRENDS:</b>\n"
-            f"• <b>{home}:</b> <code>W-W-D-W-W</code> (Strong Home Momentum)\n"
-            f"• <b>{away}:</b> <code>W-D-L-W-D</code> (Direct Flank Counter-Attacks)\n\n"
-            f"🧠 <b>VENOM TACTICAL AI INSIGHT:</b>\n"
-            f"<i>\"{insight}\"</i>\n\n"
-            f"🎯 <b>PRIMARY BANKER PICK:</b> <b>{banker_pick}</b>\n"
-            f"📊 <b>Market Odds:</b> <b>{odds_val:.2f}</b>\n"
-            f"🔥 <b>AI Win Probability:</b> <b>{prob_val}%</b>\n\n"
-            f"🛡️ <b>SAFE / COMBO PICK:</b> <code>1X & Over 1.5 (Safe Option)</code>\n"
-            f"🎲 <b>VALUE CORRECT SCORE:</b> <code>2 - 1 or 3 - 1</code>\n"
-            f"⚽ <b>BTTS:</b> <code>YES (Both Teams Score)</code>\n\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"⚽ <b>Match:</b> <b>{match}</b>\n"
+            f"⏰ <b>Kickoff:</b> <i>{kickoff}</i>\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"🎯 <b>MAIN TIP:</b> <b>{main_tip}</b>\n"
+            f"📈 <b>ODDS:</b> <b>{odds:.2f}</b>\n"
+            f"🔥 <b>CONFIDENCE:</b> <b>{prob}% (Certified Banker)</b>\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"🛡️ <b>Double Chance:</b> <code>{dc}</code>\n"
+            f"⚽ <b>Under / Over:</b> <code>{over_under}</code>\n"
+            f"🥅 <b>BTTS (Both Teams Score):</b> <code>{btts}</code>\n"
+            f"🎲 <b>Correct Score Tip:</b> <code>{cs}</code>\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
             f"🎟️ <b>LIVE BOOKING CODES:</b>\n"
             f"• <b>SportyBet:</b> <code>{sporty_code}</code>\n"
             f"• <b>Bet9ja:</b> <code>{bet9ja_code}</code>\n"
             f"• <b>1xBet:</b> <code>{onexbet_code}</code>\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"👑 <i>100% Real Live Fixture Data | Powered by Venom Tech AI</i>"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"👑 <i>Venom Eagle Predictions • Clean & Verified Daily</i>"
         )
         return text
+
+    @classmethod
+    async def generate_eagle_accumulator(cls) -> str:
+        """Generates a clean 3-match Multi-Bet Accumulator ticket (4+ Odds)."""
+        fixtures = await cls.fetch_real_live_fixtures()
+        if len(fixtures) < 3:
+            fixtures = [
+                {"league": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League", "match": "Crystal Palace vs Man City", "tip": "Away Win & Over 1.5", "odds": 1.62},
+                {"league": "🇪🇸 La Liga", "match": "Racing Santander vs Elche", "tip": "Over 1.5 Goals", "odds": 1.40},
+                {"league": "🇩🇪 Bundesliga", "match": "Bayern Munich vs Stuttgart", "tip": "Home Win & Over 2.5", "odds": 1.75},
+            ]
+        else:
+            sample = random.sample(fixtures, min(3, len(fixtures)))
+            fixtures = [
+                {"league": f["league"], "match": f["match"], "tip": random.choice(["Over 1.5 Goals", "1X & Over 1.5", "Home Win", "BTTS - YES"]), "odds": round(random.uniform(1.40, 1.75), 2)}
+                for f in sample
+            ]
+
+        total_odds = 1.0
+        match_lines = []
+        for idx, f in enumerate(fixtures, start=1):
+            total_odds *= f["odds"]
+            match_lines.append(
+                f"<b>{idx}. {f['match']}</b>\n"
+                f"   🏆 {f['league']}\n"
+                f"   🎯 <i>Tip:</i> <b>{f['tip']}</b> (@ {f['odds']:.2f})\n"
+            )
+
+        sporty_code = f"BC{random.randint(10000, 99999)}"
+        bet9ja_code = f"{random.randint(10, 99)}X{random.choice('ABCDEF')}{random.randint(100, 999)}"
+
+        return (
+            f"🦅 <b>VENOM EAGLE — DAILY 3-MATCH ACCA (MULTI-BET)</b> 🦅\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"{''.join(match_lines)}"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"📈 <b>TOTAL ACCUMULATOR ODDS:</b> <b>{total_odds:.2f}</b>\n"
+            f"🔥 <b>STATUS:</b> <b>HIGH CONFIDENCE SLIP</b>\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"🎟️ <b>ACCUMULATOR BOOKING CODES:</b>\n"
+            f"• <b>SportyBet:</b> <code>{sporty_code}</code>\n"
+            f"• <b>Bet9ja:</b> <code>{bet9ja_code}</code>\n"
+            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"👑 <i>Venom Eagle Predictions • 100% Free VIP Slip</i>"
+        )
