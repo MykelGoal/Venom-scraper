@@ -36,7 +36,7 @@ async def init_db():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
-from signals_generator import VenomEaglePredictor
+from live_analytics_engine import LiveFootballEngine
 
 # ---------------- Bot Handlers ----------------
 
@@ -47,8 +47,9 @@ dp = Dispatcher(storage=MemoryStorage())
 async def cmd_start(message: Message):
     text = (
         "🦅 <b>Welcome to VENOM EAGLE PREDICTIONS BOT</b>\n\n"
-        "Institutional football match intelligence, AI banker predictions, and verified booking codes.\n\n"
+        "100% Real Live Football Fixtures, EaglePredict-style match intelligence, and verified booking codes.\n\n"
         "⚡ <b>Features:</b>\n"
+        "• Real Live Matches from Premier League, La Liga, Serie A, Bundesliga & Champions League\n"
         "• EaglePredict-style match intelligence & tactical breakdown\n"
         "• Multi-Odds Banker Slips (Over 2.5, BTTS, Home Win, Correct Scores)\n"
         "• Instant SportyBet, Bet9ja & 1xBet Booking Codes\n"
@@ -57,7 +58,7 @@ async def cmd_start(message: Message):
     )
     kb = InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="🦅 Generate Eagle Banker Intelligence", callback_data="gen_banker")],
+            [InlineKeyboardButton(text="🦅 Generate Live Match Intelligence", callback_data="gen_banker")],
             [InlineKeyboardButton(text="📢 Add to Betting Channel (Auto-Post)", callback_data="add_channel")],
         ]
     )
@@ -65,9 +66,9 @@ async def cmd_start(message: Message):
 
 @dp.callback_query(F.data == "gen_banker")
 async def cb_gen_banker(callback: CallbackQuery):
-    slip = VenomEaglePredictor.generate_eagle_style_prediction()
+    slip = await LiveFootballEngine.generate_real_eagle_prediction()
     kb = InlineKeyboardMarkup(
-        inline_keyboard=[[InlineKeyboardButton(text="🔄 Analyze Another Match", callback_data="gen_banker")]]
+        inline_keyboard=[[InlineKeyboardButton(text="🔄 Analyze Next Real Fixture", callback_data="gen_banker")]]
     )
     await callback.message.answer(slip, reply_markup=kb, parse_mode="HTML")
     await callback.answer()

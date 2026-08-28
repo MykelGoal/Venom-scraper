@@ -37,7 +37,7 @@ async def init_db():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
-from signals_generator import VenomForexAnalyzer
+from live_analytics_engine import LiveMarketEngine
 
 # ---------------- Bot Handlers ----------------
 
@@ -47,16 +47,18 @@ dp = Dispatcher(storage=MemoryStorage())
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
     text = (
-        "⚡ <b>Welcome to VENOM INSTITUTIONAL FOREX BOT</b>\n\n"
-        "Institutional Smart Money (SMC) Forex, Gold, and Crypto trading signals with real technical analysis rationale.\n\n"
-        "🚀 <b>How to Use:</b>\n"
-        "1. Add this bot as an <b>Admin</b> in your Telegram VIP Trading Channel.\n"
-        "2. The bot will automatically broadcast live high-probability signals on schedule!\n\n"
+        "⚡ <b>Welcome to VENOM LIVE INSTITUTIONAL FOREX BOT</b>\n\n"
+        "Real-time live Smart Money Concepts (SMC) signals for Forex, Gold (XAU/USD), and Bitcoin backed by live market quotes.\n\n"
+        "🚀 <b>Features:</b>\n"
+        "• 100% Live Real-Time Market Quotes (ECB / CoinGecko Feed)\n"
+        "• High-Probability Setups with Entry, TP1, TP2, Stop Loss\n"
+        "• SMC Technical Rationale & Liquidity Sweep Insights\n"
+        "• Auto-Post Bot for Telegram Trading Channels\n\n"
         "Tap below to generate a live institutional signal breakdown:"
     )
     kb = InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="⚡ Generate Institutional Signal", callback_data="gen_signal")],
+            [InlineKeyboardButton(text="⚡ Generate Live Institutional Signal", callback_data="gen_signal")],
             [InlineKeyboardButton(text="📢 Add to My Channel (Instructions)", callback_data="instructions")],
         ]
     )
@@ -64,9 +66,9 @@ async def cmd_start(message: Message):
 
 @dp.callback_query(F.data == "gen_signal")
 async def cb_gen_signal(callback: CallbackQuery):
-    signal_text = VenomForexAnalyzer.generate_institutional_signal()
+    signal_text = await LiveMarketEngine.generate_real_institutional_signal()
     kb = InlineKeyboardMarkup(
-        inline_keyboard=[[InlineKeyboardButton(text="🔄 Analyze Next Asset", callback_data="gen_signal")]]
+        inline_keyboard=[[InlineKeyboardButton(text="🔄 Analyze Next Live Asset", callback_data="gen_signal")]]
     )
     await callback.message.answer(signal_text, reply_markup=kb, parse_mode="HTML")
     await callback.answer()
