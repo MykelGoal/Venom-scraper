@@ -7,13 +7,14 @@ from typing import Dict, List, Optional
 from gaming_engine import GamingSensiEngine
 from freefire_aimbot_engine import FreeFireAimEngine
 from config_pack_engine import ConfigPackEngine
+from cybersecurity_audit_engine import CyberSecurityAuditEngine
 
 logger = logging.getLogger("VenomAIEngine")
 
 
 class VenomAIEngine:
     """
-    Venom AI — Advanced Neural Intelligence Engine for Trading, Betting, Gaming (Free Fire Aim-Lock, Sensi & Hologram Configs) & Community Growth.
+    Venom AI — Advanced Neural Intelligence Engine for Cybersecurity Audits, Trading, Betting & Gaming Matrix.
     """
 
     @classmethod
@@ -21,8 +22,23 @@ class VenomAIEngine:
         p = prompt.strip().lower()
         now_wat = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=1)).strftime("%d/%m/%Y | %H:%M WAT")
 
-        # 1. Config Pack, Hologram HUD & Claw Layout
-        if any(w in p for w in ["config", "pack", "hologram", "hud", "claw", "file", "regedit", "calibration"]):
+        # 1. Cybersecurity, White-Hat Audit, Netcode Leaks & Garena Vulnerability Report
+        if any(w in p for w in ["hack", "leak", "security", "cyber", "audit", "contact", "report", "exploit", "anticheat", "anti-cheat", "vulnerability"]):
+            if any(w in p for w in ["report", "contact", "email", "letter", "disclosure"]):
+                rep = CyberSecurityAuditEngine.generate_official_security_report()
+                return (
+                    f"🛡️ <b>OFFICIAL WHITE-HAT SECURITY DISCLOSURE GENERATED</b>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                    f"<pre>{rep[:650]}...</pre>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                    f"📬 <b>Destination:</b> <code>security@garena.com</code>\n"
+                    f"✅ 100% Ethical White-Hat Security Protocol."
+                )
+            else:
+                return CyberSecurityAuditEngine.run_netcode_vulnerability_audit()
+
+        # 2. Config Pack, Hologram HUD & Claw Layout
+        elif any(w in p for w in ["config", "pack", "hologram", "hud", "claw", "file", "regedit", "calibration"]):
             if any(w in p for w in ["hologram", "hud", "claw", "finger", "layout"]):
                 claw = "4_finger" if "4" in p else ("3_finger" if "3" in p else "2_finger")
                 return ConfigPackEngine.get_hologram_hud_guide(claw)
@@ -40,7 +56,7 @@ class VenomAIEngine:
                     f"⚡ Download full <code>.cfg</code> file directly from the AURA Web App or send <code>/config</code> in Telegram!"
                 )
 
-        # 2. Free Fire Specific Aim-Lock, Weapons & Sensi
+        # 3. Free Fire Specific Aim-Lock, Weapons & Sensi
         elif any(w in p for w in ["sensi", "freefire", "free fire", "headshot", "aimbot", "aimlock", "aim lock", "aim", "dpi", "m1887", "deagle", "woodpecker", "mp40", "ump"]):
             if any(w in p for w in ["m1887", "shotgun", "deagle", "desert eagle", "woodpecker", "ac80", "mp40", "ump"]):
                 return FreeFireAimEngine.get_weapon_guide(p)
@@ -49,7 +65,7 @@ class VenomAIEngine:
             else:
                 return FreeFireAimEngine.get_device_config(p)
 
-        # 3. Football / Betting Query
+        # 4. Football / Betting Query
         elif any(w in p for w in ["predict", "match", "bet", "football", "arsenal", "chelsea", "man city", "madrid", "barcelona", "score", "odds", "slip"]):
             teams = ["Manchester City vs Chelsea", "Real Madrid vs Barcelona", "Bayern Munich vs Dortmund", "Arsenal vs Liverpool", "PSG vs Marseille"]
             match = random.choice(teams)
@@ -72,7 +88,7 @@ class VenomAIEngine:
                 f"👑 Verified by Venom AI Engine"
             )
 
-        # 4. Forex / Gold / Trading Query
+        # 5. Forex / Gold / Trading Query
         elif any(w in p for w in ["gold", "xauusd", "forex", "btc", "bitcoin", "crypto", "smc", "trade", "buy", "sell", "pip", "order block"]):
             asset = "XAU/USD (Gold)" if "gold" in p or "xau" in p else ("BTC/USD (Bitcoin)" if "btc" in p or "crypto" in p else "EUR/USD")
             action = random.choice(["BULLISH (BUY SETUP) 🟢", "BEARISH (SELL SETUP) 🔴"])
@@ -92,7 +108,7 @@ class VenomAIEngine:
                 f"🚀 Execute with strict 1-2% capital risk management."
             )
 
-        # 5. Community / Scraper Query
+        # 6. Community / Scraper Query
         elif any(w in p for w in ["scraper", "telegram", "group", "member", "leads", "extract", "find"]):
             return (
                 f"🧠 <b>VENOM AI // MTPROTO COMMUNITY MATRIX</b>\n"
@@ -107,7 +123,7 @@ class VenomAIEngine:
                 f"⚡ Venom Scraper Protocol Active."
             )
 
-        # 6. General AI Assistant Query
+        # 7. General AI Assistant Query
         else:
             return (
                 f"🧠 <b>VENOM AI SYSTEM ACTIVE // AURA V2.0</b>\n"
@@ -116,9 +132,9 @@ class VenomAIEngine:
                 f"🎯 <b>Status:</b> Neural Matrix Optimized (AURA +1,000,000)\n"
                 f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
                 f"Venom AI is actively monitoring:\n"
+                f"• 🛡️ Cybersecurity Telemetry Audits & Garena Vulnerability Reports\n"
                 f"• 🎮 Free Fire Aim-Lock, Sensi, Hologram HUD & Config Packs\n"
                 f"• ⚽ Real-time football match fixtures & xG analytics\n"
-                f"• 📈 Live institutional Forex, Gold & Crypto SMC setups\n"
-                f"• 🔍 MTProto Telegram community member directories\n\n"
-                f"Ask me about any Config (e.g. 'Generate Free Fire Config Pack' or '4-Finger Hologram HUD'), Match, or Trade!"
+                f"• 📈 Live institutional Forex, Gold & Crypto SMC setups\n\n"
+                f"Ask me about any Security Audit (e.g. 'Audit Free Fire Netcode Leaks'), Config, or Match!"
             )

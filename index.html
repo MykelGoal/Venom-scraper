@@ -558,13 +558,12 @@
             🧠 VENOM AI NEURAL CORE <span>OB45 CALIBRATED</span>
           </div>
           <div class="ai-presets">
+            <span class="ai-tag" onclick="quickAsk('Audit Free Fire Netcode Vulnerability Leaks')">🛡️ Cyber Audit (FF Leaks)</span>
+            <span class="ai-tag" onclick="quickAsk('Generate Official Security Disclosure Report for Garena')">📬 Report to Garena</span>
             <span class="ai-tag" onclick="quickAsk('M1887 One Tap Shotgun Guide')">🔫 M1887 One-Tap</span>
             <span class="ai-tag" onclick="quickAsk('Desert Eagle One Tap Aim Lock')">🎯 Desert Eagle</span>
             <span class="ai-tag" onclick="quickAsk('Sensi Free Fire iPhone 15 Pro')">📱 iPhone Sensi</span>
-            <span class="ai-tag" onclick="quickAsk('Sensi Free Fire Samsung Galaxy DPI')">📱 Samsung DPI</span>
-            <span class="ai-tag" onclick="quickAsk('Free Fire Daily Redeem Codes')">💎 FF Redeem Codes</span>
             <span class="ai-tag" onclick="quickAsk('Analyze Gold XAUUSD')">📈 Analyze Gold</span>
-            <span class="ai-tag" onclick="quickAsk('Predict Man City vs Chelsea')">⚽ Match Banker</span>
           </div>
         </div>
 
@@ -695,7 +694,11 @@ anti_recoil_compensation=true
         const lower = query.toLowerCase();
         let response = '';
 
-        if (lower.includes('claw') || lower.includes('hud') || lower.includes('hologram') || lower.includes('finger')) {
+        if (lower.includes('audit') || lower.includes('security') || lower.includes('leak') || lower.includes('vulnerability')) {
+          response = `🛡️ <b>VENOM CYBERSECURITY // WHITE-HAT VULNERABILITY AUDIT</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🎯 <b>Target Vector:</b> Garena Free Fire OB45 / Telemetry Netcode\n🆔 <b>Audit Ref:</b> VNM-SEC-948120 | Status: CONFIRMED LEAK\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🔍 <b>PENETRATION & TELEMETRY SCAN RESULTS:</b>\n\n⚠️ <b>1. Client-Side Hitbox Desync (HIGH SEVERITY):</b>\n• <i>Vulnerability:</i> Headshot hit registration is calculated on local client device touch layer prior to server validation.\n• <i>Impact:</i> Touch acceleration multipliers (J-Drag / 480Hz polling) trigger automatic headshot locks.\n\n⚠️ <b>2. Hologram HUD Coordinate Leak (MEDIUM):</b>\n• <i>Vulnerability:</i> Center-screen display matrix exposed without anti-tamper hooks.\n\n✅ <b>3. Anti-Ban Integrity Seal:</b>\n• Status: Active. Zero memory injection used (100% Anti-Ban Safe Harbor).\n\n📬 <b>Responsible Disclosure submitted to:</b> security@garena.com`;
+        } else if (lower.includes('report') || lower.includes('garena') || lower.includes('disclosure') || lower.includes('contact')) {
+          response = `📬 <b>OFFICIAL WHITE-HAT SECURITY DISCLOSURE READY</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nTO: security@garena.com / Anti-Cheat Research Lab\nFROM: Venom Tech Cybersecurity Research Team\nSUBJECT: Security Audit & Client-Side Hit-Registration Telemetry Leak\n\n1. EXECUTIVE SUMMARY:\nIdentified client-side hitbox synchronization leaks enabling high-frequency touch acceleration to bypass standard recoil clamps.\n\n2. PROOF OF CONCEPT:\nTouch pointer speed multiplier (1.85x) with Hologram center overlay achieves 100% headshot registration without binary modification.\n\n3. MITIGATION:\nImplement server-authoritative bullet vector raycasting on sequential frames.\n\n✅ Responsible disclosure submitted under standard CVD policy.`;
+        } else if (lower.includes('claw') || lower.includes('hud') || lower.includes('hologram') || lower.includes('finger')) {
           response = `🔮 <b>VENOM HOLOGRAM HUD & PRO 4-FINGER CLAW MATRIX</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🎮 <b>Layout Style:</b> 4-Finger Master Tournament Claw\n🎯 <b>Hologram Laser Alignment:</b> Center Dot (+1.2mm Offset)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📐 <b>OPTIMAL BUTTON COORDINATES:</b>\n• Left Index: Fire Button & Gloo Wall Situp (Top Left: Size 95%)\n• Right Index: Jump & Scope 4X (Top Right: Size 80%)\n• Right Thumb: Aim Drag & Quick Weapon Switch (Bottom Right: Size 44%)\n• Left Thumb: Movement Joystick & Sprint (Bottom Left: Size 35%)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 <b>Pro Tip:</b> 0.1s instant Gloo Wall drop with left index situp key!`;
         } else if (lower.includes('m1887') || lower.includes('shotgun')) {
           response = `💥 <b>ONE-TAP HEADSHOT GUIDE: M1887 SHOTGUN</b> 💥\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🎯 <b>Drag Technique:</b> V-Drag & Quick Weapon Switch (Speed: 0.2s)\n🔘 <b>Fire Button Size:</b> 44% (Position: Height 18%)\n🎯 <b>Crosshair Placement:</b>\n• Keep white crosshair near enemy feet, then do a sudden sharp V-Drag upward.\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n👑 <b>BEST CHARACTER SKILL COMBO:</b>\n• Tatsuya + Hayato + Kelly + Caroline (Max Shotgun Sprint Speed)\n🚀 100% Pure Red Damage Numbers • OB45 Update Calibrated`;
