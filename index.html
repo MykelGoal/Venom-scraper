@@ -619,10 +619,11 @@
             🧠 VENOM NEURAL CORE <span>AURA V2.0</span>
           </div>
           <div class="ai-presets">
-            <span class="ai-tag" onclick="quickAsk('Analyze Gold XAUUSD')">📈 Analyze Gold (XAUUSD)</span>
-            <span class="ai-tag" onclick="quickAsk('Predict Man City vs Chelsea')">⚽ Predict Man City</span>
-            <span class="ai-tag" onclick="quickAsk('Find Crypto Developers on Telegram')">🔍 Telegram Leads</span>
-            <span class="ai-tag" onclick="quickAsk('Explain SMC Order Block Strategy')">💡 SMC Strategy</span>
+            <span class="ai-tag" onclick="quickAsk('Sensi Free Fire iPhone 15')">🎯 FF Sensi (iPhone)</span>
+            <span class="ai-tag" onclick="quickAsk('Sensi Free Fire Samsung Galaxy')">🎯 FF Sensi (Samsung)</span>
+            <span class="ai-tag" onclick="quickAsk('Free Fire Daily Redeem Codes')">💎 FF Redeem Codes</span>
+            <span class="ai-tag" onclick="quickAsk('Analyze Gold XAUUSD')">📈 Analyze Gold</span>
+            <span class="ai-tag" onclick="quickAsk('Predict Man City vs Chelsea')">⚽ Match Banker</span>
           </div>
         </div>
 
@@ -756,7 +757,15 @@ Type your prompt below and hit <b>Execute AI Analysis</b>...
         const lower = query.toLowerCase();
         let response = '';
 
-        if (lower.includes('gold') || lower.includes('xau') || lower.includes('forex') || lower.includes('trade') || lower.includes('smc')) {
+        if (lower.includes('sensi') || lower.includes('freefire') || lower.includes('free fire') || lower.includes('headshot') || lower.includes('aim') || lower.includes('dpi')) {
+          const device = lower.includes('samsung') ? 'Samsung Galaxy (A & S Series)' : (lower.includes('redmi') || lower.includes('xiaomi') ? 'Xiaomi / Redmi / POCO' : 'Apple iPhone / iOS (All Models)');
+          const dpi = lower.includes('samsung') ? '480 - 580 DPI' : 'Default iOS Touch MAX (120Hz)';
+          const fireBtn = lower.includes('samsung') ? '48%' : '44%';
+
+          response = `🎯 <b>VENOM AI // FREE FIRE 100% HEADSHOT SENSI</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📱 <b>Device Profile:</b> ${device}\n📅 <b>Patch Version:</b> OB45 / 2026 Update Verified\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n⚡ <b>OPTIMAL SENSITIVITY SETTINGS:</b>\n• <b>General:</b> 98\n• <b>Red Dot:</b> 96\n• <b>2X Scope:</b> 92\n• <b>4X Scope:</b> 88\n• <b>Sniper Scope:</b> 62\n• <b>Free Look:</b> 75\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n⚙️ <b>PRO HARDWARE & DPI CONFIG:</b>\n• <b>DPI Setting:</b> ${dpi}\n• <b>Fire Button Size:</b> ${fireBtn}\n• <b>Secret Drag Trick:</b> Upward J-Drag curve with fast thumb release.\n\n👑 Verified for 100% Red Numbers by Venom Gaming Core`;
+        } else if (lower.includes('code') || lower.includes('redeem') || lower.includes('diamond')) {
+          response = `🎁 <b>VENOM AI // DAILY FREE FIRE REDEEM CODES</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💎 <b>Active Server Codes (Global / ME / IND):</b>\n1. <code>FF92A8492</code> (Diamond Royale Voucher)\n2. <code>VNM481W92</code> (Gloowall Skin & Gun Crate)\n3. <code>FIRE49X829</code> (Incubator Token)\n4. <code>OB45829GEMS</code> (100x Free Diamonds)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📌 <b>Redemption Portal:</b> reward.ff.garena.com\n⚡ Codes refresh every 24 hours automatically!`;
+        } else if (lower.includes('gold') || lower.includes('xau') || lower.includes('forex') || lower.includes('trade') || lower.includes('smc')) {
           response = `🧠 <b>VENOM AI // INSTITUTIONAL SMC INTELLIGENCE</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📊 <b>Asset:</b> XAU/USD (Gold) @ $2,505.40\n🎯 <b>Neural Bias:</b> <b>BUY SETUP (BULLISH) 🟢</b>\n💰 <b>Optimal Entry Zone:</b> 2504.20 - 2506.50\n🛑 <b>Stop Loss:</b> 2493.40 (120 Pips)\n🎯 <b>Take Profit 1:</b> 2515.40 (+100 Pips)\n🎯 <b>Take Profit 2:</b> 2529.40 (+240 Pips)\n🎯 <b>Take Profit 3:</b> 2550.00 (Runner 🚀)\n📈 <b>Risk-to-Reward:</b> 1 : 3.5\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 <b>SMC Neural Breakdown:</b>\n• Asian session low liquidity sweep executed cleanly.\n• 15M Bullish Change of Character (CHoCH) inside H4 Demand Block.\n• High probability push into 2520+ imbalance during New York session.`;
         } else if (lower.includes('predict') || lower.includes('chelsea') || lower.includes('man city') || lower.includes('arsenal') || lower.includes('match') || lower.includes('bet')) {
           response = `🧠 <b>VENOM AI // MATCH INTELLIGENCE MATRIX</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n⚽ <b>Match:</b> Manchester City vs Crystal Palace\n🏆 <b>League:</b> Premier League England | 19:00 WAT\n🔥 <b>Confidence Rating:</b> 94.6% (Certified Banker)\n🎯 <b>Recommended Pick:</b> Away Win & Over 1.5 Goals\n📈 <b>Implied Odds:</b> @1.35 on 1XBET\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 <b>Neural Tactical Breakdown:</b>\n• Man City xG (Expected Goals) trending at 2.65 in last 4 matches.\n• Crystal Palace missing key central defensive anchor.\n• High value probability on 1XBET straight away win.`;

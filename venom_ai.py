@@ -4,14 +4,14 @@ import json
 import logging
 import random
 from typing import Dict, List, Optional
+from gaming_engine import GamingSensiEngine
 
 logger = logging.getLogger("VenomAIEngine")
 
 
 class VenomAIEngine:
     """
-    Venom AI — Advanced Neural Intelligence Engine for Trading, Betting & Community Growth.
-    Provides instant algorithmic breakdown for Forex, Crypto, Football & MTProto queries.
+    Venom AI — Advanced Neural Intelligence Engine for Trading, Betting, Gaming (Sensi/FreeFire) & Community Growth.
     """
 
     @classmethod
@@ -19,8 +19,25 @@ class VenomAIEngine:
         p = prompt.strip().lower()
         now_wat = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=1)).strftime("%d/%m/%Y | %H:%M WAT")
 
-        # 1. Football / Betting Query
-        if any(w in p for w in ["predict", "match", "bet", "football", "arsenal", "chelsea", "man city", "madrid", "barcelona", "score", "odds", "slip"]):
+        # 1. Gaming / Free Fire Sensi / Aim / Redeem Codes Query
+        if any(w in p for w in ["sensi", "freefire", "free fire", "headshot", "aim", "dpi", "pubg", "redeem", "code", "diamond", "ob45", "gaming"]):
+            if "code" in p or "redeem" in p or "diamond" in p:
+                return GamingSensiEngine.generate_redeem_codes()
+            
+            device = "iphone"
+            if "samsung" in p or "galaxy" in p:
+                device = "samsung"
+            elif "redmi" in p or "xiaomi" in p or "poco" in p:
+                device = "xiaomi"
+            elif "infinix" in p or "tecno" in p or "itel" in p:
+                device = "infinix_tecno"
+            elif "pc" in p or "bluestacks" in p or "emulator" in p:
+                device = "pc_emulator"
+
+            return GamingSensiEngine.generate_sensi(device)
+
+        # 2. Football / Betting Query
+        elif any(w in p for w in ["predict", "match", "bet", "football", "arsenal", "chelsea", "man city", "madrid", "barcelona", "score", "odds", "slip"]):
             teams = ["Manchester City vs Chelsea", "Real Madrid vs Barcelona", "Bayern Munich vs Dortmund", "Arsenal vs Liverpool", "PSG vs Marseille"]
             match = random.choice(teams)
             tip = random.choice(["Home Win & Over 1.5", "Both Teams to Score (BTTS)", "Over 2.5 Total Goals", "Double Chance 1X & Under 3.5"])
@@ -42,7 +59,7 @@ class VenomAIEngine:
                 f"👑 Verified by Venom AI Engine"
             )
 
-        # 2. Forex / Gold / Trading Query
+        # 3. Forex / Gold / Trading Query
         elif any(w in p for w in ["gold", "xauusd", "forex", "btc", "bitcoin", "crypto", "smc", "trade", "buy", "sell", "pip", "order block"]):
             asset = "XAU/USD (Gold)" if "gold" in p or "xau" in p else ("BTC/USD (Bitcoin)" if "btc" in p or "crypto" in p else "EUR/USD")
             action = random.choice(["BULLISH (BUY SETUP) 🟢", "BEARISH (SELL SETUP) 🔴"])
@@ -62,7 +79,7 @@ class VenomAIEngine:
                 f"🚀 Execute with strict 1-2% capital risk management."
             )
 
-        # 3. Community / Scraper Query
+        # 4. Community / Scraper Query
         elif any(w in p for w in ["scraper", "telegram", "group", "member", "leads", "extract", "find"]):
             return (
                 f"🧠 <b>VENOM AI // MTPROTO COMMUNITY MATRIX</b>\n"
@@ -77,7 +94,7 @@ class VenomAIEngine:
                 f"⚡ Venom Scraper Protocol Active."
             )
 
-        # 4. General AI Assistant Query
+        # 5. General AI Assistant Query
         else:
             return (
                 f"🧠 <b>VENOM AI SYSTEM ACTIVE // AURA V2.0</b>\n"
@@ -86,8 +103,9 @@ class VenomAIEngine:
                 f"🎯 <b>Status:</b> Neural Matrix Optimized (AURA +1,000,000)\n"
                 f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
                 f"Venom AI is actively monitoring:\n"
+                f"• 🎮 Free Fire 100% Headshot Sensi & Daily Redeem Codes\n"
                 f"• ⚽ Real-time football match fixtures & xG analytics\n"
                 f"• 📈 Live institutional Forex, Gold & Crypto SMC setups\n"
                 f"• 🔍 MTProto Telegram community member directories\n\n"
-                f"Ask me about any Match (e.g. 'Predict Chelsea'), Trading pair (e.g. 'Analyze Gold'), or Telegram Lead Generation!"
+                f"Ask me about any Game Sensi (e.g. 'Sensi Free Fire iPhone'), Match, or Trading Pair!"
             )

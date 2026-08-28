@@ -117,6 +117,20 @@ def build_pagination_keyboard(
     return InlineKeyboardMarkup(inline_keyboard=rows)
 
 
+@dp.message(Command("sensi"))
+async def cmd_sensi(message: Message):
+    args = message.text.split(maxsplit=1)
+    device = args[1] if len(args) > 1 else "iphone"
+    from gaming_engine import GamingSensiEngine
+    sensi_card = GamingSensiEngine.generate_sensi(device)
+    await message.answer(sensi_card, parse_mode="HTML")
+
+@dp.message(Command("redeem"))
+async def cmd_redeem(message: Message):
+    from gaming_engine import GamingSensiEngine
+    codes_card = GamingSensiEngine.generate_redeem_codes()
+    await message.answer(codes_card, parse_mode="HTML")
+
 # ---------------- Bot Handlers ----------------
 
 dp = Dispatcher(storage=MemoryStorage())
