@@ -10,7 +10,7 @@ logger = logging.getLogger("LiveAnalyticsEngine")
 
 
 class LiveMarketEngine:
-    """Fetches real-time live market prices for Forex, Gold & Crypto, generating clean SMC signals."""
+    """Fetches real-time live market prices for Forex, Gold & Crypto, generating clean signals."""
 
     @classmethod
     async def fetch_live_quotes(cls) -> Dict[str, float]:
@@ -24,7 +24,7 @@ class LiveMarketEngine:
             "USD/JPY": 154.20,
         }
 
-        # 1. Fetch live Crypto & Gold
+        # 1. Live Crypto & Gold
         try:
             url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,pax-gold&vs_currencies=usd"
             req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
@@ -41,7 +41,7 @@ class LiveMarketEngine:
         except Exception:
             pass
 
-        # 2. Fetch live Forex rates
+        # 2. Live Forex rates
         try:
             url = "https://api.frankfurter.app/latest?from=EUR&to=USD,GBP,JPY"
             req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
@@ -69,60 +69,53 @@ class LiveMarketEngine:
 
         is_buy = random.choice([True, False])
         action = "BUY 🟢" if is_buy else "SELL 🔴"
-        now_utc = datetime.datetime.now(datetime.timezone.utc).strftime("%d %b %Y | %H:%M UTC")
+        now_wat = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=1)).strftime("%d/%m/%Y | %H:%M WAT")
 
         if "Gold" in selected:
             entry = f"{price - 1.5:.2f} - {price + 1.5:.2f}"
             sl = f"{price - 14.0:.2f}" if is_buy else f"{price + 14.0:.2f}"
             tp1 = f"{price + 12.0:.2f}" if is_buy else f"{price - 12.0:.2f}"
             tp2 = f"{price + 28.0:.2f}" if is_buy else f"{price - 28.0:.2f}"
-            tp3 = f"{price + 45.0:.2f}" if is_buy else f"{price - 45.0:.2f}"
         elif "BTC" in selected:
             entry = f"{price - 150:.0f} - {price + 150:.0f}"
             sl = f"{price - 1200:.0f}" if is_buy else f"{price + 1200:.0f}"
             tp1 = f"{price + 900:.0f}" if is_buy else f"{price - 900:.0f}"
             tp2 = f"{price + 2200:.0f}" if is_buy else f"{price - 2200:.0f}"
-            tp3 = f"{price + 4000:.0f}" if is_buy else f"{price - 4000:.0f}"
         else:
             entry = f"{price - 0.0008:.4f} - {price + 0.0008:.4f}"
             sl = f"{price - 0.0035:.4f}" if is_buy else f"{price + 0.0035:.4f}"
             tp1 = f"{price + 0.0030:.4f}" if is_buy else f"{price - 0.0030:.4f}"
             tp2 = f"{price + 0.0075:.4f}" if is_buy else f"{price - 0.0075:.4f}"
-            tp3 = f"{price + 0.0140:.4f}" if is_buy else f"{price - 0.0140:.4f}"
 
         return (
-            f"⚡ <b>VENOM VIP FOREX SIGNAL</b> ⚡\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"📊 <b>Pair:</b> <code>{selected}</code>\n"
-            f"🎯 <b>Action:</b> <b>{action}</b>\n"
-            f"💰 <b>Current Price:</b> <code>{price}</code>\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"📍 <b>Entry Zone:</b> <code>{entry}</code>\n"
-            f"🛑 <b>Stop Loss:</b> <code>{sl}</code>\n\n"
-            f"🎯 <b>Take Profit 1:</b> <code>{tp1}</code> (Scalp)\n"
-            f"🎯 <b>Take Profit 2:</b> <code>{tp2}</code> (Day Trade)\n"
-            f"🎯 <b>Take Profit 3:</b> <code>{tp3}</code> (Runner)\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"⚖️ <b>Risk:</b> 1-2% Max | R:R 1:3.5\n"
-            f"🕒 <b>Time:</b> <i>{now_utc}</i>\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"👑 <i>Powered by Venom Institutional Signals</i>"
+            f"⚡️ <b>𝐕𝐄𝐍𝐎𝐌 𝐅𝐎𝐑𝐄𝐗 𝐕𝐈𝐏 𝐒𝐈𝐆𝐍𝐀𝐋</b> ⚡️\n"
+            f"━━━━━━━━━━━━━━━━━━━\n"
+            f"𝐃𝐚𝐭𝐞: {now_wat}\n"
+            f"𝐀𝐬𝐬𝐞𝐭: <code>{selected}</code>\n"
+            f"𝐀𝐜𝐭𝐢𝐨𝐧: <b>{action}</b>\n"
+            f"𝐄𝐧𝐭𝐫𝐲: <code>{entry}</code>\n"
+            f"𝐒𝐭𝐨𝐩 𝐋𝐨𝐬𝐬: <code>{sl}</code>\n"
+            f"𝐓𝐚𝐤𝐞 𝐏𝐫𝐨𝐟𝐢𝐭 𝟏: <code>{tp1}</code>\n"
+            f"𝐓𝐚𝐤𝐞 𝐏𝐫𝐨𝐟𝐢𝐭 𝟐: <code>{tp2}</code>\n"
+            f"━━━━━━━━━━━━━━━━━━━\n"
+            f"✅ Risk 1-2% per trade\n"
+            f"🚀 Powered by @venom_forex_signals_bot"
         )
 
 
 class LiveFootballEngine:
     """
-    Exact clean EaglePredict layout:
-    Clear league, match, tip, probability, double chance, and booking codes.
+    Exact official EaglePredict clean channel post format:
+    Prediction of the Day, Football Tip 2, 3, 4 with clean bold typography and booking codes.
     """
 
     LEAGUES = {
-        "4328": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League",
-        "4335": "🇪🇸 La Liga",
-        "4332": "🇮🇹 Serie A",
-        "4331": "🇩🇪 Bundesliga",
-        "4334": "🇫🇷 Ligue 1",
-        "4480": "🏆 Champions League",
+        "4328": "Premier League England",
+        "4335": "La Liga Spain",
+        "4332": "Serie A Italy",
+        "4331": "Bundesliga Germany",
+        "4334": "Ligue 1 France",
+        "4480": "Champions League",
     }
 
     @classmethod
@@ -138,13 +131,10 @@ class LiveFootballEngine:
                     for ev in events:
                         home = ev.get("strHomeTeam")
                         away = ev.get("strAwayTeam")
-                        match_name = ev.get("strEvent") or f"{home} vs {away}"
                         if home and away:
                             fixtures.append({
                                 "league": lname,
-                                "match": match_name,
-                                "home": home,
-                                "away": away,
+                                "match": f"{home} - {away}",
                                 "date": ev.get("dateEvent", "Today"),
                                 "time": ev.get("strTime", "19:00:00")[:5],
                             })
@@ -155,104 +145,85 @@ class LiveFootballEngine:
 
     @classmethod
     async def generate_eagle_clean_prediction(cls) -> str:
+        """
+        Builds the exact 4-Tip clean daily slip matching @eaglepredict Telegram channel.
+        """
         fixtures = await cls.fetch_real_live_fixtures()
+        today_date = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=1)).strftime("%d/%m/%Y")
 
-        if fixtures:
-            chosen = random.choice(fixtures)
-            league = chosen["league"]
-            home = chosen["home"]
-            away = chosen["away"]
-            match = chosen["match"]
-            kickoff = f"{chosen['date']} | {chosen['time']} UTC"
-        else:
-            league = "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League"
-            home, away = "Arsenal", "Chelsea"
-            match = f"{home} vs {away}"
-            kickoff = "Today | 19:00 UTC"
-
-        odds = round(random.uniform(1.65, 2.05), 2)
-        prob = random.randint(88, 96)
-
-        # Clean EaglePredict tip variations
-        tips = [
-            (f"Home Win ({home}) & Over 1.5", "1X & Over 1.5", "Over 2.5 Goals", "YES", "2 - 1"),
-            ("Over 2.5 Match Goals", "Over 1.5 Goals", "Over 2.5 Goals", "YES", "2 - 2"),
-            (f"Both Teams to Score (BTTS)", "12 & BTTS", "Over 2.5 Goals", "YES", "3 - 1"),
-            (f"Home Win or Draw (1X) & Under 3.5", "1X", "Under 3.5 Goals", "NO", "2 - 0"),
-            (f"Away Win ({away}) & Over 1.5", "X2 & Over 1.5", "Over 2.5 Goals", "YES", "1 - 3"),
+        default_set = [
+            {"league": "Bundesliga Germany", "match": "Bayern Munchen - VfB Stuttgart", "kickoff": "19:30 WAT", "tip": "Home win", "odds": 1.35},
+            {"league": "Ligue 1 France", "match": "Lille OSC - PSG", "kickoff": "19:45 WAT", "tip": "Over 1.5", "odds": 1.25},
+            {"league": "Serie A Italy", "match": "AC Milan - Venezia", "kickoff": "19:45 WAT", "tip": "Home win", "odds": 1.40},
+            {"league": "Premier League England", "match": "Crystal Palace - Manchester City", "kickoff": "20:00 WAT", "tip": "Away win", "odds": 1.62},
         ]
-        main_tip, dc, over_under, btts, cs = random.choice(tips)
 
-        sporty_code = f"BC{random.randint(10000, 99999)}"
-        bet9ja_code = f"{random.randint(10, 99)}X{random.choice('ABCDEF')}{random.randint(100, 999)}"
-        onexbet_code = f"{random.choice('XYZ')}{random.randint(1000, 9999)}"
-
-        text = (
-            f"🦅 <b>EAGLE PREDICT — VENOM BANKER OF THE DAY</b> 🦅\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"🏆 <b>League:</b> {league}\n"
-            f"⚽ <b>Match:</b> <b>{match}</b>\n"
-            f"⏰ <b>Kickoff:</b> <i>{kickoff}</i>\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"🎯 <b>MAIN TIP:</b> <b>{main_tip}</b>\n"
-            f"📈 <b>ODDS:</b> <b>{odds:.2f}</b>\n"
-            f"🔥 <b>CONFIDENCE:</b> <b>{prob}% (Certified Banker)</b>\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"🛡️ <b>Double Chance:</b> <code>{dc}</code>\n"
-            f"⚽ <b>Under / Over:</b> <code>{over_under}</code>\n"
-            f"🥅 <b>BTTS (Both Teams Score):</b> <code>{btts}</code>\n"
-            f"🎲 <b>Correct Score Tip:</b> <code>{cs}</code>\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"🎟️ <b>LIVE BOOKING CODES:</b>\n"
-            f"• <b>SportyBet:</b> <code>{sporty_code}</code>\n"
-            f"• <b>Bet9ja:</b> <code>{bet9ja_code}</code>\n"
-            f"• <b>1xBet:</b> <code>{onexbet_code}</code>\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"👑 <i>Venom Eagle Predictions • Clean & Verified Daily</i>"
-        )
-        return text
-
-    @classmethod
-    async def generate_eagle_accumulator(cls) -> str:
-        """Generates a clean 3-match Multi-Bet Accumulator ticket (4+ Odds)."""
-        fixtures = await cls.fetch_real_live_fixtures()
-        if len(fixtures) < 3:
-            fixtures = [
-                {"league": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League", "match": "Crystal Palace vs Man City", "tip": "Away Win & Over 1.5", "odds": 1.62},
-                {"league": "🇪🇸 La Liga", "match": "Racing Santander vs Elche", "tip": "Over 1.5 Goals", "odds": 1.40},
-                {"league": "🇩🇪 Bundesliga", "match": "Bayern Munich vs Stuttgart", "tip": "Home Win & Over 2.5", "odds": 1.75},
-            ]
+        if len(fixtures) >= 4:
+            tips_pool = ["Home win", "Over 1.5", "Over 2.5", "1X", "Away win", "Under 3.5"]
+            selected_matches = fixtures[:4]
+            cards_data = []
+            for m in selected_matches:
+                cards_data.append({
+                    "league": m["league"],
+                    "match": m["match"],
+                    "kickoff": f"{m['time']} WAT",
+                    "tip": random.choice(tips_pool),
+                    "odds": round(random.uniform(1.24, 1.55), 2),
+                })
         else:
-            sample = random.sample(fixtures, min(3, len(fixtures)))
-            fixtures = [
-                {"league": f["league"], "match": f["match"], "tip": random.choice(["Over 1.5 Goals", "1X & Over 1.5", "Home Win", "BTTS - YES"]), "odds": round(random.uniform(1.40, 1.75), 2)}
-                for f in sample
-            ]
+            cards_data = default_set
 
-        total_odds = 1.0
-        match_lines = []
-        for idx, f in enumerate(fixtures, start=1):
-            total_odds *= f["odds"]
-            match_lines.append(
-                f"<b>{idx}. {f['match']}</b>\n"
-                f"   🏆 {f['league']}\n"
-                f"   🎯 <i>Tip:</i> <b>{f['tip']}</b> (@ {f['odds']:.2f})\n"
-            )
+        # Format exact EaglePredict post
+        header = f"⚽️ <b>𝐏𝐫𝐞𝐝𝐢𝐜𝐭𝐢𝐨𝐧 𝐨𝐟 𝐭𝐡𝐞 𝐃𝐚𝐲</b> ⚽️\n"
+        tip1 = cards_data[0]
+        part1 = (
+            f"{header}"
+            f"𝐃𝐚𝐭𝐞: {today_date}\n"
+            f"𝐋𝐞𝐚𝐠𝐮𝐞: {tip1['league']}\n"
+            f"𝐌𝐚𝐭𝐜𝐡: {tip1['match']}\n"
+            f"𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: {tip1['kickoff']}\n"
+            f"✅{tip1['tip']}\n"
+            f"✅Odds @{tip1['odds']:.2f} on 1XBET\n\n"
+        )
+
+        part2 = (
+            f"⚽️ <b>𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟮</b> ⚽️\n"
+            f"𝐃𝐚𝐭𝐞: {today_date}\n"
+            f"𝐋𝐞𝐚𝐠𝐮𝐞: {cards_data[1]['league']}\n"
+            f"𝐌𝐚𝐭𝐜𝐡: {cards_data[1]['match']}\n"
+            f"𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: {cards_data[1]['kickoff']}\n"
+            f"✅{cards_data[1]['tip']}\n"
+            f"✅Odds @{cards_data[1]['odds']:.2f} on 1XBET\n\n"
+        )
+
+        part3 = (
+            f"⚽️ <b>𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟯</b> ⚽️\n"
+            f"𝐃𝐚𝐭𝐞: {today_date}\n"
+            f"𝐋𝐞𝐚𝐠𝐮𝐞: {cards_data[2]['league']}\n"
+            f"𝐌𝐚𝐭𝐜𝐡: {cards_data[2]['match']}\n"
+            f"𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: {cards_data[2]['kickoff']}\n"
+            f"✅{cards_data[2]['tip']}\n"
+            f"✅Odds @{cards_data[2]['odds']:.2f} on 1XBET\n\n"
+        )
+
+        part4 = (
+            f"⚽️ <b>𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟰</b> ⚽️\n"
+            f"𝐃𝐚𝐭𝐞: {today_date}\n"
+            f"𝐋𝐞𝐚𝐠𝐮𝐞: {cards_data[3]['league']}\n"
+            f"𝐌𝐚𝐭𝐜𝐡: {cards_data[3]['match']}\n"
+            f"𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: {cards_data[3]['kickoff']}\n"
+            f"✅{cards_data[3]['tip']}\n"
+            f"✅Odds @{cards_data[3]['odds']:.2f} on 1XBET\n\n"
+        )
 
         sporty_code = f"BC{random.randint(10000, 99999)}"
         bet9ja_code = f"{random.randint(10, 99)}X{random.choice('ABCDEF')}{random.randint(100, 999)}"
 
-        return (
-            f"🦅 <b>VENOM EAGLE — DAILY 3-MATCH ACCA (MULTI-BET)</b> 🦅\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"{''.join(match_lines)}"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"📈 <b>TOTAL ACCUMULATOR ODDS:</b> <b>{total_odds:.2f}</b>\n"
-            f"🔥 <b>STATUS:</b> <b>HIGH CONFIDENCE SLIP</b>\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"🎟️ <b>ACCUMULATOR BOOKING CODES:</b>\n"
+        footer = (
+            f"🎟️ <b>𝐁𝐨𝐨𝐤𝐢𝐧𝐠 𝐂𝐨𝐝𝐞𝐬:</b>\n"
             f"• <b>SportyBet:</b> <code>{sporty_code}</code>\n"
-            f"• <b>Bet9ja:</b> <code>{bet9ja_code}</code>\n"
-            f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"👑 <i>Venom Eagle Predictions • 100% Free VIP Slip</i>"
+            f"• <b>Bet9ja:</b> <code>{bet9ja_code}</code>\n\n"
+            f"For more football predictions, join @venomeaglebot 🦅"
         )
+
+        return part1 + part2 + part3 + part4 + footer

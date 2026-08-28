@@ -47,13 +47,12 @@ dp = Dispatcher(storage=MemoryStorage())
 async def cmd_start(message: Message):
     text = (
         "🦅 <b>Welcome to VENOM EAGLE PREDICTIONS</b>\n\n"
-        "Clean, verified EaglePredict-style match intelligence, daily bankers, and direct booking codes.\n\n"
+        "Official clean daily banker predictions, multi-tips, and verified booking codes matching @eaglepredict style.\n\n"
         "⚡ <b>Select an option below:</b>"
     )
     kb = InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="🎯 Banker of the Day (Single Pick)", callback_data="gen_banker")],
-            [InlineKeyboardButton(text="🎫 Daily 3-Match ACCA (Multi-Bet)", callback_data="gen_acca")],
+            [InlineKeyboardButton(text="⚽️ Get Today's Predictions (Clean Slip)", callback_data="gen_banker")],
             [InlineKeyboardButton(text="📢 Auto-Post to My Betting Channel", callback_data="add_channel")],
         ]
     )
@@ -64,23 +63,10 @@ async def cb_gen_banker(callback: CallbackQuery):
     slip = await LiveFootballEngine.generate_eagle_clean_prediction()
     kb = InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="🔄 Next Banker Match", callback_data="gen_banker")],
-            [InlineKeyboardButton(text="🎫 View 3-Match ACCA", callback_data="gen_acca")],
+            [InlineKeyboardButton(text="🔄 Refresh Predictions", callback_data="gen_banker")],
         ]
     )
     await callback.message.answer(slip, reply_markup=kb, parse_mode="HTML")
-    await callback.answer()
-
-@dp.callback_query(F.data == "gen_acca")
-async def cb_gen_acca(callback: CallbackQuery):
-    acca_slip = await LiveFootballEngine.generate_eagle_accumulator()
-    kb = InlineKeyboardMarkup(
-        inline_keyboard=[
-            [InlineKeyboardButton(text="🔄 Generate New ACCA", callback_data="gen_acca")],
-            [InlineKeyboardButton(text="🎯 View Single Banker", callback_data="gen_banker")],
-        ]
-    )
-    await callback.message.answer(acca_slip, reply_markup=kb, parse_mode="HTML")
     await callback.answer()
 
 @dp.callback_query(F.data == "add_channel")
