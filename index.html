@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VENOM AI // ULTIMATE AURA INTELLIGENCE NETWORK</title>
-  <meta name="description" content="Next-Gen AI Neural Intelligence, Institutional Forex SMC Signals, EaglePredict Match Analysis & Telegram Discovery." />
+  <title>VENOM AI // ULTIMATE AURA INTELLIGENCE & GAMING MATRIX</title>
+  <meta name="description" content="Next-Gen AI Neural Intelligence, Free Fire Hologram Aim-Lock, Config Pack Generator, Institutional Forex SMC & Eagle Predictions." />
 
   <style>
     :root {
@@ -182,25 +182,9 @@
       box-shadow: 0 0 30px rgba(236, 72, 153, 0.6);
     }
 
-    .login-btn {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--card-border);
-      color: #fff;
-      font-weight: 700;
-      font-size: 13.5px;
-      padding: 8px 18px;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .login-btn:hover {
-      background: rgba(255, 255, 255, 0.16);
-      border-color: #fff;
-    }
-
     .hero {
       text-align: center;
-      padding: 70px 0 45px;
+      padding: 60px 0 40px;
     }
 
     .aura-pill {
@@ -218,26 +202,12 @@
       box-shadow: 0 0 25px rgba(16, 185, 129, 0.2);
     }
 
-    .aura-pill span {
-      width: 8px;
-      height: 8px;
-      background: var(--aura-green);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--aura-green);
-      animation: beacon 1.5s infinite;
-    }
-
-    @keyframes beacon {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.4); opacity: 0.5; }
-    }
-
     .hero h1 {
-      font-size: 64px;
+      font-size: 60px;
       font-weight: 900;
       line-height: 1.1;
       letter-spacing: -2px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .gradient-text {
@@ -254,10 +224,10 @@
     }
 
     .hero p {
-      font-size: 20px;
+      font-size: 19px;
       color: #94a3b8;
       max-width: 820px;
-      margin: 0 auto 38px;
+      margin: 0 auto 36px;
     }
 
     .hero-buttons {
@@ -265,26 +235,28 @@
       justify-content: center;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 50px;
+      margin-bottom: 45px;
     }
 
     .btn-aura {
       background: linear-gradient(135deg, var(--aura-green), #059669);
       color: #000;
       font-weight: 900;
-      font-size: 16px;
-      padding: 16px 32px;
-      border-radius: 14px;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: 12px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 10px;
       box-shadow: 0 0 35px rgba(16, 185, 129, 0.4);
       transition: all 0.25s;
+      cursor: pointer;
+      border: none;
     }
     .btn-aura:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 0 50px rgba(16, 185, 129, 0.65);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 0 45px rgba(16, 185, 129, 0.65);
     }
 
     .btn-glass {
@@ -292,9 +264,9 @@
       border: 1px solid var(--card-border);
       color: #fff;
       font-weight: 800;
-      font-size: 16px;
-      padding: 16px 32px;
-      border-radius: 14px;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: 12px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -308,15 +280,95 @@
       transform: translateY(-2px);
     }
 
-    /* Interactive Venom AI Neural Terminal */
+    /* Hologram Crosshair Visualizer Studio */
+    .hologram-studio {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 32px;
+      align-items: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    }
+
+    .holo-preview-box {
+      background: #000;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      height: 260px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .holo-grid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: 20px 20px;
+      background-image: 
+        linear-gradient(to right, rgba(16, 185, 129, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(16, 185, 129, 0.08) 1px, transparent 1px);
+    }
+
+    .hologram-dot {
+      width: 12px;
+      height: 12px;
+      background: var(--aura-green);
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--aura-green), 0 0 40px var(--aura-green);
+      position: relative;
+      z-index: 2;
+      animation: holo-pulse 1.5s infinite;
+    }
+
+    .hologram-ring {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border: 1.5px dashed var(--aura-green);
+      border-radius: 50%;
+      z-index: 1;
+      animation: holo-spin 6s linear infinite;
+    }
+
+    @keyframes holo-spin {
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes holo-pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.6; }
+    }
+
+    .holo-color-picker {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+      justify-content: center;
+      z-index: 2;
+    }
+    .color-chip {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid #fff;
+    }
+
+    /* AI Matrix Chat Terminal */
     .ai-matrix-box {
       background: #020617;
       border: 1px solid rgba(16, 185, 129, 0.4);
       border-radius: 24px;
       padding: 32px;
-      margin-bottom: 90px;
+      margin-bottom: 80px;
       box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 40px rgba(16, 185, 129, 0.15);
-      position: relative;
     }
 
     .ai-header {
@@ -326,23 +378,6 @@
       margin-bottom: 20px;
       flex-wrap: wrap;
       gap: 12px;
-    }
-
-    .ai-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 18px;
-      font-weight: 800;
-      color: #fff;
-    }
-    .ai-title span {
-      background: var(--aura-green);
-      color: #000;
-      padding: 2px 8px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 900;
     }
 
     .ai-presets {
@@ -397,130 +432,8 @@
       color: #fff;
       font-size: 15px;
       outline: none;
-      transition: border-color 0.2s;
     }
     .ai-input:focus {
-      border-color: var(--aura-green);
-    }
-
-    .ai-send-btn {
-      background: linear-gradient(135deg, var(--aura-green), #059669);
-      color: #000;
-      border: none;
-      font-weight: 900;
-      padding: 0 28px;
-      border-radius: 12px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 15px;
-      transition: all 0.2s;
-    }
-    .ai-send-btn:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
-    }
-
-    /* 3D Bot Cards */
-    .section-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .section-header h2 {
-      font-size: 42px;
-      font-weight: 900;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
-    }
-    .section-header p {
-      color: #94a3b8;
-      font-size: 17px;
-    }
-
-    .cards-3d-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-bottom: 90px;
-    }
-
-    .aura-card {
-      background: var(--bg-card);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 36px 28px;
-      backdrop-filter: blur(20px);
-      transition: all 0.3s;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .aura-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(16, 185, 129, 0.5);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-    }
-
-    .card-icon {
-      font-size: 44px;
-      margin-bottom: 16px;
-    }
-
-    .aura-card h3 {
-      font-size: 24px;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-
-    .bot-link {
-      color: var(--aura-cyan);
-      font-size: 14px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-block;
-      margin-bottom: 16px;
-    }
-
-    .aura-card p {
-      color: #94a3b8;
-      font-size: 14.5px;
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-
-    .card-specs {
-      list-style: none;
-      margin-bottom: 28px;
-    }
-    .card-specs li {
-      font-size: 13.5px;
-      color: #e2e8f0;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .card-specs li b {
-      color: var(--aura-green);
-    }
-
-    .open-bot-btn {
-      width: 100%;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--card-border);
-      color: #fff;
-      padding: 12px;
-      border-radius: 12px;
-      font-weight: 800;
-      font-size: 14px;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .open-bot-btn:hover {
-      background: var(--aura-green);
-      color: #000;
       border-color: var(--aura-green);
     }
 
@@ -538,8 +451,8 @@
     }
 
     @media (max-width: 960px) {
-      .hero h1 { font-size: 40px; }
-      .cards-3d-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 38px; }
+      .hologram-studio { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -554,15 +467,14 @@
   <!-- Live Ticker -->
   <div class="ticker-tape">
     <div class="ticker-content">
+      <span class="ticker-item">🎮 <b>Free Fire OB45 Sensi:</b> 100% Red Headshot Calibrated <span class="up">(Active)</span></span>
       <span class="ticker-item">🟢 <b>XAU/USD (Gold):</b> $2,505.40 <span class="up">(+1.2%)</span></span>
       <span class="ticker-item">⚡ <b>BTC/USD:</b> $79,500.00 <span class="up">(+4.8%)</span></span>
-      <span class="ticker-item">📊 <b>EUR/USD:</b> 1.0850 <span class="up">(+0.35%)</span></span>
       <span class="ticker-item">🧠 <b>Venom AI Neural Engine:</b> ONLINE <span class="up">(Latency 12ms)</span></span>
       <span class="ticker-item">🦅 <b>Eagle Prediction Accuracy:</b> 94.2% <span class="up">(Verified)</span></span>
       <!-- Loop duplicate -->
+      <span class="ticker-item">🎮 <b>Free Fire OB45 Sensi:</b> 100% Red Headshot Calibrated <span class="up">(Active)</span></span>
       <span class="ticker-item">🟢 <b>XAU/USD (Gold):</b> $2,505.40 <span class="up">(+1.2%)</span></span>
-      <span class="ticker-item">⚡ <b>BTC/USD:</b> $79,500.00 <span class="up">(+4.8%)</span></span>
-      <span class="ticker-item">📊 <b>EUR/USD:</b> 1.0850 <span class="up">(+0.35%)</span></span>
     </div>
   </div>
 
@@ -571,7 +483,7 @@
     <nav>
       <a href="#" class="brand-logo">
         <span class="aura-chip">VENOM AI</span>
-        NEURAL MATRIX
+        GAMING & TRADING MATRIX
       </a>
       <div class="nav-actions">
         <button class="nitro-btn" onclick="toggleNitro()">
@@ -582,45 +494,72 @@
 
     <section class="hero">
       <div class="aura-pill">
-        <span></span> +1,000,000 AURA AI INTELLIGENCE
+        <span></span> +1,000,000 AURA AI & ESPORTS MATRIX
       </div>
       <h1>
-        Next-Level AI Neural Network<br />
-        <span class="gradient-text">For Trading, Betting & </span>
-        <span class="aura-gradient">Growth</span>
+        Next-Level AI Intelligence &<br />
+        <span class="gradient-text">Gaming Hologram </span>
+        <span class="aura-gradient">Aim-Lock Studio</span>
       </h1>
       <p>
-        Execute high-conviction trades, clean EaglePredict match intelligence, and MTProto Telegram lead discovery with the Venom AI Neural Matrix.
+        100% Pure Red Numbers for Free Fire, OB45 Sensi, Config Packs, Institutional Forex SMC Signals & EaglePredict Bankers.
       </p>
 
       <div class="hero-buttons">
-        <a href="#ai-terminal" class="btn-aura">
-          🧠 Launch Venom AI Terminal
+        <button class="btn-aura" onclick="downloadConfigPack()">
+          ⚡ Download Pro Config Pack (.cfg)
+        </button>
+        <a href="#ai-terminal" class="btn-glass">
+          🧠 Launch AI Terminal
         </a>
         <a href="https://t.me/venomeaglebot" target="_blank" class="btn-glass">
           ⚽ Eagle Predictor Bot
         </a>
-        <a href="https://t.me/venom_forex_signals_bot" target="_blank" class="btn-glass">
-          ⚡ Forex VIP Bot
-        </a>
       </div>
     </section>
 
-    <!-- Interactive Venom AI Neural Matrix Terminal (Showcased Live in YouTube Video) -->
-    <section id="ai-terminal">
-      <div class="section-header">
-        <h2>Live Venom AI Terminal</h2>
-        <p>Type any query below to run instant neural analysis on matches, charts, and leads</p>
-      </div>
+    <!-- Hologram Aim-Lock Studio -->
+    <section>
+      <div class="hologram-studio">
+        <div class="holo-preview-box">
+          <div class="holo-grid"></div>
+          <div class="hologram-ring" id="holo-ring"></div>
+          <div class="hologram-dot" id="holo-dot"></div>
+          <div class="holo-color-picker">
+            <div class="color-chip" style="background: #10b981;" onclick="setHoloColor('#10b981')"></div>
+            <div class="color-chip" style="background: #06b6d4;" onclick="setHoloColor('#06b6d4')"></div>
+            <div class="color-chip" style="background: #ec4899;" onclick="setHoloColor('#ec4899')"></div>
+            <div class="color-chip" style="background: #f59e0b;" onclick="setHoloColor('#f59e0b')"></div>
+          </div>
+        </div>
 
+        <div>
+          <h3 style="font-size: 26px; font-weight: 800; margin-bottom: 8px;">🔮 Hologram Crosshair & Claw HUD Studio</h3>
+          <p style="color: #94a3b8; font-size: 14.5px; margin-bottom: 20px;">
+            Calibrate your HUD with pro 4-finger / 3-finger claw coordinates. Generates instant device touch configuration files with zero recoil.
+          </p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button class="btn-aura" onclick="quickAsk('4-Finger Hologram Claw HUD Layout')">
+              📐 4-Finger Pro HUD
+            </button>
+            <button class="btn-glass" onclick="downloadConfigPack()">
+              📥 Download .cfg Config
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Venom AI Terminal -->
+    <section id="ai-terminal">
       <div class="ai-matrix-box">
         <div class="ai-header">
-          <div class="ai-title">
-            🧠 VENOM NEURAL CORE <span>AURA V2.0</span>
+          <div class="ai-title" style="font-weight: 800; font-size: 18px;">
+            🧠 VENOM AI NEURAL CORE <span>OB45 CALIBRATED</span>
           </div>
           <div class="ai-presets">
             <span class="ai-tag" onclick="quickAsk('M1887 One Tap Shotgun Guide')">🔫 M1887 One-Tap</span>
-            <span class="ai-tag" onclick="quickAsk('Desert Eagle One Tap Aim Lock')">🎯 Desert Eagle Aim-Lock</span>
+            <span class="ai-tag" onclick="quickAsk('Desert Eagle One Tap Aim Lock')">🎯 Desert Eagle</span>
             <span class="ai-tag" onclick="quickAsk('Sensi Free Fire iPhone 15 Pro')">📱 iPhone Sensi</span>
             <span class="ai-tag" onclick="quickAsk('Sensi Free Fire Samsung Galaxy DPI')">📱 Samsung DPI</span>
             <span class="ai-tag" onclick="quickAsk('Free Fire Daily Redeem Codes')">💎 FF Redeem Codes</span>
@@ -630,84 +569,34 @@
         </div>
 
         <div class="ai-screen" id="ai-output">
-🧠 <b>VENOM AI NEURAL CORE INITIALIZED</b>
+🧠 <b>VENOM AI NEURAL MATRIX ONLINE</b>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚡ Status: Online (Latency 14ms) • AURA: +1,000,000
-🌐 Active Feeds: TheSportsDB Live, CoinGecko Real-Time & MTProto
+⚡ Status: Active • AURA: +1,000,000
+🎮 Gaming Protocol: Free Fire OB45 / One-Tap Headshot Drag Engine Active
+🌐 Market Telemetry: Live CoinGecko & TheSportsDB Sync
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-💡 Ready for commands. Ask Venom AI about:
-• ⚽ Match Intelligence (e.g. "Predict Real Madrid vs Barcelona")
-• 📈 Institutional Forex/Gold Setups (e.g. "Analyze XAUUSD Gold")
-• 🔍 Telegram Group Lead Extraction (e.g. "Find crypto traders")
+💡 Ready for prompt. Ask Venom AI about:
+• 🎮 Free Fire Headshot Sensi (e.g. "M1887 One Tap" or "iPhone Sensi")
+• 🔮 Hologram Crosshairs & Config Packs (.cfg files)
+• 📈 Institutional SMC Forex & Gold Setups
+• ⚽ 1:1 Clean EaglePredict Match Bankers
 
-Type your prompt below and hit <b>Execute AI Analysis</b>...
+Type your query below and tap <b>Execute AI</b>...
         </div>
 
         <div class="ai-input-bar">
-          <input type="text" class="ai-input" id="ai-prompt" placeholder="Ask Venom AI anything (e.g., 'Predict Arsenal vs Chelsea' or 'Analyze Gold')..." onkeydown="if(event.key==='Enter') executeAI()" />
-          <button class="ai-send-btn" onclick="executeAI()">
+          <input type="text" class="ai-input" id="ai-prompt" placeholder="Ask Venom AI anything (e.g., 'M1887 One Tap' or 'Analyze Gold')..." onkeydown="if(event.key==='Enter') executeAI()" />
+          <button class="btn-aura" onclick="executeAI()">
             ⚡ Execute AI
           </button>
         </div>
       </div>
     </section>
 
-    <!-- Micro-Bots Section -->
-    <section>
-      <div class="section-header">
-        <h2>The Venom Tech Micro-Bot Fleet</h2>
-        <p>Single-purpose bots powering the entire ecosystem</p>
-      </div>
-
-      <div class="cards-3d-grid">
-        <div class="aura-card">
-          <div>
-            <div class="card-icon">🦅</div>
-            <h3>Venom Eagle Predictions</h3>
-            <a href="https://t.me/venomeaglebot" target="_blank" class="bot-link">@venomeaglebot</a>
-            <p>1:1 EaglePredict match intelligence, WAT kickoff times, and clean 4-banker slips with 1XBET odds.</p>
-            <ul class="card-specs">
-              <li><b>✓</b> Real-time TheSportsDB live fixtures</li>
-              <li><b>✓</b> Auto-posting to Telegram betting channels</li>
-            </ul>
-          </div>
-          <a href="https://t.me/venomeaglebot" target="_blank" class="open-bot-btn">Open @venomeaglebot ➔</a>
-        </div>
-
-        <div class="aura-card">
-          <div>
-            <div class="card-icon">⚡</div>
-            <h3>Venom Forex VIP Signals</h3>
-            <a href="https://t.me/venom_forex_signals_bot" target="_blank" class="bot-link">@venom_forex_signals_bot</a>
-            <p>Smart Money Concepts signals for Gold, EURUSD, and Bitcoin with live entry zones and order block rationale.</p>
-            <ul class="card-specs">
-              <li><b>✓</b> Real-time ECB & CoinGecko feeds</li>
-              <li><b>✓</b> 1:3+ Risk-to-Reward Ratio</li>
-            </ul>
-          </div>
-          <a href="https://t.me/venom_forex_signals_bot" target="_blank" class="open-bot-btn">Open @venom_forex_signals_bot ➔</a>
-        </div>
-
-        <div class="aura-card">
-          <div>
-            <div class="card-icon">🔍</div>
-            <h3>Venom Scraper Directory</h3>
-            <a href="https://t.me/venomscraperbot" target="_blank" class="bot-link">@venomscraperbot</a>
-            <p>High-speed MTProto public group search with jitter rate limiting and direct clickable profile links.</p>
-            <ul class="card-specs">
-              <li><b>✓</b> Anti-flood protection</li>
-              <li><b>✓</b> Search across 12,000+ members</li>
-            </ul>
-          </div>
-          <a href="https://t.me/venomscraperbot" target="_blank" class="open-bot-btn">Open @venomscraperbot ➔</a>
-        </div>
-      </div>
-    </section>
-
     <footer>
-      <p>© 2026 VENOM TECH • Built for Content Creators, Traders & Channel Admins.</p>
+      <p>© 2026 VENOM TECH • Built for Content Creators, Gamers & Traders.</p>
       <p style="margin-top: 8px;">
-        Source Code & Multi-Bot Supervisor on <a href="https://github.com/MykelGoal/Venom-scraper" target="_blank">GitHub</a>
+        Source Code on <a href="https://github.com/MykelGoal/Venom-scraper" target="_blank">GitHub</a>
       </p>
     </footer>
 
@@ -738,6 +627,53 @@ Type your prompt below and hit <b>Execute AI Analysis</b>...
       document.querySelector('.nitro-btn').innerHTML = nitro ? '💥 NITRO ACTIVE' : '🔥 NITRO MODE';
     }
 
+    function setHoloColor(color) {
+      playBleep(700, 0.1);
+      document.getElementById('holo-dot').style.background = color;
+      document.getElementById('holo-dot').style.boxShadow = `0 0 20px ${color}, 0 0 40px ${color}`;
+      document.getElementById('holo-ring').style.borderColor = color;
+    }
+
+    function downloadConfigPack() {
+      playBleep(1200, 0.2);
+      const content = `# ========================================================
+# VENOM AURA GAMING // PRO HEADSHOT CONFIG PACK (OB45/2026)
+# Generated via Venom AI Matrix
+# ========================================================
+[DEVICE_CALIBRATION]
+touch_polling_rate_hz=480
+touch_response_ms=1.2
+jitter_filter_enabled=true
+pointer_speed_multiplier=1.85
+
+[IN_GAME_SENSITIVITY]
+general_sensitivity=99
+red_dot_free_aim=97
+scope_2x_multiplier=94
+scope_4x_multiplier=90
+sniper_precision=62
+free_look_360=78
+
+[HUD_FIRE_BUTTON]
+fire_button_scale=44.0
+fire_button_pos_x=82.5
+fire_button_pos_y=22.0
+
+[HOLOGRAM_CROSSHAIR]
+crosshair_type="HOLOGRAM_NEON_DOT"
+anti_recoil_compensation=true
+`;
+      const blob = new Blob([content], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'venom_headshot_pack.cfg';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
     function quickAsk(text) {
       document.getElementById('ai-prompt').value = text;
       executeAI();
@@ -750,7 +686,7 @@ Type your prompt below and hit <b>Execute AI Analysis</b>...
 
       playBleep(750, 0.1);
       const screen = document.getElementById('ai-output');
-      screen.innerHTML = `🧠 <b>[VENOM NEURAL SCANNING]</b> Processing: "${query}"...\n⚡ Connecting to neural nodes & live market telemetry...`;
+      screen.innerHTML = `🧠 <b>[VENOM NEURAL SCANNING]</b> Processing: "${query}"...\n⚡ Calibrating OB45 Aim-Lock & Telemetry Matrix...`;
       
       input.value = '';
 
@@ -759,7 +695,9 @@ Type your prompt below and hit <b>Execute AI Analysis</b>...
         const lower = query.toLowerCase();
         let response = '';
 
-        if (lower.includes('m1887') || lower.includes('shotgun')) {
+        if (lower.includes('claw') || lower.includes('hud') || lower.includes('hologram') || lower.includes('finger')) {
+          response = `🔮 <b>VENOM HOLOGRAM HUD & PRO 4-FINGER CLAW MATRIX</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🎮 <b>Layout Style:</b> 4-Finger Master Tournament Claw\n🎯 <b>Hologram Laser Alignment:</b> Center Dot (+1.2mm Offset)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📐 <b>OPTIMAL BUTTON COORDINATES:</b>\n• Left Index: Fire Button & Gloo Wall Situp (Top Left: Size 95%)\n• Right Index: Jump & Scope 4X (Top Right: Size 80%)\n• Right Thumb: Aim Drag & Quick Weapon Switch (Bottom Right: Size 44%)\n• Left Thumb: Movement Joystick & Sprint (Bottom Left: Size 35%)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 <b>Pro Tip:</b> 0.1s instant Gloo Wall drop with left index situp key!`;
+        } else if (lower.includes('m1887') || lower.includes('shotgun')) {
           response = `💥 <b>ONE-TAP HEADSHOT GUIDE: M1887 SHOTGUN</b> 💥\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🎯 <b>Drag Technique:</b> V-Drag & Quick Weapon Switch (Speed: 0.2s)\n🔘 <b>Fire Button Size:</b> 44% (Position: Height 18%)\n🎯 <b>Crosshair Placement:</b>\n• Keep white crosshair near enemy feet, then do a sudden sharp V-Drag upward.\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n👑 <b>BEST CHARACTER SKILL COMBO:</b>\n• Tatsuya + Hayato + Kelly + Caroline (Max Shotgun Sprint Speed)\n🚀 100% Pure Red Damage Numbers • OB45 Update Calibrated`;
         } else if (lower.includes('deagle') || lower.includes('desert')) {
           response = `💥 <b>ONE-TAP HEADSHOT GUIDE: DESERT EAGLE</b> 💥\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🎯 <b>Drag Technique:</b> Straight Vertical J-Drag with Instant Thumb Release\n🔘 <b>Fire Button Size:</b> 46%\n🎯 <b>Crosshair Placement:</b>\n• Keep red crosshair beside chest level, then pull straight up instantly.\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n👑 <b>BEST CHARACTER SKILL COMBO:</b>\n• Alok / Tatsuya + Moco + Hayato + Kelly\n🚀 Zero Recoil Drag • Instant Knockdown`;
@@ -772,20 +710,18 @@ Type your prompt below and hit <b>Execute AI Analysis</b>...
         } else if (lower.includes('code') || lower.includes('redeem') || lower.includes('diamond')) {
           response = `🎁 <b>VENOM AI // DAILY FREE FIRE REDEEM CODES</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💎 <b>Active Server Codes (Global / ME / IND):</b>\n1. <code>FF92A8492</code> (Diamond Royale Voucher)\n2. <code>VNM481W92</code> (Gloowall Skin & Gun Crate)\n3. <code>FIRE49X829</code> (Incubator Token)\n4. <code>OB45829GEMS</code> (100x Free Diamonds)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📌 <b>Redemption Portal:</b> reward.ff.garena.com\n⚡ Codes refresh every 24 hours automatically!`;
         } else if (lower.includes('gold') || lower.includes('xau') || lower.includes('forex') || lower.includes('trade') || lower.includes('smc')) {
-          response = `🧠 <b>VENOM AI // INSTITUTIONAL SMC INTELLIGENCE</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📊 <b>Asset:</b> XAU/USD (Gold) @ $2,505.40\n🎯 <b>Neural Bias:</b> <b>BUY SETUP (BULLISH) 🟢</b>\n💰 <b>Optimal Entry Zone:</b> 2504.20 - 2506.50\n🛑 <b>Stop Loss:</b> 2493.40 (120 Pips)\n🎯 <b>Take Profit 1:</b> 2515.40 (+100 Pips)\n🎯 <b>Take Profit 2:</b> 2529.40 (+240 Pips)\n🎯 <b>Take Profit 3:</b> 2550.00 (Runner 🚀)\n📈 <b>Risk-to-Reward:</b> 1 : 3.5\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 <b>SMC Neural Breakdown:</b>\n• Asian session low liquidity sweep executed cleanly.\n• 15M Bullish Change of Character (CHoCH) inside H4 Demand Block.\n• High probability push into 2520+ imbalance during New York session.`;
-        } else if (lower.includes('predict') || lower.includes('chelsea') || lower.includes('man city') || lower.includes('arsenal') || lower.includes('match') || lower.includes('bet')) {
-          response = `🧠 <b>VENOM AI // MATCH INTELLIGENCE MATRIX</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n⚽ <b>Match:</b> Manchester City vs Crystal Palace\n🏆 <b>League:</b> Premier League England | 19:00 WAT\n🔥 <b>Confidence Rating:</b> 94.6% (Certified Banker)\n🎯 <b>Recommended Pick:</b> Away Win & Over 1.5 Goals\n📈 <b>Implied Odds:</b> @1.35 on 1XBET\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 <b>Neural Tactical Breakdown:</b>\n• Man City xG (Expected Goals) trending at 2.65 in last 4 matches.\n• Crystal Palace missing key central defensive anchor.\n• High value probability on 1XBET straight away win.`;
-        } else if (lower.includes('scraper') || lower.includes('telegram') || lower.includes('lead') || lower.includes('crypto')) {
-          response = `🧠 <b>VENOM AI // TELEGRAM MTPROTO LEAD MATRIX</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🔍 <b>Target:</b> Crypto & DeFi Active Developers\n👥 <b>Discovered Leads:</b> 12,480+ Active Profiles\n🛡️ <b>Safety Score:</b> 100% (Jitter & Anti-Flood Protected)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 <b>Lead Extraction Strategy:</b>\n• Indexed top public developer supergroups via @venomscraperbot.\n• Filtered out bots and inactive accounts (>30 days inactive).\n• Direct 1-click t.me profile links ready for direct outreach.`;
+          response = `⚡️ <b>VENOM FOREX VIP SIGNAL</b> ⚡️\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📊 <b>Asset:</b> XAU/USD (Gold) @ $2,505.40\n🎯 <b>Action:</b> <b>BUY NOW 🟢</b>\n💰 <b>Entry:</b> 2504.20 - 2506.60\n🛑 <b>Stop Loss:</b> 2493.40 (120 Pips)\n🎯 <b>TP1:</b> 2515.40 (+100 Pips)\n🎯 <b>TP2:</b> 2529.40 (+240 Pips)\n📈 <b>Risk/Reward:</b> 1 : 3.5`;
+        } else if (lower.includes('predict') || lower.includes('chelsea') || lower.includes('man city') || lower.includes('match')) {
+          response = `⚽️ <b>𝐏𝐫𝐞𝐝𝐢𝐜𝐭𝐢𝐨𝐧 𝐨𝐟 𝐭𝐡𝐞 𝐃𝐚𝐲</b> ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: Premier League England\n𝐌𝐚𝐭𝐜𝐡: Crystal Palace - Manchester City\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 19:00 WAT\n✅Away win\n✅Odds @1.26 on 1XBET`;
         } else {
-          response = `🧠 <b>VENOM AI // GENERAL INTELLIGENCE MATRIX</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n⚡ <b>Query Analyzed:</b> "${query}"\n🎯 <b>Neural Assessment:</b> Optimized (+1,000,000 AURA)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n• Venom AI continuously monitors live Forex/Crypto rates via CoinGecko & ECB.\n• Live Premier League & Champions League matches fetched from TheSportsDB.\n• Query @venomeaglebot or @venom_forex_signals_bot in Telegram for 24/7 automated slips!`;
+          response = `🧠 <b>VENOM AI // GENERAL INTELLIGENCE MATRIX</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n⚡ <b>Query Analyzed:</b> "${query}"\n🎯 <b>Status:</b> +1,000,000 AURA Active\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n• Free Fire OB45 Aim-Lock & One-Tap Sensi Engine Ready\n• Live Forex/Gold Signals synced with CoinGecko\n• Clean 1:1 EaglePredict match slips verified!`;
         }
 
         screen.innerHTML = response;
-      }, 600);
+      }, 500);
     }
 
-    // Particle Canvas
+    // Canvas particle engine
     const canvas = document.getElementById('aura-canvas');
     const ctx = canvas.getContext('2d');
     let width = (canvas.width = window.innerWidth);
@@ -797,7 +733,7 @@ Type your prompt below and hit <b>Execute AI Analysis</b>...
     });
 
     const particles = [];
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 35; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
@@ -824,19 +760,6 @@ Type your prompt below and hit <b>Execute AI Analysis</b>...
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
-          const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-          if (dist < 120) {
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * (1 - dist / 120)})`;
-            ctx.lineWidth = 0.5;
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.stroke();
-          }
-        }
       }
       requestAnimationFrame(renderParticles);
     }

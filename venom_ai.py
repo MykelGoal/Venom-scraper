@@ -6,13 +6,14 @@ import random
 from typing import Dict, List, Optional
 from gaming_engine import GamingSensiEngine
 from freefire_aimbot_engine import FreeFireAimEngine
+from config_pack_engine import ConfigPackEngine
 
 logger = logging.getLogger("VenomAIEngine")
 
 
 class VenomAIEngine:
     """
-    Venom AI — Advanced Neural Intelligence Engine for Trading, Betting, Gaming (Free Fire Aim-Lock & Sensi) & Community Growth.
+    Venom AI — Advanced Neural Intelligence Engine for Trading, Betting, Gaming (Free Fire Aim-Lock, Sensi & Hologram Configs) & Community Growth.
     """
 
     @classmethod
@@ -20,8 +21,27 @@ class VenomAIEngine:
         p = prompt.strip().lower()
         now_wat = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=1)).strftime("%d/%m/%Y | %H:%M WAT")
 
-        # 1. Free Fire Specific Aim-Lock, Weapons & Devices
-        if any(w in p for w in ["sensi", "freefire", "free fire", "headshot", "aimbot", "aimlock", "aim lock", "aim", "dpi", "m1887", "deagle", "woodpecker", "mp40", "ump"]):
+        # 1. Config Pack, Hologram HUD & Claw Layout
+        if any(w in p for w in ["config", "pack", "hologram", "hud", "claw", "file", "regedit", "calibration"]):
+            if any(w in p for w in ["hologram", "hud", "claw", "finger", "layout"]):
+                claw = "4_finger" if "4" in p else ("3_finger" if "3" in p else "2_finger")
+                return ConfigPackEngine.get_hologram_hud_guide(claw)
+            else:
+                device = "iPhone 15 Pro Max" if "iphone" in p else ("Samsung Galaxy S24" if "samsung" in p else "Android Pro Gaming Device")
+                content = ConfigPackEngine.generate_config_file_content(device)
+                return (
+                    f"📁 <b>VENOM HEADSHOT CONFIG PACK GENERATED</b>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                    f"📱 <b>Target Device:</b> {device}\n"
+                    f"🛡️ <b>Status:</b> 100% Safe Touch Hardware Profile\n"
+                    f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                    f"<pre>{content[:600]}...</pre>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                    f"⚡ Download full <code>.cfg</code> file directly from the AURA Web App or send <code>/config</code> in Telegram!"
+                )
+
+        # 2. Free Fire Specific Aim-Lock, Weapons & Sensi
+        elif any(w in p for w in ["sensi", "freefire", "free fire", "headshot", "aimbot", "aimlock", "aim lock", "aim", "dpi", "m1887", "deagle", "woodpecker", "mp40", "ump"]):
             if any(w in p for w in ["m1887", "shotgun", "deagle", "desert eagle", "woodpecker", "ac80", "mp40", "ump"]):
                 return FreeFireAimEngine.get_weapon_guide(p)
             elif "code" in p or "redeem" in p or "diamond" in p:
@@ -29,7 +49,7 @@ class VenomAIEngine:
             else:
                 return FreeFireAimEngine.get_device_config(p)
 
-        # 2. Football / Betting Query
+        # 3. Football / Betting Query
         elif any(w in p for w in ["predict", "match", "bet", "football", "arsenal", "chelsea", "man city", "madrid", "barcelona", "score", "odds", "slip"]):
             teams = ["Manchester City vs Chelsea", "Real Madrid vs Barcelona", "Bayern Munich vs Dortmund", "Arsenal vs Liverpool", "PSG vs Marseille"]
             match = random.choice(teams)
@@ -52,7 +72,7 @@ class VenomAIEngine:
                 f"👑 Verified by Venom AI Engine"
             )
 
-        # 3. Forex / Gold / Trading Query
+        # 4. Forex / Gold / Trading Query
         elif any(w in p for w in ["gold", "xauusd", "forex", "btc", "bitcoin", "crypto", "smc", "trade", "buy", "sell", "pip", "order block"]):
             asset = "XAU/USD (Gold)" if "gold" in p or "xau" in p else ("BTC/USD (Bitcoin)" if "btc" in p or "crypto" in p else "EUR/USD")
             action = random.choice(["BULLISH (BUY SETUP) 🟢", "BEARISH (SELL SETUP) 🔴"])
@@ -72,7 +92,7 @@ class VenomAIEngine:
                 f"🚀 Execute with strict 1-2% capital risk management."
             )
 
-        # 4. Community / Scraper Query
+        # 5. Community / Scraper Query
         elif any(w in p for w in ["scraper", "telegram", "group", "member", "leads", "extract", "find"]):
             return (
                 f"🧠 <b>VENOM AI // MTPROTO COMMUNITY MATRIX</b>\n"
@@ -87,7 +107,7 @@ class VenomAIEngine:
                 f"⚡ Venom Scraper Protocol Active."
             )
 
-        # 5. General AI Assistant Query
+        # 6. General AI Assistant Query
         else:
             return (
                 f"🧠 <b>VENOM AI SYSTEM ACTIVE // AURA V2.0</b>\n"
@@ -96,9 +116,9 @@ class VenomAIEngine:
                 f"🎯 <b>Status:</b> Neural Matrix Optimized (AURA +1,000,000)\n"
                 f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
                 f"Venom AI is actively monitoring:\n"
-                f"• 🎮 Free Fire 100% Headshot Sensi (OB45/OB46), DPI & One-Tap Weapon Guides\n"
+                f"• 🎮 Free Fire Aim-Lock, Sensi, Hologram HUD & Config Packs\n"
                 f"• ⚽ Real-time football match fixtures & xG analytics\n"
                 f"• 📈 Live institutional Forex, Gold & Crypto SMC setups\n"
                 f"• 🔍 MTProto Telegram community member directories\n\n"
-                f"Ask me about any Game Sensi (e.g. 'M1887 One Tap' or 'Sensi Samsung A54'), Match, or Trading Pair!"
+                f"Ask me about any Config (e.g. 'Generate Free Fire Config Pack' or '4-Finger Hologram HUD'), Match, or Trade!"
             )
