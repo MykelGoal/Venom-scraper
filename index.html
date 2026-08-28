@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VENOM TECH — Next-Gen Telegram Intelligence & VIP Trading Network</title>
-  <meta name="description" content="Institutional Forex SMC Signals, 100% Clean EaglePredict Match Intelligence, and High-Speed Telegram Member Discovery Ecosystem." />
-  
+  <title>VENOM TECH // ULTIMATE AURA ECOSYSTEM</title>
+  <meta name="description" content="+1,000,000 AURA Telegram Intelligence & VIP Trading Ecosystem. EaglePredict AI, SMC Forex Signals & High-Speed Member Discovery." />
+
   <style>
     :root {
-      --bg-dark: #080c10;
-      --bg-card: #0f172a;
-      --bg-card-hover: #1e293b;
-      --accent-green: #10b981;
-      --accent-green-glow: rgba(16, 185, 129, 0.25);
-      --accent-cyan: #06b6d4;
-      --accent-gold: #f59e0b;
-      --accent-purple: #8b5cf6;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --border-color: rgba(255, 255, 255, 0.08);
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --bg-black: #030712;
+      --bg-card: rgba(15, 23, 42, 0.7);
+      --bg-card-hover: rgba(30, 41, 59, 0.85);
+      --aura-green: #10b981;
+      --aura-cyan: #06b6d4;
+      --aura-purple: #a855f7;
+      --aura-gold: #f59e0b;
+      --aura-pink: #ec4899;
+      --text-glow: 0 0 20px rgba(16, 185, 129, 0.6);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
     }
 
     * {
@@ -27,37 +26,121 @@
       margin: 0;
       padding: 0;
       font-family: var(--font-sans);
+      user-select: none;
     }
 
     body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      line-height: 1.6;
+      background-color: var(--bg-black);
+      color: #f8fafc;
+      line-height: 1.5;
       overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
     }
 
-    /* Ambient Background Glow */
-    .glow-orb {
+    /* Interactive Background Canvas */
+    #aura-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Ambient Aurora Orbs */
+    .aurora-orb {
       position: absolute;
-      width: 500px;
-      height: 500px;
       border-radius: 50%;
       filter: blur(140px);
       z-index: 0;
       pointer-events: none;
-      opacity: 0.15;
+      opacity: 0.22;
+      animation: float-orb 18s ease-in-out infinite alternate;
     }
-    .orb-1 { top: -100px; left: -100px; background: var(--accent-green); }
-    .orb-2 { top: 30%; right: -150px; background: var(--accent-cyan); }
-    .orb-3 { bottom: 10%; left: 20%; background: var(--accent-purple); }
+    .orb-1 { width: 550px; height: 550px; background: var(--aura-green); top: -150px; left: -100px; }
+    .orb-2 { width: 600px; height: 600px; background: var(--aura-cyan); top: 35%; right: -200px; animation-duration: 22s; }
+    .orb-3 { width: 500px; height: 500px; background: var(--aura-purple); bottom: -100px; left: 25%; animation-duration: 26s; }
 
-    /* Container */
+    @keyframes float-orb {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(60px, 40px) scale(1.15); }
+      100% { transform: translate(-40px, 80px) scale(0.95); }
+    }
+
+    /* Nitro Mode Screen Shake & Pulse */
+    body.nitro-active {
+      animation: nitro-pulse 1.2s infinite alternate;
+    }
+    body.nitro-active .aurora-orb {
+      opacity: 0.45;
+      filter: blur(100px);
+    }
+    body.nitro-active .nitro-badge {
+      animation: nitro-rainbow 1s linear infinite;
+    }
+
+    @keyframes nitro-rainbow {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    /* Grid Overlay */
+    .grid-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
     .container {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 0 24px;
       position: relative;
-      z-index: 1;
+      z-index: 2;
+    }
+
+    /* Live Ticker Tape */
+    .ticker-tape {
+      background: rgba(15, 23, 42, 0.9);
+      border-bottom: 1px solid var(--card-border);
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+
+    .ticker-content {
+      display: inline-block;
+      animation: ticker 30s linear infinite;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-right: 36px;
+    }
+    .up { color: var(--aura-green); }
+    .down { color: #f43f5e; }
+
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     /* Navbar */
@@ -65,660 +148,767 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--border-color);
+      padding: 22px 0;
+      border-bottom: 1px solid var(--card-border);
     }
 
-    .logo {
+    .brand-logo {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: #fff;
       text-decoration: none;
+      color: #fff;
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: -0.5px;
     }
 
-    .logo-badge {
-      background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
-      padding: 6px 10px;
-      border-radius: 8px;
-      font-size: 14px;
+    .aura-chip {
+      background: linear-gradient(135deg, var(--aura-green), var(--aura-cyan));
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
       font-weight: 900;
       color: #000;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
     }
 
-    .nav-links {
+    .nav-actions {
       display: flex;
-      gap: 28px;
-      list-style: none;
+      align-items: center;
+      gap: 16px;
     }
 
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
+    .nitro-btn {
+      background: linear-gradient(135deg, #f59e0b, #ec4899);
+      border: none;
       color: #fff;
-    }
-
-    .nav-btn {
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: #fff;
-      padding: 10px 20px;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 8px 16px;
       border-radius: 30px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      box-shadow: 0 0 20px var(--accent-green-glow);
-      transition: transform 0.2s, box-shadow 0.2s;
+      gap: 6px;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+      transition: all 0.2s;
+    }
+    .nitro-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(236, 72, 153, 0.6);
     }
 
-    .nav-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+    .login-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      font-weight: 700;
+      font-size: 13.5px;
+      padding: 8px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .login-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: #fff;
     }
 
     /* Hero Section */
     .hero {
       text-align: center;
-      padding: 80px 0 60px;
+      padding: 70px 0 50px;
     }
 
-    .hero-badge {
+    .aura-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 6px 16px;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 6px 18px;
       border-radius: 30px;
       font-size: 13px;
-      font-weight: 600;
-      color: var(--accent-green);
+      font-weight: 800;
+      color: var(--aura-green);
       margin-bottom: 24px;
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.2);
     }
 
-    .hero-badge span {
+    .aura-pill span {
       width: 8px;
       height: 8px;
-      background: var(--accent-green);
+      background: var(--aura-green);
       border-radius: 50%;
-      box-shadow: 0 0 8px var(--accent-green);
-      animation: pulse 2s infinite;
+      box-shadow: 0 0 10px var(--aura-green);
+      animation: beacon 1.5s infinite;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.3); }
+    @keyframes beacon {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.5; }
     }
 
     .hero h1 {
-      font-size: 56px;
+      font-size: 64px;
       font-weight: 900;
-      line-height: 1.15;
-      letter-spacing: -1.5px;
-      margin-bottom: 20px;
-      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 10%, #a7f3d0 50%, var(--aura-cyan) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-cyan) 100%);
+    .aura-gradient {
+      background: linear-gradient(135deg, var(--aura-green) 0%, #38bdf8 50%, #a855f7 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 30px rgba(16, 185, 129, 0.4));
     }
 
     .hero p {
-      font-size: 19px;
-      color: var(--text-muted);
-      max-width: 720px;
-      margin: 0 auto 36px;
+      font-size: 20px;
+      color: #94a3b8;
+      max-width: 780px;
+      margin: 0 auto 38px;
+      font-weight: 400;
     }
 
-    .hero-cta {
+    .hero-buttons {
       display: flex;
       justify-content: center;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 48px;
+      margin-bottom: 50px;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent-green), #059669);
-      color: #fff;
-      padding: 14px 28px;
-      border-radius: 12px;
+    .btn-aura {
+      background: linear-gradient(135deg, var(--aura-green), #059669);
+      color: #000;
+      font-weight: 900;
       font-size: 16px;
-      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: 14px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 0 25px var(--accent-green-glow);
-      transition: all 0.2s;
+      box-shadow: 0 0 35px rgba(16, 185, 129, 0.4);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .btn-aura:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 50px rgba(16, 185, 129, 0.65);
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 35px rgba(16, 185, 129, 0.45);
-    }
-
-    .btn-secondary {
+    .btn-glass {
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--card-border);
       color: #fff;
-      padding: 14px 28px;
-      border-radius: 12px;
+      font-weight: 800;
       font-size: 16px;
-      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: 14px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      transition: all 0.2s;
+      backdrop-filter: blur(12px);
+      transition: all 0.25s;
+    }
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
     }
 
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    /* Live Stat Counters */
-    .stat-strip {
+    /* Live HUD Stats */
+    .hud-stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
       padding: 24px;
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
       margin-bottom: 80px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
 
-    .stat-item {
+    .hud-box {
       text-align: center;
-      border-right: 1px solid var(--border-color);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .stat-item:last-child {
+    .hud-box:last-child {
       border-right: none;
     }
 
-    .stat-num {
-      font-size: 32px;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -0.5px;
+    .hud-num {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -1px;
     }
-    .stat-num.green { color: var(--accent-green); }
-    .stat-num.cyan { color: var(--accent-cyan); }
-    .stat-num.gold { color: var(--accent-gold); }
+    .hud-num.green { color: var(--aura-green); text-shadow: var(--text-glow); }
+    .hud-num.cyan { color: var(--aura-cyan); }
+    .hud-num.gold { color: var(--aura-gold); }
+    .hud-num.purple { color: var(--aura-purple); }
 
-    .stat-label {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-weight: 500;
-      margin-top: 4px;
+    .hud-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #94a3b8;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
+      margin-top: 4px;
     }
 
-    /* Bot Ecosystem Cards Grid */
-    .section-title {
+    /* 3D Interactive Card Showcase */
+    .section-header {
       text-align: center;
       margin-bottom: 48px;
     }
 
-    .section-title h2 {
-      font-size: 38px;
-      font-weight: 800;
+    .section-header h2 {
+      font-size: 42px;
+      font-weight: 900;
       letter-spacing: -1px;
       margin-bottom: 12px;
     }
 
-    .section-title p {
-      color: var(--text-muted);
-      font-size: 16px;
+    .section-header p {
+      color: #94a3b8;
+      font-size: 17px;
     }
 
-    .bot-grid {
+    .cards-3d-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
+      perspective: 1000px;
       margin-bottom: 90px;
     }
 
-    .bot-card {
+    .aura-card {
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 32px 24px;
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 36px 28px;
+      backdrop-filter: blur(20px);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
-      transition: all 0.3s;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
-    .bot-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(16, 185, 129, 0.4);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .card-badge {
+    .aura-card::before {
+      content: "";
       position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-      text-transform: uppercase;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
     }
 
-    .badge-green { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3); }
-    .badge-cyan { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); border: 1px solid rgba(6, 182, 212, 0.3); }
-    .badge-gold { background: rgba(245, 158, 11, 0.15); color: var(--accent-gold); border: 1px solid rgba(245, 158, 11, 0.3); }
-
-    .card-icon {
-      font-size: 36px;
-      margin-bottom: 20px;
+    .aura-card:hover {
+      transform: translateY(-8px) rotateX(4deg) rotateY(-2deg);
+      border-color: rgba(16, 185, 129, 0.5);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(16, 185, 129, 0.25);
+    }
+    .aura-card:hover::before {
+      opacity: 1;
     }
 
-    .bot-card h3 {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .bot-card .handle {
-      font-size: 14px;
-      color: var(--accent-cyan);
-      font-weight: 600;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .bot-card p {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 24px;
-      line-height: 1.6;
-    }
-
-    .feature-list {
-      list-style: none;
-      margin-bottom: 28px;
-    }
-
-    .feature-list li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13.5px;
-      color: #e2e8f0;
-      margin-bottom: 10px;
-    }
-
-    .feature-list li span {
-      color: var(--accent-green);
-      font-weight: bold;
-    }
-
-    .card-btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: 12px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--border-color);
-      color: #fff;
-      font-weight: 700;
-      font-size: 14px;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .card-btn:hover {
-      background: var(--accent-green);
-      color: #000;
-      border-color: var(--accent-green);
-    }
-
-    /* Live Interactive Terminal Simulator */
-    .simulator-box {
-      background: #0b1120;
-      border: 1px solid var(--border-color);
-      border-radius: 24px;
-      padding: 36px;
-      margin-bottom: 90px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-    }
-
-    .sim-header {
+    .card-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 24px;
+    }
+
+    .card-icon {
+      font-size: 44px;
+      filter: drop-shadow(0 0 16px rgba(16, 185, 129, 0.5));
+    }
+
+    .card-tag {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .tag-green { background: rgba(16, 185, 129, 0.15); color: var(--aura-green); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .tag-cyan { background: rgba(6, 182, 212, 0.15); color: var(--aura-cyan); border: 1px solid rgba(6, 182, 212, 0.3); }
+    .tag-purple { background: rgba(168, 85, 247, 0.15); color: var(--aura-purple); border: 1px solid rgba(168, 85, 247, 0.3); }
+
+    .aura-card h3 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .bot-link {
+      color: var(--aura-cyan);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .aura-card p {
+      color: #94a3b8;
+      font-size: 14.5px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .card-specs {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+    .card-specs li {
+      font-size: 13.5px;
+      color: #e2e8f0;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-specs li b {
+      color: var(--aura-green);
+    }
+
+    .open-bot-btn {
+      width: 100%;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .open-bot-btn:hover {
+      background: var(--aura-green);
+      color: #000;
+      border-color: var(--aura-green);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+    }
+
+    /* Live Interactive Terminal & Video Creator HUD */
+    .terminal-container {
+      background: #020617;
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 90px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+      position: relative;
+    }
+
+    .term-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
       flex-wrap: wrap;
       gap: 16px;
     }
 
-    .sim-tabs {
+    .term-tabs {
       display: flex;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.05);
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.04);
       padding: 6px;
-      border-radius: 12px;
+      border-radius: 14px;
     }
 
-    .tab-btn {
+    .t-tab {
       background: transparent;
       border: none;
-      color: var(--text-muted);
+      color: #94a3b8;
+      font-weight: 700;
+      font-size: 13.5px;
       padding: 8px 18px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 14px;
+      border-radius: 10px;
       cursor: pointer;
       transition: all 0.2s;
     }
-
-    .tab-btn.active {
-      background: var(--accent-green);
+    .t-tab.active {
+      background: var(--aura-green);
       color: #000;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
     }
 
-    .terminal-window {
-      background: #020617;
+    .term-screen {
+      background: #000000;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      padding: 24px;
-      font-family: monospace;
+      border-radius: 16px;
+      padding: 28px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       color: #38bdf8;
-      font-size: 14.5px;
-      line-height: 1.7;
-      min-height: 380px;
+      font-size: 15px;
+      line-height: 1.8;
+      min-height: 420px;
       white-space: pre-wrap;
       overflow-x: auto;
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.9);
       position: relative;
     }
 
-    .terminal-topbar {
+    .rec-badge {
+      position: absolute;
+      top: 16px;
+      right: 20px;
       display: flex;
+      align-items: center;
       gap: 8px;
-      margin-bottom: 16px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.1);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(239, 68, 68, 0.3);
     }
-
-    .dot {
-      width: 12px;
-      height: 12px;
+    .rec-dot {
+      width: 8px;
+      height: 8px;
+      background: #ef4444;
       border-radius: 50%;
+      animation: beacon 1s infinite;
     }
-    .dot-red { background: #ef4444; }
-    .dot-yellow { background: #f59e0b; }
-    .dot-green { background: #10b981; }
 
-    .action-row {
+    .term-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-top: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    .action-btn {
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: #fff;
+    .sound-synth-btn {
+      background: linear-gradient(135deg, var(--aura-green), #059669);
+      color: #000;
+      font-weight: 900;
+      font-size: 14px;
+      padding: 12px 24px;
+      border-radius: 10px;
       border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 14px;
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.3);
       transition: all 0.2s;
     }
-
-    .action-btn:hover {
-      filter: brightness(1.15);
-      transform: translateY(-1px);
+    .sound-synth-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 35px rgba(16, 185, 129, 0.6);
     }
 
-    /* VIP Pricing Section */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-bottom: 90px;
+    /* Interactive VIP Login Modal */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(14px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
     }
 
-    .pricing-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 36px 28px;
-      position: relative;
+    .modal-card {
+      background: #0b1120;
+      border: 1px solid var(--aura-green);
+      box-shadow: 0 0 60px rgba(16, 185, 129, 0.3);
+      border-radius: 24px;
+      padding: 40px;
+      max-width: 460px;
+      width: 100%;
       text-align: center;
+      position: relative;
+      animation: modal-enter 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes modal-enter {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .fingerprint-scanner {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      border: 2px dashed var(--aura-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      cursor: pointer;
+      position: relative;
       transition: all 0.3s;
     }
-
-    .pricing-card.featured {
-      border-color: var(--accent-green);
-      background: linear-gradient(180deg, rgba(16, 185, 129, 0.08) 0%, var(--bg-card) 100%);
-      transform: scale(1.04);
-      box-shadow: 0 0 35px var(--accent-green-glow);
+    .fingerprint-scanner:hover {
+      box-shadow: 0 0 30px var(--aura-green);
+      transform: scale(1.05);
     }
 
-    .pricing-card h4 {
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-
-    .price {
-      font-size: 42px;
-      font-weight: 900;
+    .modal-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      padding: 14px;
+      border-radius: 12px;
       color: #fff;
-      margin: 16px 0;
+      font-size: 15px;
+      margin-bottom: 16px;
+      outline: none;
+      text-align: center;
     }
-
-    .price span {
-      font-size: 16px;
-      color: var(--text-muted);
-      font-weight: normal;
+    .modal-input:focus {
+      border-color: var(--aura-green);
     }
 
     /* Footer */
     footer {
-      border-top: 1px solid var(--border-color);
-      padding: 48px 0;
+      border-top: 1px solid var(--card-border);
+      padding: 50px 0;
       text-align: center;
-      color: var(--text-muted);
+      color: #64748b;
       font-size: 14px;
     }
-
     footer a {
-      color: var(--accent-green);
+      color: var(--aura-green);
       text-decoration: none;
+      font-weight: 700;
     }
 
-    @media (max-width: 900px) {
-      .hero h1 { font-size: 38px; }
-      .bot-grid, .pricing-grid, .stat-strip { grid-template-columns: 1fr; }
-      .stat-item { border-right: none; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
-      .nav-links { display: none; }
-      .pricing-card.featured { transform: scale(1); }
+    @media (max-width: 960px) {
+      .hero h1 { font-size: 40px; }
+      .cards-3d-grid, .hud-stats { grid-template-columns: 1fr; }
+      .hud-box { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 14px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Ambient background glow elements -->
-  <div class="glow-orb orb-1"></div>
-  <div class="glow-orb orb-2"></div>
-  <div class="glow-orb orb-3"></div>
+  <!-- Particle canvas for high-end particle network animation -->
+  <canvas id="aura-canvas"></canvas>
+
+  <!-- Background Glows -->
+  <div class="grid-bg"></div>
+  <div class="aurora-orb orb-1"></div>
+  <div class="aurora-orb orb-2"></div>
+  <div class="aurora-orb orb-3"></div>
+
+  <!-- Live Market Ticker Tape -->
+  <div class="ticker-tape">
+    <div class="ticker-content" id="ticker-live">
+      <span class="ticker-item">🟢 <b>XAU/USD (Gold):</b> $2,505.40 <span class="up">(+1.2%)</span></span>
+      <span class="ticker-item">⚡ <b>BTC/USD:</b> $79,500.00 <span class="up">(+4.8%)</span></span>
+      <span class="ticker-item">📊 <b>EUR/USD:</b> 1.0850 <span class="up">(+0.35%)</span></span>
+      <span class="ticker-item">🦅 <b>Eagle Prediction Accuracy:</b> 94.2% <span class="up">(Verified)</span></span>
+      <span class="ticker-item">⚽ <b>Premier League:</b> Man City vs Crystal Palace 19:00 WAT</span>
+      <span class="ticker-item">👑 <b>Active VIP Members:</b> 4,290+ <span class="up">(Live)</span></span>
+      <!-- Loop duplicate for infinite animation -->
+      <span class="ticker-item">🟢 <b>XAU/USD (Gold):</b> $2,505.40 <span class="up">(+1.2%)</span></span>
+      <span class="ticker-item">⚡ <b>BTC/USD:</b> $79,500.00 <span class="up">(+4.8%)</span></span>
+      <span class="ticker-item">📊 <b>EUR/USD:</b> 1.0850 <span class="up">(+0.35%)</span></span>
+    </div>
+  </div>
 
   <div class="container">
     
     <!-- Navbar -->
     <nav>
-      <a href="#" class="logo">
-        <span class="logo-badge">VENOM</span>
-        TECH ECOSYSTEM
+      <a href="#" class="brand-logo">
+        <span class="aura-chip">AURA</span>
+        VENOM TECH
       </a>
-      <ul class="nav-links">
-        <li><a href="#bots">Micro-Bots</a></li>
-        <li><a href="#simulator">Live Feed Demo</a></li>
-        <li><a href="#pricing">VIP Access</a></li>
-        <li><a href="https://github.com/MykelGoal/Venom-scraper" target="_blank">GitHub</a></li>
-      </ul>
-      <a href="https://t.me/venomeaglebot" target="_blank" class="nav-btn">
-        <span>⚡ Launch Telegram Bot</span>
-      </a>
+      <div class="nav-actions">
+        <button class="nitro-btn" onclick="toggleNitro()">
+          🔥 NITRO MODE
+        </button>
+        <button class="login-btn" onclick="openModal()">
+          🔒 VIP Portal
+        </button>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-      <div class="hero-badge">
-        <span></span> LIVE TELEGRAM INTELLIGENCE NETWORK
+      <div class="aura-pill">
+        <span></span> +1,000,000 AURA TELEGRAM NETWORK
       </div>
       <h1>
-        High-Converting Telegram Bots<br />
-        Built For <span class="highlight">Maximum Accuracy & Profit</span>
+        Next-Level Telegram Intelligence<br />
+        <span class="gradient-text">Engineered For </span>
+        <span class="aura-gradient">High Precision</span>
       </h1>
       <p>
-        Experience clean EaglePredict football match bankers, institutional SMC Forex setups, and deep Telegram member directory discovery in one ultra-fast ecosystem.
+        The definitive multi-bot ecosystem powering official EaglePredict football bankers, institutional SMC Forex setups, and deep MTProto community discovery.
       </p>
-      
-      <div class="hero-cta">
-        <a href="https://t.me/venomeaglebot" target="_blank" class="btn-primary">
-          ⚽ Get Eagle Predictions
+
+      <div class="hero-buttons">
+        <a href="https://t.me/venomeaglebot" target="_blank" class="btn-aura" onclick="playClickSound()">
+          ⚽ Launch Eagle Predictor
         </a>
-        <a href="https://t.me/venom_forex_signals_bot" target="_blank" class="btn-secondary">
-          📈 Access Forex VIP Signals
+        <a href="https://t.me/venom_forex_signals_bot" target="_blank" class="btn-glass" onclick="playClickSound()">
+          ⚡ Open Forex VIP Bot
         </a>
-        <a href="https://t.me/venomscraperbot" target="_blank" class="btn-secondary">
-          🔍 Open Directory Scraper
+        <a href="https://t.me/venomscraperbot" target="_blank" class="btn-glass" onclick="playClickSound()">
+          🔍 Group Directory Scraper
         </a>
       </div>
 
-      <!-- Stat Strip -->
-      <div class="stat-strip">
-        <div class="stat-item">
-          <div class="stat-num green">94.2%</div>
-          <div class="stat-label">Daily Match Accuracy</div>
+      <!-- Live HUD Stats -->
+      <div class="hud-stats">
+        <div class="hud-box">
+          <div class="hud-num green" id="stat-acc">94.2%</div>
+          <div class="hud-label">Daily Match Accuracy</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-num cyan">+1,850</div>
-          <div class="stat-label">Avg Weekly Forex Pips</div>
+        <div class="hud-box">
+          <div class="hud-num cyan">+1,850</div>
+          <div class="hud-label">Weekly Forex Pips</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-num gold">100%</div>
-          <div class="stat-label">Live Verified Feeds</div>
+        <div class="hud-box">
+          <div class="hud-num gold">3 BOTS</div>
+          <div class="hud-label">Specialized Fleet</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-num">24/7</div>
-          <div class="stat-label">Channel Auto-Broadcaster</div>
+        <div class="hud-box">
+          <div class="hud-num purple">24/7</div>
+          <div class="hud-label">Auto-Broadcaster</div>
         </div>
       </div>
     </section>
 
-    <!-- Micro-Bots Section -->
-    <section id="bots">
-      <div class="section-title">
-        <h2>The Venom Micro-Bot Fleet</h2>
-        <p>Single-purpose, high-speed micro-bots engineered for maximum conversion</p>
+    <!-- 3D Bot Showcase -->
+    <section>
+      <div class="section-header">
+        <h2>Specialized Micro-Bot Fleet</h2>
+        <p>Single-purpose bots optimized for high accuracy, zero clutter, and viral channel growth</p>
       </div>
 
-      <div class="bot-grid">
+      <div class="cards-3d-grid">
         
-        <!-- Bot 1: Eagle Predictions -->
-        <div class="bot-card">
-          <div class="card-badge badge-green">1:1 Eagle Format</div>
-          <div class="card-icon">🦅</div>
-          <h3>Venom Eagle Predictions</h3>
-          <span class="handle">@venomeaglebot</span>
-          <p>Official 1:1 clean daily bankers and match intelligence. WAT kickoff timestamps and 1XBET odds calculation.</p>
-          <ul class="feature-list">
-            <li><span>✓</span> Clean Unicode Typography (No spam)</li>
-            <li><span>✓</span> Live Premier League, La Liga & UCL fixtures</li>
-            <li><span>✓</span> Auto-Poster for Betting Channels</li>
-          </ul>
-          <a href="https://t.me/venomeaglebot" target="_blank" class="card-btn">Open @venomeaglebot ➔</a>
+        <!-- Eagle Predictions -->
+        <div class="aura-card">
+          <div>
+            <div class="card-top">
+              <div class="card-icon">🦅</div>
+              <span class="card-tag tag-green">1:1 Eagle Format</span>
+            </div>
+            <h3>Venom Eagle Predictions</h3>
+            <a href="https://t.me/venomeaglebot" target="_blank" class="bot-link">@venomeaglebot</a>
+            <p>Official 1:1 clean daily banker slips and match intelligence. WAT kickoff timestamps and 1XBET odds calculation.</p>
+            <ul class="card-specs">
+              <li><b>✓</b> Clean Unicode Bold (No spam booking codes)</li>
+              <li><b>✓</b> Live Premier League, La Liga & UCL feeds</li>
+              <li><b>✓</b> Auto-broadcaster for betting channels</li>
+            </ul>
+          </div>
+          <a href="https://t.me/venomeaglebot" target="_blank" class="open-bot-btn" onclick="playClickSound()">Open @venomeaglebot ➔</a>
         </div>
 
-        <!-- Bot 2: Forex Signals -->
-        <div class="bot-card">
-          <div class="card-badge badge-cyan">Institutional SMC</div>
-          <div class="card-icon">⚡</div>
-          <h3>Venom Forex VIP Signals</h3>
-          <span class="handle">@venom_forex_signals_bot</span>
-          <p>Smart Money Concepts (SMC) signals for Gold (XAUUSD), EURUSD, and Bitcoin with live market entries and pip stops.</p>
-          <ul class="feature-list">
-            <li><span>✓</span> Live CoinGecko & ECB Real-Time Feed</li>
-            <li><span>✓</span> Exact Entry, SL, TP1, TP2, TP3 (1:3+ RR)</li>
-            <li><span>✓</span> Order Block & Liquidity Sweep Insights</li>
-          </ul>
-          <a href="https://t.me/venom_forex_signals_bot" target="_blank" class="card-btn">Open @venom_forex_signals_bot ➔</a>
+        <!-- Forex Signals -->
+        <div class="aura-card">
+          <div>
+            <div class="card-top">
+              <div class="card-icon">⚡</div>
+              <span class="card-tag tag-cyan">Institutional SMC</span>
+            </div>
+            <h3>Venom Forex VIP Signals</h3>
+            <a href="https://t.me/venom_forex_signals_bot" target="_blank" class="bot-link">@venom_forex_signals_bot</a>
+            <p>Smart Money Concepts signals for Gold (XAU/USD), EUR/USD, and Bitcoin with live market entry zones and tight pip stops.</p>
+            <ul class="card-specs">
+              <li><b>✓</b> Real-time ECB & CoinGecko live feed</li>
+              <li><b>✓</b> Exact Entry, SL, TP1–TP3 (1:3+ RR)</li>
+              <li><b>✓</b> Automated 4-hour channel broadcaster</li>
+            </ul>
+          </div>
+          <a href="https://t.me/venom_forex_signals_bot" target="_blank" class="open-bot-btn" onclick="playClickSound()">Open @venom_forex_signals_bot ➔</a>
         </div>
 
-        <!-- Bot 3: Scraper & Directory -->
-        <div class="bot-card">
-          <div class="card-badge badge-gold">MTProto Indexer</div>
-          <div class="card-icon">🔍</div>
-          <h3>Venom Scraper Directory</h3>
-          <span class="handle">@venomscraperbot</span>
-          <p>Instant niche discovery and user search across indexed public crypto, gaming, betting, and trading communities.</p>
-          <ul class="feature-list">
-            <li><span>✓</span> Jitter & FloodWait MTProto Protection</li>
-            <li><span>✓</span> Interactive Inline Search Bar</li>
-            <li><span>✓</span> Direct Clickable t.me Profile Links</li>
-          </ul>
-          <a href="https://t.me/venomscraperbot" target="_blank" class="card-btn">Open @venomscraperbot ➔</a>
+        <!-- Scraper -->
+        <div class="aura-card">
+          <div>
+            <div class="card-top">
+              <div class="card-icon">🔍</div>
+              <span class="card-tag tag-purple">MTProto Discovery</span>
+            </div>
+            <h3>Venom Scraper Directory</h3>
+            <a href="https://t.me/venomscraperbot" target="_blank" class="bot-link">@venomscraperbot</a>
+            <p>High-speed public group member indexer with jittered rate limiting and instant searchable interactive directory.</p>
+            <ul class="card-specs">
+              <li><b>✓</b> FloodWait & Jitter backoff safety</li>
+              <li><b>✓</b> Inline interactive search bar</li>
+              <li><b>✓</b> Direct clickable t.me profile links</li>
+            </ul>
+          </div>
+          <a href="https://t.me/venomscraperbot" target="_blank" class="open-bot-btn" onclick="playClickSound()">Open @venomscraperbot ➔</a>
         </div>
 
       </div>
     </section>
 
-    <!-- Live Interactive Simulator Section -->
-    <section id="simulator">
-      <div class="section-title">
+    <!-- Interactive Terminal Simulator (Perfect for Screen Recording / YouTube Content) -->
+    <section>
+      <div class="section-header">
         <h2>Live Intelligence Simulator</h2>
-        <p>Preview live signals and predictions exactly as they appear in Telegram channels</p>
+        <p>Interactive real-time feed simulator for screen recording and YouTube / TikTok videos</p>
       </div>
 
-      <div class="simulator-box">
-        <div class="sim-header">
-          <div class="sim-tabs">
-            <button class="tab-btn active" onclick="switchTab('football')">⚽ Football Predictions (Eagle Style)</button>
-            <button class="tab-btn" onclick="switchTab('forex')">⚡ Forex & Gold Signals (SMC)</button>
-            <button class="tab-btn" onclick="switchTab('directory')">🔍 Scraper Directory Search</button>
-          </div>
-          <div class="live-tag" style="color: var(--accent-green); font-size: 13px; font-weight: 700;">
-            ● LIVE REAL-TIME FEED
+      <div class="terminal-container">
+        <div class="rec-badge">
+          <div class="rec-dot"></div> REC HUD LIVE
+        </div>
+
+        <div class="term-controls">
+          <div class="term-tabs">
+            <button class="t-tab active" onclick="setSimTab('football')">⚽ Football Predictions (Eagle Format)</button>
+            <button class="t-tab" onclick="setSimTab('forex')">⚡ Forex & Gold Signals (SMC)</button>
+            <button class="t-tab" onclick="setSimTab('directory')">🔍 Directory Scraper Search</button>
           </div>
         </div>
 
-        <div class="terminal-window" id="terminal-screen">
-          <div class="terminal-topbar">
-            <div class="dot dot-red"></div>
-            <div class="dot dot-yellow"></div>
-            <div class="dot dot-green"></div>
-          </div>
-          <div id="output-content">
+        <div class="term-screen" id="term-display">
 ⚽️ <b>𝐏𝐫𝐞𝐝𝐢𝐜𝐭𝐢𝐨𝐧 𝐨𝐟 𝐭𝐡𝐞 𝐃𝐚𝐲</b> ⚽️
 𝐃𝐚𝐭𝐞: 28/08/2026
 𝐋𝐞𝐚𝐠𝐮𝐞: Premier League England
@@ -752,123 +942,205 @@
 ✅Odds @1.26 on 1XBET
 
 For more football predictions, please visit @venomeaglebot
-          </div>
         </div>
 
-        <div class="action-row">
-          <span style="color: var(--text-muted); font-size: 13px;">Real-time feed simulator powered by Venom Analytics Engine</span>
-          <button class="action-btn" onclick="generateNewLive()">
-            🔄 Generate Fresh Setup
+        <div class="term-footer">
+          <span style="color: #64748b; font-size: 13px;">● Venom Real-Time Live Feed • Synced with TheSportsDB & CoinGecko</span>
+          <button class="sound-synth-btn" onclick="triggerRandomFeed()">
+            ⚡ Generate Live Slip (Nitro Burst)
           </button>
         </div>
       </div>
     </section>
 
-    <!-- VIP Pricing Section -->
-    <section id="pricing">
-      <div class="section-title">
-        <h2>VIP Channel Access & Licensing</h2>
-        <p>Monetize your audience with automated 1-time invite links & Paystack/Crypto checkout</p>
-      </div>
-
-      <div class="pricing-grid">
-        
-        <div class="pricing-card">
-          <h4>Monthly VIP Pass</h4>
-          <div class="price">₦5,000 <span>/ mo</span></div>
-          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Full access to daily 90%+ banker slips and London session Forex calls.</p>
-          <ul class="feature-list" style="text-align: left;">
-            <li><span>✓</span> 4 Daily Verified Banker Slips</li>
-            <li><span>✓</span> 3-5 Institutional SMC Forex Calls</li>
-            <li><span>✓</span> Instant 1-Time VIP Channel Link</li>
-          </ul>
-          <a href="https://t.me/venomeaglebot" target="_blank" class="card-btn">Subscribe Monthly</a>
-        </div>
-
-        <div class="pricing-card featured">
-          <div class="card-badge badge-green" style="position: static; margin-bottom: 12px; display: inline-block;">MOST POPULAR</div>
-          <h4>Quarterly VIP Pro</h4>
-          <div class="price">₦13,500 <span>/ 3 mos</span></div>
-          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Save 10% on 90 days continuous VIP intelligence & auto-channel posters.</p>
-          <ul class="feature-list" style="text-align: left;">
-            <li><span>✓</span> Everything in Monthly VIP</li>
-            <li><span>✓</span> High-Odds Multi-Match ACCA slips</li>
-            <li><span>✓</span> Auto-Poster Bot for your own Channel</li>
-            <li><span>✓</span> Priority Telegram VIP Support</li>
-          </ul>
-          <a href="https://t.me/venomeaglebot" target="_blank" class="btn-primary" style="width: 100%; justify-content: center;">Get Pro VIP Access</a>
-        </div>
-
-        <div class="pricing-card">
-          <h4>Lifetime Master Pass</h4>
-          <div class="price">₦45,000 <span>/ one-time</span></div>
-          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Permanent unrestricted access to all current and future bots & private rooms.</p>
-          <ul class="feature-list" style="text-align: left;">
-            <li><span>✓</span> Lifetime VIP Access to All 3 Bots</li>
-            <li><span>✓</span> Full Source Code & GitHub Deploy Guide</li>
-            <li><span>✓</span> 1-on-1 Channel Bot Setup Assistance</li>
-          </ul>
-          <a href="https://t.me/venomeaglebot" target="_blank" class="card-btn">Get Lifetime Access</a>
-        </div>
-
-      </div>
-    </section>
-
     <!-- Footer -->
     <footer>
-      <p>© 2026 Venom Tech Ecosystem. All rights reserved.</p>
+      <p>© 2026 VENOM TECH • Built for Content Creators, Traders & Channel Admins.</p>
       <p style="margin-top: 8px;">
-        Powered by <a href="https://github.com/MykelGoal/Venom-scraper" target="_blank">Venom-scraper GitHub Engine</a> • Open-Source Telegram Infrastructure
+        Source Code & Multi-Bot Supervisor on <a href="https://github.com/MykelGoal/Venom-scraper" target="_blank">GitHub</a>
       </p>
     </footer>
 
   </div>
 
-  <!-- Interactive JavaScript Engine -->
-  <script>
-    let currentTab = 'football';
+  <!-- Interactive VIP Login Modal -->
+  <div class="modal-backdrop" id="vip-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="fingerprint-scanner" onclick="simulateBiometrics()">
+        👆
+      </div>
+      <h3 style="font-size: 22px; margin-bottom: 8px;">AURA VIP ACCESS PORTAL</h3>
+      <p style="color: #94a3b8; font-size: 14px; margin-bottom: 20px;" id="modal-status">Tap fingerprint or enter VIP Telegram Handle</p>
+      <input type="text" class="modal-input" placeholder="@YourTelegramUsername" id="user-input" />
+      <button class="btn-aura" style="width: 100%; justify-content: center;" onclick="verifyUser()">
+        ⚡ Connect Telegram VIP
+      </button>
+    </div>
+  </div>
 
-    const footballSetups = [
+  <!-- Audio Synthesizer, Canvas Animation & Interactive Script -->
+  <script>
+    // 1. Web Audio API Click Sound Synthesizer
+    let audioCtx = null;
+    function playClickSound(freq = 600, type = 'sine', duration = 0.08) {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch(e) {}
+    }
+
+    // 2. Nitro Mode Toggle
+    let nitro = false;
+    function toggleNitro() {
+      nitro = !nitro;
+      playClickSound(880, 'triangle', 0.2);
+      if (nitro) {
+        document.body.classList.add('nitro-active');
+        document.querySelector('.nitro-btn').innerHTML = '💥 NITRO OVERDRIVE ACTIVE';
+        document.querySelector('.nitro-btn').style.background = 'linear-gradient(135deg, #10b981, #06b6d4)';
+      } else {
+        document.body.classList.remove('nitro-active');
+        document.querySelector('.nitro-btn').innerHTML = '🔥 NITRO MODE';
+        document.querySelector('.nitro-btn').style.background = 'linear-gradient(135deg, #f59e0b, #ec4899)';
+      }
+    }
+
+    // 3. Terminal Simulator
+    let simMode = 'football';
+    const footballSlips = [
       `⚽️ <b>𝐏𝐫𝐞𝐝𝐢𝐜𝐭𝐢𝐨𝐧 𝐨𝐟 𝐭𝐡𝐞 𝐃𝐚𝐲</b> ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: Premier League England\n𝐌𝐚𝐭𝐜𝐡: Crystal Palace - Manchester City\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 19:00 WAT\n✅Away win\n✅Odds @1.26 on 1XBET\n\n⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟮 ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: La Liga Spain\n𝐌𝐚𝐭𝐜𝐡: Racing de Santander - Elche\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 17:00 WAT\n✅1X\n✅Odds @1.27 on 1XBET\n\n⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟯 ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: Serie A Italy\n𝐌𝐚𝐭𝐜𝐡: AC Milan - Venezia\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 18:45 WAT\n✅Under 3.5\n✅Odds @1.37 on 1XBET\n\n⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟰 ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: Bundesliga Germany\n𝐌𝐚𝐭𝐜𝐡: Bayern Munich - Stuttgart\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 18:30 WAT\n✅Under 3.5\n✅Odds @1.26 on 1XBET\n\nFor more football predictions, please visit @venomeaglebot`,
       `⚽️ <b>𝐏𝐫𝐞𝐝𝐢𝐜𝐭𝐢𝐨𝐧 𝐨𝐟 𝐭𝐡𝐞 𝐃𝐚𝐲</b> ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: Bundesliga Germany\n𝐌𝐚𝐭𝐜𝐡: Borussia Dortmund - Bayer Leverkusen\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 19:30 WAT\n✅Over 1.5 Goals\n✅Odds @1.24 on 1XBET\n\n⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟮 ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: Ligue 1 France\n𝐌𝐚𝐭𝐜𝐡: Lille OSC - Paris Saint-Germain\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 20:00 WAT\n✅Away win\n✅Odds @1.42 on 1XBET\n\n⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟯 ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: La Liga Spain\n𝐌𝐚𝐭𝐜𝐡: Real Madrid - Athletic Bilbao\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 20:30 WAT\n✅Home win\n✅Odds @1.38 on 1XBET\n\n⚽️ 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗧𝗶𝗽 𝟰 ⚽️\n𝐃𝐚𝐭𝐞: 28/08/2026\n𝐋𝐞𝐚𝐠𝐮𝐞: Serie A Italy\n𝐌𝐚𝐭𝐜𝐡: Inter Milan - Atalanta\n𝐊𝐢𝐜𝐤 𝐨𝐟𝐟: 19:45 WAT\n✅1X & Over 1.5\n✅Odds @1.33 on 1XBET\n\nFor more football predictions, please visit @venomeaglebot`
     ];
 
-    const forexSetups = [
+    const forexSlips = [
       `⚡️ <b>𝐕𝐄𝐍𝐎𝐌 𝐅𝐎𝐑𝐄𝐗 𝐕𝐈𝐏 𝐒𝐈𝐆𝐍𝐀𝐋</b> ⚡️\n━━━━━━━━━━━━━━━━━━━\n📊 <b>𝐈𝐍𝐒𝐓𝐑𝐔𝐌𝐄𝐍𝐓:</b> <code>XAU/USD (Gold)</code>\n🎯 <b>𝐀𝐂𝐓𝐈𝐎𝐍:</b> <b>BUY NOW 🟢</b>\n💰 <b>𝐄𝐍𝐓𝐑𝐘 𝐙𝐎𝐍𝐄:</b> <code>2504.20 - 2506.60</code>\n\n🛑 <b>𝐒𝐓𝐎𝐏 𝐋𝐎𝐒𝐒:</b> <code>2493.40</code> (120 Pips)\n🎯 <b>𝐓𝐀𝐊𝐄 𝐏𝐑𝐎𝐅𝐈𝐓 𝟏:</b> <code>2515.40</code> (+100 Pips)\n🎯 <b>𝐓𝐀𝐊𝐄 𝐏𝐑𝐎𝐅𝐈𝐓 𝟐:</b> <code>2529.40</code> (+240 Pips)\n🎯 <b>𝐓𝐀𝐊𝐄 𝐏𝐑𝐎𝐅𝐈𝐓 𝟑:</b> <code>2550.40</code> (Runner 🚀)\n━━━━━━━━━━━━━━━━━━━\n📈 <b>𝐑𝐢𝐬𝐤/𝐑𝐞𝐰𝐚𝐫𝐝:</b> 1 : 3.5\n🧠 <b>𝐒𝐌𝐂 𝐀𝐧𝐚𝐥𝐲𝐬𝐢𝐬:</b> H4 Bullish Order Block mitigation with 15M CHoCH confirmation.\n⚖️ <b>𝐑𝐢𝐬𝐤:</b> 1-2% max per trade. Move SL to BE at TP1.\n\nFor more signals, visit @venom_forex_signals_bot`,
       `⚡️ <b>𝐕𝐄𝐍𝐎𝐌 𝐅𝐎𝐑𝐄𝐗 𝐕𝐈𝐏 𝐒𝐈𝐆𝐍𝐀𝐋</b> ⚡️\n━━━━━━━━━━━━━━━━━━━\n📊 <b>𝐈𝐍𝐒𝐓𝐑𝐔𝐌𝐄𝐍𝐓:</b> <code>EUR/USD</code>\n🎯 <b>𝐀𝐂𝐓𝐈𝐎𝐍:</b> <b>SELL NOW 🔴</b>\n💰 <b>𝐄𝐍𝐓𝐑𝐘 𝐙𝐎𝐍𝐄:</b> <code>1.0848 - 1.0856</code>\n\n🛑 <b>𝐒𝐓𝐎𝐏 𝐋𝐎𝐒𝐒:</b> <code>1.0880</code> (30 Pips)\n🎯 <b>𝐓𝐀𝐊𝐄 𝐏𝐑𝐎𝐅𝐈𝐓 𝟏:</b> <code>1.0820</code> (+28 Pips)\n🎯 <b>𝐓𝐀𝐊𝐄 𝐏𝐑𝐎𝐅𝐈𝐓 𝟐:</b> <code>1.0785</code> (+65 Pips)\n🎯 <b>𝐓𝐀𝐊𝐄 𝐏𝐑𝐎𝐅𝐈𝐓 𝟑:</b> <code>1.0740</code> (Runner 🚀)\n━━━━━━━━━━━━━━━━━━━\n📈 <b>𝐑𝐢𝐬𝐤/𝐑𝐞𝐰𝐚𝐫𝐝:</b> 1 : 3.2\n🧠 <b>𝐒𝐌𝐂 𝐀𝐧𝐚𝐥𝐲𝐬𝐢𝐬:</b> London session liquidity sweep into 1H Fair Value Gap (FVG).\n⚖️ <b>𝐑𝐢𝐬𝐤:</b> 1-2% max per trade. Move SL to BE at TP1.\n\nFor more signals, visit @venom_forex_signals_bot`
     ];
 
-    const directorySetups = [
+    const scraperResults = [
       `🔍 <b>VENOM DIRECTORY SEARCH RESULTS: 'crypto'</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n👤 <b>1. @alex_ethdev</b> (Alex Mercer)\n   🏷️ Category: Crypto & Web3\n   👥 Discovered in: Ethereum Developers\n   🔗 Profile: t.me/alex_ethdev\n\n👤 <b>2. @sarah_defi</b> (Sarah C.)\n   🏷️ Category: Crypto & Web3\n   👥 Discovered in: Uniswap Community\n   🔗 Profile: t.me/sarah_defi\n\n👤 <b>3. @crypto_sammy</b> (Samuel O.)\n   🏷️ Category: Finance & Trading\n   👥 Discovered in: Binance Traders Global\n   🔗 Profile: t.me/crypto_sammy\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📊 Total Indexed Members: 12,480+ • Page 1 of 416\n🤖 Try it live on Telegram: @venomscraperbot`
     ];
 
-    function switchTab(tab) {
-      currentTab = tab;
-      const buttons = document.querySelectorAll('.tab-btn');
-      buttons.forEach(b => b.classList.remove('active'));
-      
-      if (tab === 'football') buttons[0].classList.add('active');
-      if (tab === 'forex') buttons[1].classList.add('active');
-      if (tab === 'directory') buttons[2].classList.add('active');
-
-      generateNewLive();
+    function setSimTab(tab) {
+      simMode = tab;
+      playClickSound(520, 'sine', 0.05);
+      const tabs = document.querySelectorAll('.t-tab');
+      tabs.forEach(t => t.classList.remove('active'));
+      if (tab === 'football') tabs[0].classList.add('active');
+      if (tab === 'forex') tabs[1].classList.add('active');
+      if (tab === 'directory') tabs[2].classList.add('active');
+      triggerRandomFeed();
     }
 
-    function generateNewLive() {
-      const output = document.getElementById('output-content');
-      output.style.opacity = '0.3';
-      
+    function triggerRandomFeed() {
+      playClickSound(750, 'sawtooth', 0.1);
+      const el = document.getElementById('term-display');
+      el.style.opacity = '0.3';
       setTimeout(() => {
-        if (currentTab === 'football') {
-          output.innerHTML = footballSetups[Math.floor(Math.random() * footballSetups.length)];
-        } else if (currentTab === 'forex') {
-          output.innerHTML = forexSetups[Math.floor(Math.random() * forexSetups.length)];
+        if (simMode === 'football') {
+          el.innerHTML = footballSlips[Math.floor(Math.random() * footballSlips.length)];
+        } else if (simMode === 'forex') {
+          el.innerHTML = forexSlips[Math.floor(Math.random() * forexSlips.length)];
         } else {
-          output.innerHTML = directorySetups[0];
+          el.innerHTML = scraperResults[0];
         }
-        output.style.opacity = '1';
-      }, 150);
+        el.style.opacity = '1';
+      }, 120);
     }
+
+    // 4. Modal Biometrics & Login
+    function openModal() {
+      playClickSound(640);
+      document.getElementById('vip-modal').style.display = 'flex';
+    }
+    function closeModal() {
+      playClickSound(400);
+      document.getElementById('vip-modal').style.display = 'none';
+    }
+    function simulateBiometrics() {
+      playClickSound(900, 'triangle', 0.3);
+      const status = document.getElementById('modal-status');
+      status.innerHTML = '⚡ <b>BIOMETRIC VERIFIED: +1,000,000 AURA</b>';
+      status.style.color = '#10b981';
+      document.getElementById('user-input').value = '@AuraTrader_VIP';
+    }
+    function verifyUser() {
+      playClickSound(1050, 'sine', 0.25);
+      const status = document.getElementById('modal-status');
+      status.innerHTML = '✅ <b>ACCESS GRANTED</b> — Redirecting to @venomeaglebot...';
+      status.style.color = '#10b981';
+      setTimeout(() => {
+        window.open('https://t.me/venomeaglebot', '_blank');
+        closeModal();
+      }, 1000);
+    }
+
+    // 5. Canvas Particle Starfield Engine
+    const canvas = document.getElementById('aura-canvas');
+    const ctx = canvas.getContext('2d');
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    for (let i = 0; i < 45; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        size: Math.random() * 2 + 1,
+        color: ['rgba(16, 185, 129, 0.4)', 'rgba(6, 182, 212, 0.4)', 'rgba(168, 85, 247, 0.4)'][Math.floor(Math.random() * 3)]
+      });
+    }
+
+    function renderParticles() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+          if (dist < 120) {
+            ctx.strokeStyle = `rgba(255, 255, 255, ${0.12 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(renderParticles);
+    }
+    renderParticles();
   </script>
 </body>
 </html>
