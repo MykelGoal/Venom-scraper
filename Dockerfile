@@ -18,5 +18,5 @@ COPY . .
 # Environment variables default
 ENV PYTHONUNBUFFERED=1
 
-# Default command runs the search bot
-CMD ["python3", "bot.py"]
+# Default command runs the entire multi-bot network
+CMD ["python3", "run_bot_network.py"]

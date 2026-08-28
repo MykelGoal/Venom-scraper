@@ -96,7 +96,7 @@ async def auto_signal_broadcaster():
                 res = await session.execute(select(ConnectedChannel).where(ConnectedChannel.auto_post == True))
                 channels = res.scalars().all()
                 if channels:
-                    signal = generate_live_signal()
+                    signal = await LiveMarketEngine.generate_real_institutional_signal()
                     for ch in channels:
                         try:
                             await bot.send_message(chat_id=ch.channel_id, text=signal, parse_mode="HTML")
