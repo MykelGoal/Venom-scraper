@@ -5,13 +5,14 @@ import logging
 import random
 from typing import Dict, List, Optional
 from gaming_engine import GamingSensiEngine
+from freefire_aimbot_engine import FreeFireAimEngine
 
 logger = logging.getLogger("VenomAIEngine")
 
 
 class VenomAIEngine:
     """
-    Venom AI — Advanced Neural Intelligence Engine for Trading, Betting, Gaming (Sensi/FreeFire) & Community Growth.
+    Venom AI — Advanced Neural Intelligence Engine for Trading, Betting, Gaming (Free Fire Aim-Lock & Sensi) & Community Growth.
     """
 
     @classmethod
@@ -19,22 +20,14 @@ class VenomAIEngine:
         p = prompt.strip().lower()
         now_wat = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=1)).strftime("%d/%m/%Y | %H:%M WAT")
 
-        # 1. Gaming / Free Fire Sensi / Aim / Redeem Codes Query
-        if any(w in p for w in ["sensi", "freefire", "free fire", "headshot", "aim", "dpi", "pubg", "redeem", "code", "diamond", "ob45", "gaming"]):
-            if "code" in p or "redeem" in p or "diamond" in p:
+        # 1. Free Fire Specific Aim-Lock, Weapons & Devices
+        if any(w in p for w in ["sensi", "freefire", "free fire", "headshot", "aimbot", "aimlock", "aim lock", "aim", "dpi", "m1887", "deagle", "woodpecker", "mp40", "ump"]):
+            if any(w in p for w in ["m1887", "shotgun", "deagle", "desert eagle", "woodpecker", "ac80", "mp40", "ump"]):
+                return FreeFireAimEngine.get_weapon_guide(p)
+            elif "code" in p or "redeem" in p or "diamond" in p:
                 return GamingSensiEngine.generate_redeem_codes()
-            
-            device = "iphone"
-            if "samsung" in p or "galaxy" in p:
-                device = "samsung"
-            elif "redmi" in p or "xiaomi" in p or "poco" in p:
-                device = "xiaomi"
-            elif "infinix" in p or "tecno" in p or "itel" in p:
-                device = "infinix_tecno"
-            elif "pc" in p or "bluestacks" in p or "emulator" in p:
-                device = "pc_emulator"
-
-            return GamingSensiEngine.generate_sensi(device)
+            else:
+                return FreeFireAimEngine.get_device_config(p)
 
         # 2. Football / Betting Query
         elif any(w in p for w in ["predict", "match", "bet", "football", "arsenal", "chelsea", "man city", "madrid", "barcelona", "score", "odds", "slip"]):
@@ -103,9 +96,9 @@ class VenomAIEngine:
                 f"🎯 <b>Status:</b> Neural Matrix Optimized (AURA +1,000,000)\n"
                 f"━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
                 f"Venom AI is actively monitoring:\n"
-                f"• 🎮 Free Fire 100% Headshot Sensi & Daily Redeem Codes\n"
+                f"• 🎮 Free Fire 100% Headshot Sensi (OB45/OB46), DPI & One-Tap Weapon Guides\n"
                 f"• ⚽ Real-time football match fixtures & xG analytics\n"
                 f"• 📈 Live institutional Forex, Gold & Crypto SMC setups\n"
                 f"• 🔍 MTProto Telegram community member directories\n\n"
-                f"Ask me about any Game Sensi (e.g. 'Sensi Free Fire iPhone'), Match, or Trading Pair!"
+                f"Ask me about any Game Sensi (e.g. 'M1887 One Tap' or 'Sensi Samsung A54'), Match, or Trading Pair!"
             )

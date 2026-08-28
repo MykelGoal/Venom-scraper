@@ -619,8 +619,10 @@
             🧠 VENOM NEURAL CORE <span>AURA V2.0</span>
           </div>
           <div class="ai-presets">
-            <span class="ai-tag" onclick="quickAsk('Sensi Free Fire iPhone 15')">🎯 FF Sensi (iPhone)</span>
-            <span class="ai-tag" onclick="quickAsk('Sensi Free Fire Samsung Galaxy')">🎯 FF Sensi (Samsung)</span>
+            <span class="ai-tag" onclick="quickAsk('M1887 One Tap Shotgun Guide')">🔫 M1887 One-Tap</span>
+            <span class="ai-tag" onclick="quickAsk('Desert Eagle One Tap Aim Lock')">🎯 Desert Eagle Aim-Lock</span>
+            <span class="ai-tag" onclick="quickAsk('Sensi Free Fire iPhone 15 Pro')">📱 iPhone Sensi</span>
+            <span class="ai-tag" onclick="quickAsk('Sensi Free Fire Samsung Galaxy DPI')">📱 Samsung DPI</span>
             <span class="ai-tag" onclick="quickAsk('Free Fire Daily Redeem Codes')">💎 FF Redeem Codes</span>
             <span class="ai-tag" onclick="quickAsk('Analyze Gold XAUUSD')">📈 Analyze Gold</span>
             <span class="ai-tag" onclick="quickAsk('Predict Man City vs Chelsea')">⚽ Match Banker</span>
@@ -757,7 +759,11 @@ Type your prompt below and hit <b>Execute AI Analysis</b>...
         const lower = query.toLowerCase();
         let response = '';
 
-        if (lower.includes('sensi') || lower.includes('freefire') || lower.includes('free fire') || lower.includes('headshot') || lower.includes('aim') || lower.includes('dpi')) {
+        if (lower.includes('m1887') || lower.includes('shotgun')) {
+          response = `💥 <b>ONE-TAP HEADSHOT GUIDE: M1887 SHOTGUN</b> 💥\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🎯 <b>Drag Technique:</b> V-Drag & Quick Weapon Switch (Speed: 0.2s)\n🔘 <b>Fire Button Size:</b> 44% (Position: Height 18%)\n🎯 <b>Crosshair Placement:</b>\n• Keep white crosshair near enemy feet, then do a sudden sharp V-Drag upward.\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n👑 <b>BEST CHARACTER SKILL COMBO:</b>\n• Tatsuya + Hayato + Kelly + Caroline (Max Shotgun Sprint Speed)\n🚀 100% Pure Red Damage Numbers • OB45 Update Calibrated`;
+        } else if (lower.includes('deagle') || lower.includes('desert')) {
+          response = `💥 <b>ONE-TAP HEADSHOT GUIDE: DESERT EAGLE</b> 💥\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🎯 <b>Drag Technique:</b> Straight Vertical J-Drag with Instant Thumb Release\n🔘 <b>Fire Button Size:</b> 46%\n🎯 <b>Crosshair Placement:</b>\n• Keep red crosshair beside chest level, then pull straight up instantly.\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n👑 <b>BEST CHARACTER SKILL COMBO:</b>\n• Alok / Tatsuya + Moco + Hayato + Kelly\n🚀 Zero Recoil Drag • Instant Knockdown`;
+        } else if (lower.includes('sensi') || lower.includes('freefire') || lower.includes('free fire') || lower.includes('headshot') || lower.includes('aim') || lower.includes('dpi')) {
           const device = lower.includes('samsung') ? 'Samsung Galaxy (A & S Series)' : (lower.includes('redmi') || lower.includes('xiaomi') ? 'Xiaomi / Redmi / POCO' : 'Apple iPhone / iOS (All Models)');
           const dpi = lower.includes('samsung') ? '480 - 580 DPI' : 'Default iOS Touch MAX (120Hz)';
           const fireBtn = lower.includes('samsung') ? '48%' : '44%';
