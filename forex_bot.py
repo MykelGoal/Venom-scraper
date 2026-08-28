@@ -15,7 +15,7 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 logger = logging.getLogger("VenomForexBot")
 
-BOT_TOKEN = os.getenv("FOREX_BOT_TOKEN", "8872020288:AAHbHL2pcTjcNV6jlO7N-HdG8BbV0NfeEjk")
+BOT_TOKEN = os.getenv("FOREX_BOT_TOKEN", "8648284351:AAEZlL9WviiYXQRte1tJpJ3E1HJK2VsBAXU")
 DB_URL = os.getenv("FOREX_DB_URL", "sqlite+aiosqlite:///./forex_bot.db")
 
 engine = create_async_engine(DB_URL, echo=False)
