@@ -33,9 +33,10 @@ async def start_forex_bot():
 
 async def start_prediction_bot():
     try:
-        from prediction_bot import dp as pred_dp, init_db as init_pred_db, BOT_TOKEN as pred_token
+        from prediction_bot import dp as pred_dp, init_db as init_pred_db, BOT_TOKEN as pred_token, auto_prediction_broadcaster
         await init_pred_db()
         bot = Bot(token=pred_token)
+        asyncio.create_task(auto_prediction_broadcaster())
         logger.info("🦅 Venom Eagle Predictions Bot started polling (@venomeaglebot)...")
         await pred_dp.start_polling(bot)
     except Exception as e:
