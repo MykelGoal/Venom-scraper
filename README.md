@@ -1,181 +1,84 @@
-# Telegram Public Community Directory & Search Bot
+# 🕷️ VENOM TECH — MULTI-BOT ECOSYSTEM
 
-A high-performance, compliant Telegram member indexer and searchable directory bot. This project crawls public Telegram supergroups, indexes publicly visible usernames of active members, filters out bots and deleted accounts, categorizes users by niche (Crypto, Gaming, Betting, Tech, etc.), and provides a fast interactive Telegram search bot with clickable `t.me` profile links.
+[![Render Status](https://img.shields.io/badge/Render-Deploy%20Ready-46E3B7?logo=render&logoColor=white)](https://render.com)
+[![Telegram Bots](https://img.shields.io/badge/Telegram-3%20Live%20Bots-2CA5E0?logo=telegram&logoColor=white)](https://t.me/venomscraperbot)
+[![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://python.org)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
----
-
-## 🏛️ System Architecture
-
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                        Telegram Ecosystem                              │
-├──────────────────────────────┬─────────────────────────────────────────┤
-│    Public Telegram Groups    │        Telegram Search Users            │
-│   (Crypto, Gaming, Tech)     │          (Interactive UI)               │
-└──────────────┬───────────────┴────────────────────▲────────────────────┘
-               │ (MTProto Userbot API)              │ (Telegram Bot API)
-               ▼                                    ▼
-┌──────────────────────────────┐        ┌────────────────────────────────┐
-│   Telethon Indexer Worker    │        │       Aiogram 3 Search Bot     │
-│   - FloodWait Backoff        │        │   - Interactive Category Menu  │
-│   - Bot/Deleted Filters      │        │   - Keyword Search (/search)   │
-│   - Jittered Sleep Delays    │        │   - Inline Mode Search         │
-│   - Session Rotator Pool     │        │   - Clickable t.me Profile URLs│
-└──────────────┬───────────────┘        └────────────────▲───────────────┘
-               │                                         │
-               │ (Async Bulk Upserts)                    │ (Paginated Queries)
-               ▼                                         │
-┌────────────────────────────────────────────────────────┴───────────────┐
-│              SQLAlchemy 2.0 Async Storage Engine                       │
-│    SQLite (aiosqlite) for Dev  |  PostgreSQL (asyncpg) for Production  │
-│  - Categories  - TelegramGroups  - Members  - MemberGroupAssociations │
-└────────────────────────────────────────────────────────────────────────┘
-```
+An institutional-grade, multi-bot Telegram ecosystem powered by live market feeds, real-time football intelligence, and high-performance MTProto group indexing.
 
 ---
 
-## 📁 Repository Structure
+## 🤖 The Active Bot Fleet
 
-```
-├── config.py              # Central configuration via Pydantic & .env
-├── database.py            # SQLAlchemy async database models and query layer
-├── indexer.py             # Telethon MTProto scraper with jitter & FloodWait safety
-├── account_rotator.py     # Multi-account session pool & rotation manager
-├── batch_indexer.py       # Batch crawler for bulk group ingestion
-├── bot.py                 # Aiogram 3 Telegram Search Bot interface
-├── groups.example.json    # Example configuration file for batch scanning
-├── test_system.py         # Automated database & search unit tests
-├── requirements.txt       # Production dependencies
-└── .env.example           # Environment variables template
-```
-
----
-
-## 🚀 Quickstart Guide
-
-### 1. Prerequisites & Installation
-
-Clone the repository and install the dependencies:
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-### 2. Configure Credentials (`.env`)
-
-Copy `.env.example` to `.env`:
-
-```bash
-cp .env.example .env
-```
-
-Fill in your configuration details:
-
-| Variable | Description | Source |
+| Bot | Handle | Core Function |
 | :--- | :--- | :--- |
-| `API_ID` | Telegram API App ID | [my.telegram.org](https://my.telegram.org) |
-| `API_HASH` | Telegram API App Hash | [my.telegram.org](https://my.telegram.org) |
-| `PHONE_NUMBER` | Phone number for userbot session | Your Telegram number |
-| `BOT_TOKEN` | Bot API Token | [@BotFather](https://t.me/BotFather) |
-| `DATABASE_URL` | SQLite / PostgreSQL connection URI | `sqlite+aiosqlite:///./telegram_directory.db` |
+| **🔍 Directory Scraper** | [@venomscraperbot](https://t.me/venomscraperbot) | Public group directory, user discovery & niche search |
+| **⚡ Forex VIP Signals** | [@venom_forex_signals_bot](https://t.me/venom_forex_signals_bot) | Live Gold & Forex SMC signals + Auto-channel posting |
+| **🦅 Eagle Predictions** | [@venomeaglebot](https://t.me/venomeaglebot) | 1:1 EaglePredict daily bankers + Auto-channel posting |
 
 ---
 
-## 🔍 Step-by-Step Usage
+## ⚡ 1-Click Deploy to Render
 
-### 1. Single Group Crawl via CLI
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
 
-You can index any public group directly:
+### Required Environment Variables
 
-```bash
-python indexer.py --group eth_developers --category crypto --limit 500
-```
+Add these in **Render Dashboard ➡️ Environment**:
 
-- `--group`: Public group handle or link (`eth_developers` or `https://t.me/eth_developers`)
-- `--category`: Category slug (`crypto`, `gaming`, `betting`, `tech`, `finance`, `marketing`)
-- `--limit`: Maximum member limit to scan in this run (default: 5000)
-
-### 2. Batch Group Crawling
-
-To crawl multiple groups automatically with inter-group rest delays:
-
-1. Copy and modify `groups.example.json` into `groups.json`:
-   ```json
-   [
-     {
-       "username": "ethereum",
-       "category": "crypto",
-       "category_name": "Crypto & Web3",
-       "limit": 1000
-     },
-     {
-       "username": "esports_global",
-       "category": "gaming",
-       "category_name": "Gaming & Esports",
-       "limit": 1000
-     }
-   ]
-   ```
-2. Execute batch crawler:
-   ```bash
-   python batch_indexer.py --file groups.json
-   ```
-
-### 3. Launching the Search Bot
-
-Start the user-facing Telegram directory bot:
-
-```bash
-python bot.py
-```
-
-Open your Telegram client and search for your bot:
-1. Send `/start` to see the category browser and stats.
-2. Send `/search <keyword>` (e.g. `/search alex` or `/search crypto`) to search members.
-3. Browse members page by page with direct `t.me/<username>` links.
-4. Try inline search: type `@YourBotHandle crypto` in any chat to share profiles directly.
-
----
-
-## 🛡️ Anti-Flood & Rate Limiting Best Practices
-
-Telegram actively monitors client behavior. The scraper is built with the following safety layers:
-
-1. **Jittered Micro-Delays (`REQUEST_DELAY_MIN` & `REQUEST_DELAY_MAX`)**:
-   - Random delays between `3.0s` and `6.0s` after each participant batch to eliminate static bot-like patterns.
-2. **Automated `FloodWaitError` Backoff**:
-   - Catches MTProto `FloodWaitError` exceptions and pauses execution for the exact penalty seconds specified by Telegram (+ safety margin) before resuming.
-3. **Rest Intervals Between Groups (`BATCH_PAUSE_SECONDS`)**:
-   - Adds a `30-45s` pause between different group scans so MTProto does not flag aggressive sequential queries.
-4. **Member List Permission Handling**:
-   - Gracefully handles groups where admins have toggled "Hide Members" or restricted participant visibility (`errors.ChatAdminRequiredError`).
-5. **Multi-Session Account Rotator (`account_rotator.py`)**:
-   - Distributes requests across a pool of user sessions using round-robin rotation and dynamic cooldown tracking.
-
----
-
-## 🗄️ Database & Large Dataset Scaling
-
-### Switching from SQLite to PostgreSQL
-
-In `.env`, set:
 ```ini
-DATABASE_URL="postgresql+asyncpg://postgres:yourpassword@localhost:5432/telegram_directory"
-```
+# Core Telegram API (from https://my.telegram.org)
+API_ID=39706152
+API_HASH=749a3068f8318dcd70efb7a88d796c11
+TELEGRAM_STRING_SESSION=1BJWap1wBu4-6xtT7BJTQPe0KzeHV8QE0Ylw_vSiSNGe2Leo5Wpbj5UQlyN8ef9IEeHQxS0yotsbqpU8_wC-yjcAOMevK16OEpYnYJGLhb8FXd4P46mvnshal4H-4kgG7--apCEl1XjRMeuOS5C7PPs5YtviK7fyglB1SOQ-ADPD4omY6I3XiD12GDyFkQ9RvfMBQPIJqvjahMyE93Pt1ij41rCOmxJJgN5bhy7bKXIYX5Wxu3vde1IlVVKEsDHtUN9jNqsjACqbd-w24WNfhAN54AXnKwWHFqEYlr6fyb_JScqTNdnUDpp5Snd5BkKfgPYOFGfjctOoSFWyvmB126PvnGr8d_dc=
 
-### Key Schema Optimizations
-- **Normalized Many-to-Many Relationships**: A user discovered in multiple groups (e.g. both Crypto and Gaming groups) is stored once in the `members` table and mapped through `member_group_associations`.
-- **Indexed Usernames & Lowercase Normalization**: Indexed column queries enable sub-millisecond search across hundreds of thousands of member handles.
-- **Batch Upserts**: Members are inserted in chunks of 100 via transactions, reducing database lock overhead.
+# Bot API Tokens (from @BotFather)
+BOT_TOKEN=8872020288:AAHbHL2pcTjcNV6jlO7N-HdG8BbV0NfeEjk
+FOREX_BOT_TOKEN=8967863227:AAFVno4s0e3WkD5XGGNBJakGNU3O4kLOBEI
+PREDICTION_BOT_TOKEN=8712477067:AAEKbiPxgzYwsOVUx5wM6F5gboB9s32e5l8
+
+# Database (PostgreSQL or SQLite)
+DATABASE_URL=sqlite+aiosqlite:///./telegram_directory.db
+```
 
 ---
 
-## 🧪 Running Tests
-
-Run the test suite to verify database schemas, queries, and pagination:
+## 💻 Local Quickstart (Run All Bots in 3 Steps)
 
 ```bash
-python -m unittest test_system.py
+# 1. Clone & install dependencies
+git clone https://github.com/MykelGoal/Venom-scraper.git
+cd Venom-scraper && pip install -r requirements.txt
+
+# 2. Configure environment
+cp .env.example .env
+
+# 3. Launch the entire multi-bot network concurrently
+python3 run_bot_network.py
 ```
+
+---
+
+## 📢 Hands-Free Auto-Posting to Channels
+
+Both **Venom Forex** and **Venom Eagle Predictions** support automatic broadcasting:
+
+1. Add **[@venomeaglebot](https://t.me/venomeaglebot)** or **[@venom_forex_signals_bot](https://t.me/venom_forex_signals_bot)** as an **Administrator** to your Telegram Channel.
+2. Grant **"Post Messages"** permission.
+3. The bot **instantly links** and automatically posts clean daily slips or market signals on schedule!
+
+---
+
+## 🛡️ Key Features
+
+- **Institutional Analytics:** Live CoinGecko, ECB & TheSportsDB feeds (zero fake static data).
+- **Exact EaglePredict Layout:** Clean unicode typography, WAT kickoff, and 1XBET odds.
+- **SMC Forex Setups:** Entry zones, SL, TP1–TP3 with precise pip calculations and order block rationale.
+- **24/7 Persistent Storage:** Zero data loss across restarts via unified `DATABASE_URL` (Postgres / SQLite).
+
+---
+
+<p align="center">
+  <b>Built with ❤️ by Venom Tech</b> • <i>Clean, Modular & High-Converting</i>
+</p>
