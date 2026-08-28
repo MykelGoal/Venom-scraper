@@ -15,13 +15,13 @@ class LiveMarketEngine:
     @classmethod
     async def fetch_live_quotes(cls) -> Dict[str, float]:
         quotes = {
-            "BTC/USD": 79500.0,
-            "ETH/USD": 2510.0,
-            "SOL/USD": 106.5,
-            "XAU/USD (Gold)": 2505.0,
+            "XAU/USD (Gold)": 2505.40,
             "EUR/USD": 1.0850,
             "GBP/USD": 1.2950,
             "USD/JPY": 154.20,
+            "BTC/USD (Bitcoin)": 79500.0,
+            "ETH/USD (Ethereum)": 2510.0,
+            "SOL/USD (Solana)": 106.5,
         }
 
         # 1. Live Crypto & Gold
@@ -31,11 +31,11 @@ class LiveMarketEngine:
             with urllib.request.urlopen(req, timeout=5) as resp:
                 data = json.loads(resp.read().decode())
                 if "bitcoin" in data:
-                    quotes["BTC/USD"] = float(data["bitcoin"]["usd"])
+                    quotes["BTC/USD (Bitcoin)"] = float(data["bitcoin"]["usd"])
                 if "ethereum" in data:
-                    quotes["ETH/USD"] = float(data["ethereum"]["usd"])
+                    quotes["ETH/USD (Ethereum)"] = float(data["ethereum"]["usd"])
                 if "solana" in data:
-                    quotes["SOL/USD"] = float(data["solana"]["usd"])
+                    quotes["SOL/USD (Solana)"] = float(data["solana"]["usd"])
                 if "pax-gold" in data:
                     quotes["XAU/USD (Gold)"] = float(data["pax-gold"]["usd"])
         except Exception:
@@ -69,14 +69,13 @@ class LiveMarketEngine:
 
         is_buy = random.choice([True, False])
         action = "BUY NOW 🟢" if is_buy else "SELL NOW 🔴"
-        now_wat = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=1)).strftime("%d/%m/%Y | %H:%M WAT")
 
         rationale_pool = [
             "H4 Bullish Order Block mitigation with 15M CHoCH confirmation.",
             "London session liquidity sweep below Asia range low into demand zone.",
             "Fair Value Gap (FVG) retest with high buying volume rejection.",
             "Institutional breaker block retest + RSI divergence on H1 timeframe.",
-            "Clean break & retest of structural resistance turned support.",
+            "Clean break & retest of key resistance turned support.",
         ]
         rationale = random.choice(rationale_pool)
 
@@ -90,16 +89,46 @@ class LiveMarketEngine:
             pips_tp1 = "+100 Pips"
             pips_tp2 = "+240 Pips"
             rr = "1 : 3.5"
-        elif "BTC" in selected:
-            entry = f"{price - 120:.0f} - {price + 120:.0f}"
-            sl = f"{price - 1100:.0f}" if is_buy else f"{price + 1100:.0f}"
-            tp1 = f"{price + 850:.0f}" if is_buy else f"{price - 850:.0f}"
-            tp2 = f"{price + 2100:.0f}" if is_buy else f"{price - 2100:.0f}"
-            tp3 = f"{price + 3800:.0f}" if is_buy else f"{price - 3800:.0f}"
-            pips_sl = "1,100 pts"
-            pips_tp1 = "+850 pts"
-            pips_tp2 = "+2,100 pts"
+        elif "Bitcoin" in selected:
+            entry = f"{price - 150:.0f} - {price + 150:.0f}"
+            sl = f"{price - 1200:.0f}" if is_buy else f"{price + 1200:.0f}"
+            tp1 = f"{price + 900:.0f}" if is_buy else f"{price - 900:.0f}"
+            tp2 = f"{price + 2200:.0f}" if is_buy else f"{price - 2200:.0f}"
+            tp3 = f"{price + 4000:.0f}" if is_buy else f"{price - 4000:.0f}"
+            pips_sl = "1,200 pts"
+            pips_tp1 = "+900 pts"
+            pips_tp2 = "+2,200 pts"
+            rr = "1 : 3.3"
+        elif "Ethereum" in selected:
+            entry = f"{price - 5.0:.1f} - {price + 5.0:.1f}"
+            sl = f"{price - 35.0:.1f}" if is_buy else f"{price + 35.0:.1f}"
+            tp1 = f"{price + 30.0:.1f}" if is_buy else f"{price - 30.0:.1f}"
+            tp2 = f"{price + 75.0:.1f}" if is_buy else f"{price - 75.0:.1f}"
+            tp3 = f"{price + 140.0:.1f}" if is_buy else f"{price - 140.0:.1f}"
+            pips_sl = "35 pts"
+            pips_tp1 = "+30 pts"
+            pips_tp2 = "+75 pts"
             rr = "1 : 3.2"
+        elif "Solana" in selected:
+            entry = f"{price - 0.40:.2f} - {price + 0.40:.2f}"
+            sl = f"{price - 3.50:.2f}" if is_buy else f"{price + 3.50:.2f}"
+            tp1 = f"{price + 3.00:.2f}" if is_buy else f"{price - 3.00:.2f}"
+            tp2 = f"{price + 7.50:.2f}" if is_buy else f"{price - 7.50:.2f}"
+            tp3 = f"{price + 14.00:.2f}" if is_buy else f"{price - 14.00:.2f}"
+            pips_sl = "3.5 pts"
+            pips_tp1 = "+3.0 pts"
+            pips_tp2 = "+7.5 pts"
+            rr = "1 : 3.2"
+        elif "USD/JPY" in selected:
+            entry = f"{price - 0.15:.2f} - {price + 0.15:.2f}"
+            sl = f"{price - 0.60:.2f}" if is_buy else f"{price + 0.60:.2f}"
+            tp1 = f"{price + 0.50:.2f}" if is_buy else f"{price - 0.50:.2f}"
+            tp2 = f"{price + 1.20:.2f}" if is_buy else f"{price - 1.20:.2f}"
+            tp3 = f"{price + 2.20:.2f}" if is_buy else f"{price - 2.20:.2f}"
+            pips_sl = "60 Pips"
+            pips_tp1 = "+50 Pips"
+            pips_tp2 = "+120 Pips"
+            rr = "1 : 3.1"
         else:
             entry = f"{price - 0.0006:.4f} - {price + 0.0006:.4f}"
             sl = f"{price - 0.0030:.4f}" if is_buy else f"{price + 0.0030:.4f}"
