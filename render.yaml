@@ -15,9 +15,9 @@ services:
       - key: BOT_TOKEN
         sync: false
       - key: FOREX_BOT_TOKEN
-        value: "8648284351:AAEZlL9WviiYXQRte1tJpJ3E1HJK2VsBAXU"
+        value: "8967863227:AAFVno4s0e3WkD5XGGNBJakGNU3O4kLOBEI"
       - key: PREDICTION_BOT_TOKEN
-        value: "8817389005:AAE1EsYKv1fC9GwntH8x4ILCNZ7bRzTXP14"
+        value: "8712477067:AAEKbiPxgzYwsOVUx5wM6F5gboB9s32e5l8"
       - key: TELEGRAM_STRING_SESSION
         sync: false
       - key: DATABASE_URL

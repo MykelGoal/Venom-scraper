@@ -2,8 +2,8 @@ import asyncio
 from aiogram import Bot
 from aiogram.types import BotCommand, BotCommandScopeDefault
 
-FOREX_TOKEN = "8648284351:AAEZlL9WviiYXQRte1tJpJ3E1HJK2VsBAXU"
-EAGLE_TOKEN = "8817389005:AAE1EsYKv1fC9GwntH8x4ILCNZ7bRzTXP14"
+FOREX_TOKEN = "8967863227:AAFVno4s0e3WkD5XGGNBJakGNU3O4kLOBEI"
+EAGLE_TOKEN = "8712477067:AAEKbiPxgzYwsOVUx5wM6F5gboB9s32e5l8"
 
 async def setup_forex_profile():
     bot = Bot(token=FOREX_TOKEN)
